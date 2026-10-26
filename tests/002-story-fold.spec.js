@@ -51,7 +51,7 @@ test('故事集写满不会覆盖已有快照，非法日期数据不会导致�
   await page.addInitScript(()=>{
     const draft={tone:'gentle',cards:['人物','场景','目标','转折'],locks:[false,false,false,false],title:'已有故事',body:'保留这篇。',remaining:180000};
     const shelf=Array.from({length:12},(_,i)=>({...draft,id:String(i),title:'已有故事'+i,savedAt:Date.now()-i*1000}));
-    shelf.push({...draft,id:'bad-date',savedAt:Number.MAX_VALUE});
+    shelf.unshift({...draft,id:'bad-date',savedAt:Number.MAX_VALUE});
     localStorage.setItem('story-fold-002-shelf-v1',JSON.stringify(shelf));
   });
   await page.goto(path);await expect(page.locator('#draftCount')).toHaveText('12');await page.locator('#body').fill('新的故事不能覆盖旧作。');await page.locator('#save').click();await expect(page.locator('#notice')).toContainText('已满 12 篇');await expect(page.locator('#draftCount')).toHaveText('12');await expect(page.getByRole('button',{name:'载入草稿：已有故事0',exact:true})).toBeVisible();
