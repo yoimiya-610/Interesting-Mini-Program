@@ -43,9 +43,12 @@ test('纯离线文件导航和灵感交互不需要网络',async({page,context})
   await page.getByRole('link',{name:'← 小程序索引',exact:true}).click();await expect(page).toHaveTitle(/Interesting Mini Program/);
 });
 test('损坏的存储可恢复使用，存储失败不会假报保存成功',async({page})=>{
-  await page.addInitScript(()=>{localStorage.setItem('story-fold-002-current-v1','{broken');});await page.goto(path);await expect(page.locator('#notice')).toContainText('无法读取');await page.locator('#body').fill('仍然可以开始新的故事。');
+  await page.addInitScript(()=>{
+    localStorage.setItem('story-fold-002-current-v1','{broken');
+    localStorage.setItem('story-fold-002-shelf-v1',JSON.stringify([{tone:'gentle',cards:['人物','场景','目标','转折'],locks:[false,false,false,false],title:'独立保存的故事',body:'当前草稿损坏时，这篇仍应保留。',remaining:180000,id:'safe-snapshot',savedAt:Date.now()}]));
+  });await page.goto(path);await expect(page.locator('#notice')).toContainText('无法读取');await expect(page.locator('#draftCount')).toHaveText('1');await expect(page.getByRole('button',{name:'载入草稿：独立保存的故事',exact:true})).toBeVisible();await page.locator('#body').fill('仍然可以开始新的故事。');
   await page.evaluate(()=>{Storage.prototype.setItem=function(){throw new DOMException('Full','QuotaExceededError');};});
-  await page.locator('#save').click();await expect(page.locator('#notice')).toContainText('本机存储不可用');await expect(page.locator('#draftCount')).toHaveText('0');await expect(page.locator('#body')).toHaveValue('仍然可以开始新的故事。');
+  await page.locator('#save').click();await expect(page.locator('#notice')).toContainText('本机存储不可用');await expect(page.locator('#draftCount')).toHaveText('1');await expect(page.locator('#body')).toHaveValue('仍然可以开始新的故事。');
 });
 test('故事集写满不会覆盖已有快照，非法日期数据不会导致页面崩溃',async({page})=>{
   await page.addInitScript(()=>{

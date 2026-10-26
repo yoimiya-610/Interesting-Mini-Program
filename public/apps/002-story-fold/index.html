@@ -85,9 +85,10 @@ function renderShelf(){
   });
 }
 function restore(){
-  try{const current=JSON.parse(localStorage.getItem(CURRENT)||'null'),safe=safeDraft(current);if(safe){applyDraft(safe);message('欢迎回来，已恢复上次的灵感与文字；计时暂停。');}else if(current)message('上次的草稿数据无法识别，已打开新的写作页。');
-    const shelf=JSON.parse(localStorage.getItem(SHELF)||'[]');if(Array.isArray(shelf)){const ids=new Set();drafts=shelf.filter(d=>safeDraft(d)&&typeof d.id==='string'&&!ids.has(d.id)&&ids.add(d.id)&&Number.isFinite(d.savedAt)&&d.savedAt>0&&Number.isFinite(new Date(d.savedAt).getTime())).slice(0,12);}
-  }catch{message('无法读取本机草稿。可以继续写作，并用 TXT 导出留存。');}
+  try{const current=JSON.parse(localStorage.getItem(CURRENT)||'null'),safe=safeDraft(current);if(safe){applyDraft(safe);message('欢迎回来，已恢复上次的灵感与文字；计时暂停。');}else if(current)message('上次的草稿数据无法识别，已打开新的写作页。');}
+  catch{message('无法读取上次的当前草稿；已保存的故事集会独立恢复。可以继续写作并导出留存。');}
+  try{const shelf=JSON.parse(localStorage.getItem(SHELF)||'[]');if(Array.isArray(shelf)){const ids=new Set();drafts=shelf.filter(d=>safeDraft(d)&&typeof d.id==='string'&&!ids.has(d.id)&&ids.add(d.id)&&Number.isFinite(d.savedAt)&&d.savedAt>0&&Number.isFinite(new Date(d.savedAt).getTime())).slice(0,12);}}
+  catch{message('无法读取本机故事集；当前写作内容不受影响，重要作品请导出留存。');}
   renderCards();renderShelf();renderClock();count();
 }
 document.querySelectorAll('[data-lock]').forEach(button=>button.addEventListener('click',()=>{const i=Number(button.dataset.lock);locks[i]=!locks[i];renderCards();persist();message(names[i]+'卡已'+(locks[i]?'锁定':'解锁')+'。');}));
