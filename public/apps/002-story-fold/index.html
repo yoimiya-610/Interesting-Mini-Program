@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5eee2"><meta name="description" content="002 故事折叠机：四张灵感卡片，三分钟自由写作。抽取、锁定、写作，本地保存草稿并导出文本。">
+<title>002 · 故事折叠机 · Story Fold</title>
+<style>
+:root{--paper:#f5eee2;--ink:#433349;--muted:#8b7c7b;--line:#dcd0c5;--plum:#68485d;--pink:#eed2ca;--yellow:#eddaa0;--sage:#cdd7b8;--blue:#cdd9de}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font-family:"Segoe UI","Microsoft YaHei",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--plum);outline-offset:4px}button:disabled{cursor:default;opacity:.45}button{color:var(--ink)}.wrap{max-width:1250px;padding:0 4vw;margin:auto}header{height:87px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{text-decoration:none;display:flex;align-items:center;gap:12px;font-weight:600;font-size:17px}.brand small{display:block;font:9px/1.8 monospace;letter-spacing:2px;color:var(--muted)}.mark{width:32px;height:36px;border:1px solid var(--plum);display:grid;place-items:center;transform:rotate(-8deg);background:#eee2d6;font-family:Georgia,serif;font-size:24px}.back{font-size:11px;text-decoration:none;color:var(--muted)}.hero{padding:42px 0 31px;display:flex;justify-content:space-between;align-items:end;gap:30px}.eyebrow{font:10px monospace;letter-spacing:2.3px;color:var(--plum)}h1{font-weight:400;font-size:46px;line-height:1.35;letter-spacing:2px;margin:15px 0 14px}h1 em{font-style:normal;color:#a66b58;border-bottom:2px solid #d3ac87}.hero p{font-size:12px;line-height:1.9;color:var(--muted);margin:0}.hero-note{border:1px solid #c6b5a5;padding:17px 22px;transform:rotate(3deg);margin:0 15px 12px 0;font-size:12px;line-height:1.8;text-align:center;color:#7e6c5d;background:#f1e6d5}.hero-note b{display:block;font:30px Georgia,serif;letter-spacing:6px;color:var(--plum)}.controls{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding:20px 0 24px}.tone{display:flex;gap:7px;flex-wrap:wrap}.tone button{background:none;border:1px solid var(--line);border-radius:25px;padding:9px 15px;font-size:11px}.tone button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}.shuffle{background:var(--plum);color:#fff8ee;border:0;border-radius:5px;padding:12px 21px;white-space:nowrap;font-size:12px}.shuffle:hover{background:#7c596f}.step{display:flex;align-items:center;gap:10px;font-size:12px;margin-bottom:17px}.step .num{font:11px monospace;color:#a07865}.step small{font-size:10px;color:var(--muted);margin-left:auto;font-weight:400}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:23px}.card{position:relative;border:1px solid #00000012;border-radius:3px;min-height:190px;padding:17px 18px 18px;box-shadow:0 4px 0 #00000004}.card:nth-child(1){background:var(--pink);transform:rotate(-1.2deg)}.card:nth-child(2){background:var(--yellow);transform:rotate(.8deg)}.card:nth-child(3){background:var(--sage);transform:rotate(-.5deg)}.card:nth-child(4){background:var(--blue);transform:rotate(1.2deg)}.card-top{display:flex;justify-content:space-between;align-items:center;gap:5px;font:9px monospace;letter-spacing:1px;opacity:.8}.lock{border:1px solid #43334930;background:#ffffff35;border-radius:20px;padding:5px 8px;font-size:10px;letter-spacing:0;min-width:48px}.lock[aria-pressed=true]{background:var(--ink);color:var(--paper)}.card h2{font-weight:400;font-size:12px;margin:23px 0 9px;opacity:.65}.card p{font-size:18px;line-height:1.6;letter-spacing:.4px;margin:0;min-height:58px}.card .corner{position:absolute;right:10px;bottom:10px;font:9px monospace;opacity:.35}.prompt{border-bottom:1px solid var(--line);padding:0 2px 24px;font-size:12px;line-height:2;color:#857476}.prompt strong{font-weight:500;color:var(--ink)}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:33px;padding:28px 0 34px}.editor-panel{min-width:0}.timer{display:flex;align-items:center;gap:7px;margin-bottom:15px;padding:11px 13px;background:#eae0d14d;border:1px solid var(--line);border-radius:5px;flex-wrap:wrap}.timer strong{font:20px monospace;min-width:65px;font-weight:400}.timer small{font-size:10px;color:var(--muted);margin-right:auto}.small-btn{background:none;border:1px solid #cdbfb5;border-radius:4px;padding:6px 10px;font-size:10px}.small-btn:hover{background:#e8dccf}.paper{background:#fffaf1;border:1px solid #e1d5c5;border-radius:5px;padding:22px 24px 15px;box-shadow:0 6px 24px #634d3310}.paper label{display:block;font-size:10px;color:var(--muted);margin-bottom:7px}.paper input{width:100%;background:none;border:0;border-bottom:1px solid var(--line);font-size:20px;color:var(--ink);padding:4px 0 14px;margin-bottom:16px;border-radius:0}.paper textarea{width:100%;min-height:251px;resize:vertical;border:0;color:var(--ink);font-size:14px;line-height:31px;padding:0;background:repeating-linear-gradient(transparent,transparent 30px,#dfd3c450 30px,#dfd3c450 31px);border-radius:0}.paper textarea::placeholder,.paper input::placeholder{color:#b7a9a0}.paper-foot{display:flex;justify-content:space-between;gap:15px;margin-top:13px;font-size:10px;color:var(--muted)}.editor-actions{display:flex;gap:9px;margin-top:15px}.editor-actions button{font-size:11px;border-radius:4px;padding:10px 16px}.save{border:0;background:var(--ink);color:#fff8ee}.export{border:1px solid var(--line);background:transparent}.storage-note{font-size:10px;line-height:1.8;color:var(--muted);margin:12px 0 0}aside{border-left:1px solid var(--line);padding-left:27px}.shelf-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:14px}.shelf-head span{font:10px monospace;color:var(--muted)}.shelf-intro{font-size:11px;line-height:1.9;color:var(--muted);margin:0 0 19px}.empty{border:1px dashed #cdbfb5;border-radius:4px;padding:28px 14px;text-align:center;color:#a08b80;font-size:11px;line-height:2}.empty b{font:30px Georgia,serif;display:block;margin-bottom:10px;color:#b39b89}.draft{padding:13px 0;border-top:1px solid var(--line)}.draft-load{display:block;width:100%;text-align:left;background:none;border:0;padding:0;font-size:12px;line-height:1.7}.draft-load:hover{text-decoration:underline}.draft-meta{display:flex;justify-content:space-between;gap:8px;margin-top:7px;color:var(--muted);font-size:9px}.delete{font-size:9px;border:0;background:none;padding:0;color:#997868;text-decoration:underline}.writing-tip{margin-top:26px;padding:16px 0;border-top:1px solid var(--line);font-size:11px;line-height:1.9;color:var(--muted)}.writing-tip b{display:block;color:#7c5c54;font-weight:500;margin-bottom:6px}.notice{min-height:22px;font-size:11px;color:var(--plum);margin:13px 0 0}.undo{font-size:11px;border:0;background:none;color:var(--plum);text-decoration:underline;margin-left:8px}.undo[hidden]{display:none}footer{padding:20px 0 27px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;font:9px/1.8 monospace;color:#9a8880;letter-spacing:1px}
+@media(min-width:1450px){.wrap{max-width:1350px}.card{min-height:210px}.paper textarea{min-height:300px}}@media(max-width:850px){.hero h1{font-size:37px}.card{padding:13px;min-height:192px}.card p{font-size:16px}.card-top{letter-spacing:0}.workspace{grid-template-columns:minmax(0,1fr) 220px;gap:23px}aside{padding-left:20px}}@media(max-width:640px){.wrap{padding:0 19px}header{height:74px}.brand{font-size:14px}.brand small{font-size:8px}.back{font-size:10px}.hero{padding:28px 0 23px}.hero h1{font-size:32px}.hero-note{display:none}.controls{align-items:stretch;flex-direction:column;gap:14px;padding:18px 0 22px}.tone{gap:6px}.tone button{flex:1;padding:9px 6px}.shuffle{padding:11px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{min-height:183px}.card p{font-size:16px}.step small{font-size:9px}.workspace{grid-template-columns:1fr;padding-top:23px;gap:28px}aside{border-left:0;border-top:1px solid var(--line);padding:22px 0 0}.paper{padding:18px 16px 14px}.paper input{font-size:18px}.paper textarea{font-size:13px;min-height:249px}.timer{gap:6px}.timer small{font-size:9px}.shelf-intro{margin-bottom:12px}.writing-tip{margin-top:20px}.paper-foot{font-size:9px}footer{font-size:8px;letter-spacing:0}.card h2{margin-top:21px}.step{font-size:11px}}
+</style>
+</head>
+<body><div class="wrap">
+<header><a class="brand" href="../../index.html"><span class="mark">折</span><span>002 · 故事折叠机<small>STORY FOLD / A TINY WRITING STUDIO</small></span></a><a class="back" href="../../index.html">← 小程序索引</a></header>
+<main><section class="hero"><div><div class="eyebrow">FOUR CARDS. ONE UNTOLD STORY.</div><h1>把一个念头，<br>折成一个<em>故事。</em></h1><p>不必等灵感降临。抽四张卡，给想象力一个开头。<br>接下来三分钟，让那些意想不到的相遇，发生在纸上。</p></div><div class="hero-note"><b>04 → 01</b>四张小纸片<br>一段只属于你的故事</div></section>
+<div class="controls"><div class="tone" role="group" aria-label="故事气质"><button data-tone="gentle" aria-pressed="true">温柔日常</button><button data-tone="mystery" aria-pressed="false">悬疑冒险</button><button data-tone="wonder" aria-pressed="false">奇趣脑洞</button></div><button class="shuffle" id="shuffle">↻ 重新折叠灵感</button></div>
+<div class="step"><span class="num">01 /</span>打开你的四张灵感卡<small>锁定喜欢的卡片，再抽其余几张</small></div>
+<section class="cards" aria-label="故事灵感卡片">
+<article class="card"><div class="card-top">CHARACTER<button class="lock" data-lock="0" aria-label="锁定人物卡" aria-pressed="false">锁定</button></div><h2>谁，是故事的主角？</h2><p id="card0"></p><span class="corner">01 / 04</span></article>
+<article class="card"><div class="card-top">PLACE<button class="lock" data-lock="1" aria-label="锁定场景卡" aria-pressed="false">锁定</button></div><h2>故事，从哪里开始？</h2><p id="card1"></p><span class="corner">02 / 04</span></article>
+<article class="card"><div class="card-top">WISH<button class="lock" data-lock="2" aria-label="锁定目标卡" aria-pressed="false">锁定</button></div><h2>主角，想要做什么？</h2><p id="card2"></p><span class="corner">03 / 04</span></article>
+<article class="card"><div class="card-top">TWIST<button class="lock" data-lock="3" aria-label="锁定转折卡" aria-pressed="false">锁定</button></div><h2>偏偏，这时……</h2><p id="card3"></p><span class="corner">04 / 04</span></article>
+</section><div class="prompt"><strong>把它们连起来 → </strong><span id="prompt"></span></div>
+<section class="workspace"><div class="editor-panel"><div class="step"><span class="num">02 /</span>给这个故事，一个开始<small>不求完美，只管写下去</small></div>
+<div class="timer"><strong id="clock">03:00</strong><small id="timerHint">可选 · 三分钟自由写作</small><button class="small-btn" id="timerToggle">开始计时</button><button class="small-btn" id="timerReset">重置计时</button></div>
+<div class="paper"><label for="title">故事标题</label><input id="title" maxlength="80" placeholder="给这个故事起个名字…"><label for="body">故事正文</label><textarea id="body" maxlength="8000" placeholder="那天，一切似乎和平常没什么不同。直到……"></textarea><div class="paper-foot"><span><span id="wordCount">0</span> 字 / 最多 8000 字符</span><span id="autosave">当前内容自动留在本机</span></div></div>
+<div class="editor-actions"><button class="save" id="save">＋ 保存草稿快照</button><button class="export" id="export">↓ 导出为 TXT</button></div><p class="storage-note">文字不会上传。草稿仅保存在当前浏览器，换设备或清除浏览器数据后不会保留；重要作品请导出。</p><div class="notice" role="status" aria-live="polite"><span id="notice"></span><button class="undo" id="undo" hidden>撤销删除</button></div></div>
+<aside><div class="shelf-head">我的小小故事集 <span><span id="draftCount">0</span> / 12</span></div><p class="shelf-intro">每次保存，留下一份独立快照。<br>点击标题可以接着写；最多保留 12 篇，写满后请先导出或删除。</p><div id="draftList"></div><div class="writing-tip"><b>折叠小提示 / 002</b>卡片只是起点，偏离它们也没关系。<br>卡住时，先写一句主角会说的话。<br>倒计时结束后，仍然可以继续写。</div></aside></section>
+</main><footer><span>SMALL STORIES, INFINITE WORLDS.</span><span>002 / 文科 · 创意写作 · 完全本地</span></footer></div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const pools={
+  gentle:[
+    ['替人保管秘密的邮递员','总在末班车上睡着的画家','刚搬来小镇的修伞师','即将退休的图书管理员','只给陌生人写诗的厨师','第一次独自旅行的少年'],
+    ['雨停后的旧书店','即将停业的街角花店','海边最后一班公交车','有一棵老树的屋顶','清晨还没开门的面包房','一座很少有人下车的小站'],
+    ['把一封没有地址的信送达','找回一段忘记的旋律','为一个陌生人准备告别','归还一件借了很多年的东西','在天黑前找到一位老朋友','完成一个迟到十年的约定'],
+    ['对方也在寻找同一个人','一只猫带来了意外的线索','那封信竟然写于明天','熟悉的店门后换了一个季节','所有人都记得主角，主角却不认识他们','最重要的东西一直在口袋里']
+  ],
+  mystery:[
+    ['从不相信巧合的钟表匠','失去一天记忆的侦探','只在夜里上班的档案员','收到自己讣告的记者','能听出谎言的列车员','被误认为嫌疑人的园丁'],
+    ['钟声总慢一分钟的旅馆','被地图抹去的山中小站','展品每夜移动的博物馆','没有出口标志的地下剧场','因暴风雪封闭的观测站','一艘无人认领的渡船'],
+    ['查清一个从未发生的失踪案','找出一直重复的敲门声来源','在午夜前换回一只箱子','证明一张照片的拍摄时间','把唯一的钥匙交给正确的人','阻止一场没人相信的意外'],
+    ['每个证人都说出了同一句话','唯一的线索是主角自己的笔迹','监控里出现了两个相同的人','时钟开始从零倒着走','所有门牌号码都少了一个数字','被怀疑的人提前留下了答案']
+  ],
+  wonder:[
+    ['负责回收星期一的实习生','害怕高度的云朵饲养员','给梦境修补拉链的裁缝','刚学会说谎的家用机器人','只能听懂植物抱怨的园丁','把影子弄丢的魔术师'],
+    ['售卖未发生回忆的杂货铺','每天漂移一米的图书馆','一座建在鲸鱼背上的小城','由失物组成的月亮','营业到昨天的早餐店','专门接收瓶中信的太空站'],
+    ['退回一场买错的日落','替月亮请一天假','教一颗星星说晚安','找回被偷走的最后一个比喻','让一把雨伞学会等待','修好一个总把人送到童年的电梯'],
+    ['说明书突然开始提问题','整座城市同时打了个喷嚏','结局抢先一步到达了现场','主角的影子做出了不同选择','一张收据证明时间可以退款','最沉默的石头第一个开口']
+  ]
+};
+const names=['人物','场景','目标','转折'],toneNames={gentle:'温柔日常',mystery:'悬疑冒险',wonder:'奇趣脑洞'};
+const CURRENT='story-fold-002-current-v1',SHELF='story-fold-002-shelf-v1',DURATION=180000;
+let tone='gentle',cards=pools.gentle.map(p=>p[0]),locks=[false,false,false,false],remaining=DURATION,running=false,deadline=0,drafts=[],deleted=null,storageOk=true;
+function message(text){$('notice').textContent=text;}
+function timeLeft(){return running?Math.max(0,deadline-Date.now()):remaining;}
+function payload(){return {tone,cards:[...cards],locks:[...locks],title:$('title').value,body:$('body').value,remaining:timeLeft()};}
+function safeDraft(value){
+  if(!value||typeof value!=='object'||!Object.hasOwn(pools,value.tone)||!Array.isArray(value.cards)||value.cards.length!==4||!value.cards.every(c=>typeof c==='string'&&c.length>0&&c.length<=120)||!Array.isArray(value.locks)||value.locks.length!==4||!value.locks.every(b=>typeof b==='boolean')||typeof value.title!=='string'||value.title.length>80||typeof value.body!=='string'||value.body.length>8000)return null;
+  return {tone:value.tone,cards:[...value.cards],locks:[...value.locks],title:value.title,body:value.body,remaining:Number.isFinite(value.remaining)?Math.max(0,Math.min(DURATION,value.remaining)):DURATION};
+}
+function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value));storageOk=true;return true;}catch{storageOk=false;$('autosave').textContent='本机存储不可用，请导出留存';return false;}}
+function persist(){if(writeStore(CURRENT,payload()))$('autosave').textContent='当前内容已留在本机';}
+function renderCards(){
+  cards.forEach((text,i)=>{$('card'+i).textContent=text;const button=document.querySelector('[data-lock="'+i+'"]');button.textContent=locks[i]?'已锁定':'锁定';button.setAttribute('aria-pressed',String(locks[i]));button.setAttribute('aria-label',(locks[i]?'解锁':'锁定')+names[i]+'卡');});
+  document.querySelectorAll('[data-tone]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.tone===tone)));
+  $('prompt').textContent=cards[0]+'来到'+cards[1]+'，想要'+cards[2]+'。偏偏这时，'+cards[3]+'……';
+}
+function roll(i){const choices=pools[tone][i].filter(text=>text!==cards[i]);cards[i]=choices[Math.floor(Math.random()*choices.length)];}
+function shuffle(){if(locks.every(Boolean)){message('四张卡都已锁定。先解锁一张，再重新折叠。');return;}cards.forEach((_,i)=>{if(!locks[i])roll(i);});renderCards();persist();message('新的故事线索已展开。锁定的卡片和已写文字都会保留。');}
+function renderClock(){const seconds=Math.ceil(timeLeft()/1000);$('clock').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');$('timerToggle').textContent=running?'暂停计时':remaining===0?'再来三分钟':remaining<DURATION?'继续计时':'开始计时';}
+function stopTimer(){remaining=timeLeft();running=false;renderClock();}
+function applyDraft(draft){stopTimer();tone=draft.tone;cards=[...draft.cards];locks=[...draft.locks];remaining=draft.remaining;$('title').value=draft.title;$('body').value=draft.body;renderCards();renderClock();count();$('timerHint').textContent='已恢复内容 · 计时处于暂停状态';}
+function count(){$('wordCount').textContent=Array.from($('body').value.replace(/\s/g,'')).length;}
+function dateLabel(stamp){return new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(stamp);}
+function renderShelf(){
+  const list=$('draftList');list.replaceChildren();$('draftCount').textContent=drafts.length;
+  if(!drafts.length){const empty=document.createElement('div');empty.className='empty';const icon=document.createElement('b');icon.textContent='〰';empty.append(icon,document.createTextNode('这里还空着。\n你的第一篇小故事，会住在这里。'));empty.style.whiteSpace='pre-line';list.append(empty);return;}
+  drafts.forEach(draft=>{
+    const item=document.createElement('div');item.className='draft';const load=document.createElement('button');load.className='draft-load';load.textContent=draft.title.trim()||'未命名的小故事';load.setAttribute('aria-label','载入草稿：'+load.textContent);
+    load.onclick=()=>{if(($('body').value||$('title').value)&&!writeStore(CURRENT,payload())){message('当前内容无法自动留存，请先导出后再载入草稿。');return;}
+      const current=payload();applyDraft(draft);if(writeStore(CURRENT,payload())){deleted={kind:'load',current};$('undo').textContent='撤销载入';$('undo').hidden=false;}message('已载入草稿快照；可以接着写。载入前的内容可立即撤销恢复。');$('body').focus();};
+    const meta=document.createElement('div');meta.className='draft-meta';const date=document.createElement('span');date.textContent=dateLabel(draft.savedAt)+' · '+Array.from(draft.body.replace(/\s/g,'')).length+' 字';const remove=document.createElement('button');remove.className='delete';remove.textContent='删除';remove.setAttribute('aria-label','删除草稿：'+load.textContent);
+    remove.onclick=()=>{const next=drafts.filter(d=>d.id!==draft.id);if(!writeStore(SHELF,next)){message('无法更新本机草稿，请先导出。');return;}deleted={kind:'delete',draft};drafts=next;renderShelf();$('undo').textContent='撤销删除';$('undo').hidden=false;message('草稿已删除，可以立即撤销。');};meta.append(date,remove);item.append(load,meta);list.append(item);
+  });
+}
+function restore(){
+  try{const current=JSON.parse(localStorage.getItem(CURRENT)||'null'),safe=safeDraft(current);if(safe){applyDraft(safe);message('欢迎回来，已恢复上次的灵感与文字；计时暂停。');}else if(current)message('上次的草稿数据无法识别，已打开新的写作页。');
+    const shelf=JSON.parse(localStorage.getItem(SHELF)||'[]');if(Array.isArray(shelf)){const ids=new Set();drafts=shelf.filter(d=>safeDraft(d)&&typeof d.id==='string'&&!ids.has(d.id)&&ids.add(d.id)&&Number.isFinite(d.savedAt)&&d.savedAt>0&&Number.isFinite(new Date(d.savedAt).getTime())).slice(0,12);}
+  }catch{message('无法读取本机草稿。可以继续写作，并用 TXT 导出留存。');}
+  renderCards();renderShelf();renderClock();count();
+}
+document.querySelectorAll('[data-lock]').forEach(button=>button.addEventListener('click',()=>{const i=Number(button.dataset.lock);locks[i]=!locks[i];renderCards();persist();message(names[i]+'卡已'+(locks[i]?'锁定':'解锁')+'。');}));
+document.querySelectorAll('[data-tone]').forEach(button=>button.addEventListener('click',()=>{tone=button.dataset.tone;cards.forEach((_,i)=>{if(!locks[i])roll(i);});renderCards();persist();message('已切换为「'+toneNames[tone]+'」，锁定卡片与文字保留。');}));
+$('shuffle').onclick=shuffle;
+for(const id of ['title','body'])$(id).addEventListener('input',()=>{count();persist();});
+$('timerToggle').onclick=()=>{if(running){stopTimer();$('timerHint').textContent='暂停一下，故事会等你';}else{if(remaining===0)remaining=DURATION;deadline=Date.now()+remaining;running=true;$('timerHint').textContent='计时继续 · 到时后仍然可以写作';}renderClock();persist();};
+$('timerReset').onclick=()=>{running=false;remaining=DURATION;renderClock();$('timerHint').textContent='计时已重置 · 文字保留';persist();};
+setInterval(()=>{if(!running)return;if(timeLeft()===0){remaining=0;running=false;$('timerHint').textContent='三分钟到了 · 想写的话，就继续';message('三分钟到了。谢谢你，让这个故事发生。');persist();}renderClock();},200);
+$('save').onclick=()=>{
+  if(!$('body').value.trim()){message('先写一句话，再把它收进故事集。');$('body').focus();return;}
+  if(drafts.length>=12){message('故事集已满 12 篇。请先导出并删除一篇，再保存新快照。');return;}
+  const data=payload();if(drafts.some(d=>d.title===data.title&&d.body===data.body&&d.cards.every((c,i)=>c===data.cards[i]))){message('这份内容已经保存过了，可以继续写一点新内容。');return;}
+  const next=[{...data,id:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),savedAt:Date.now()},...drafts];
+  if(!writeStore(SHELF,next)){message('本机存储不可用，请使用 TXT 导出保存。');return;}drafts=next;renderShelf();persist();message('草稿快照已保存到本机故事集。');
+};
+$('export').onclick=()=>{
+  if(!$('body').value.trim()){message('先写一句话，再导出你的故事。');return;}
+  const data=payload(),title=data.title.trim()||'未命名的小故事';const text=title+'\n\n'+data.body+'\n\n—— 002 · 故事折叠机 ——\n故事气质：'+toneNames[tone]+'\n'+cards.map((c,i)=>names[i]+'：'+c).join('\n')+'\n';
+  const blob=new Blob(['\uFEFF',text],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='002-'+title.replace(/[\\/:*?"<>|\x00-\x1f]/g,'_').slice(0,50)+'.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('已导出 TXT，正文和四张灵感卡都在里面。');
+};
+$('undo').onclick=()=>{
+  if(!deleted)return;
+  if(deleted.kind==='load'){applyDraft(deleted.current);persist();message('已恢复载入前的内容。');}
+  else{if(drafts.length>=12){message('故事集已满，暂时无法撤销删除，请先留出一个位置。');return;}const next=[deleted.draft,...drafts];if(!writeStore(SHELF,next)){message('无法恢复草稿，请检查本机存储。');return;}drafts=next;renderShelf();message('已恢复删除的草稿。');}
+  deleted=null;$('undo').hidden=true;
+};
+window.addEventListener('pagehide',persist);restore();
+</script>
+</body></html>
