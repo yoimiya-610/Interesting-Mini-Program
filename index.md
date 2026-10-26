@@ -1,0 +1,9 @@
+# index · 小程序直达索引
+
+[在线总入口](https://yoimiya-610.github.io/Interesting-Mini-Program/) · 本地启动：`npm start` → [本地索引](http://127.0.0.1:4173/)
+
+| 编号 | 小程序 | 领域 | 简介 | 在线直达 | 本地直达 | 离线文件 | 收录日期 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 001 | 引力花园 | 游戏 | 把片刻，交给引力。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/001-orbit-garden/) | [本地](http://127.0.0.1:4173/apps/001-orbit-garden/) | [HTML](public/apps/001-orbit-garden/index.html) | 2026-10-26 |
+
+本表与网页入口由 `programs.json` 自动生成。新增程序后运行 `npm run build`，请勿手工修改生成文件。

@@ -1,0 +1,21 @@
+{
+  "name": "interesting-mini-program",
+  "version": "1.0.0",
+  "private": true,
+  "description": "每日一个有趣小程序，本地优先，按编号探索。",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build-index.mjs",
+    "check": "node scripts/check.mjs && node tests/server.test.mjs && node tests/orbit-smoke.cjs",
+    "test:e2e": "playwright test",
+    "next": "node scripts/next-program.mjs",
+    "accept": "node scripts/accept-pr.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}
