@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+const repo='yoimiya-610/Interesting-Mini-Program',number=process.argv[2];
+if(!/^\d+$/.test(number||''))throw new Error('用法：npm run accept -- <PR编号>');
+const gh=args=>execFileSync('gh',args,{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+const pr=JSON.parse(gh(['pr','view',number,'--repo',repo,'--json','headRefOid,baseRefName,state,mergeable,isDraft,reviewDecision,statusCheckRollup']));
+if(pr.state!=='OPEN'||pr.isDraft||pr.baseRefName!=='main'||pr.mergeable!=='MERGEABLE')throw new Error('PR 尚未就绪或存在冲突，拒绝合并');
+if(pr.reviewDecision==='CHANGES_REQUESTED')throw new Error('仍有未解决的修改要求');
+const checks=pr.statusCheckRollup||[],validation=checks.find(c=>c.name==='Validate and browser tests');
+if(!validation||validation.status!=='COMPLETED'||validation.conclusion!=='SUCCESS')throw new Error('必须等待 Validate and browser tests 验收通过');
+const bad=checks.filter(c=>c.__typename==='CheckRun'?c.status!=='COMPLETED'||!['SUCCESS','SKIPPED','NEUTRAL'].includes(c.conclusion):c.state!=='SUCCESS');
+if(bad.length)throw new Error('仍有未完成或失败的检查，拒绝合并');
+console.log(gh(['pr','merge',number,'--repo',repo,'--squash','--delete-branch','--match-head-commit',pr.headRefOid]));
+console.log(`PR #${number} 已通过验收并合并。请继续确认 main 的 Pages 部署结果。`);
