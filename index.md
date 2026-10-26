@@ -10,4 +10,4 @@
 | 004 | 时间便当 | 生活 | 先装重要的，再留一点空。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/004-time-bento/) | [本地](http://127.0.0.1:4173/apps/004-time-bento/) | [HTML](public/apps/004-time-bento/index.html) | 2026-10-26 |
 | 005 | 逻辑接线台 | 工科 | 拨动开关，让逻辑亮起来。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/005-logic-patch/) | [本地](http://127.0.0.1:4173/apps/005-logic-patch/) | [HTML](public/apps/005-logic-patch/index.html) | 2026-10-26 |
 
-本表与网页入口由 `programs.json` 自动生成。新增程序后运行 `npm run build`，请勿手工修改生成文件。
+点击“体验”即可在线打开；下载仓库后，也可以通过“HTML”打开本地文件。使用方法与数据保存说明见[项目介绍](README.md)。感谢你来玩。
