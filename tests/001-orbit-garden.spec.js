@@ -12,8 +12,9 @@ test('暂停、配色、捕星计时、重开和 PNG 留影',async({page})=>{
   await page.locator('#pause').click();await expect(page.locator('#pauseLabel')).toBeHidden();
   const download=page.waitForEvent('download');await page.locator('#save').click();expect((await download).suggestedFilename()).toMatch(/\.png$/);
   await page.locator('#challenge').click();await page.clock.install();await page.locator('#start').click();
-  await page.clock.runFor(1200);const before=await page.locator('#time').textContent();
-  await page.locator('#pause').click();await page.clock.runFor(2500);await expect(page.locator('#time')).toHaveText(before);
+  await page.clock.runFor(1200);await page.locator('#pause').click();
+  const before=await page.locator('#time').textContent();
+  await page.clock.runFor(2500);await expect(page.locator('#time')).toHaveText(before);
   await page.locator('#pause').click();await page.clock.fastForward(45000);await expect(page.locator('#result')).toBeVisible();
   await page.locator('#again').click();await expect(page.locator('#result')).toBeHidden();
   await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');
