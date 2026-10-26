@@ -1,4 +1,11 @@
 import {test,expect} from '@playwright/test';
+test('双击 HTML 的离线索引与程序可以往返直达',async({page})=>{
+  await page.goto(new URL('../public/index.html',import.meta.url).href);
+  await page.getByRole('link',{name:/001.*引力花园/}).click();
+  await expect(page).toHaveTitle(/^001/);expect(page.url()).toMatch(/\/001-orbit-garden\/index\.html$/);
+  await page.getByRole('link',{name:'← 返回小程序索引'}).click();
+  await expect(page).toHaveTitle(/Interesting Mini Program/);
+});
 test('编号索引可以搜索并打开 001，手机无横向溢出',async({page})=>{
   await page.goto('/');await page.getByPlaceholder('搜编号、名称或灵感…').fill('001');
   await page.getByRole('link',{name:/001.*引力花园/}).click();await expect(page).toHaveTitle(/^001/);
