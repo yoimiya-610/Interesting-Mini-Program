@@ -1,0 +1,13 @@
+(function(root){
+  'use strict';
+  const CAPACITY=1440,MAX_ITEMS=12;
+  function validTask(t){return !!t&&typeof t==='object'&&typeof t.id==='string'&&/^[A-Za-z0-9-]{1,60}$/.test(t.id)&&typeof t.name==='string'&&t.name.trim().length>0&&t.name.trim().length<=40&&Number.isInteger(t.minutes)&&t.minutes>=1&&t.minutes<=1440&&typeof t.done==='boolean';}
+  function restore(raw){if(!raw||raw.version!==1||!Array.isArray(raw.tasks))return null;const ids=new Set(),names=new Set(),tasks=[];let dropped=0;for(const t of raw.tasks){const name=typeof t?.name==='string'?t.name.trim():'';if(!validTask(t)||ids.has(t.id)||names.has(name.toLocaleLowerCase())||tasks.length>=MAX_ITEMS){dropped++;continue;}ids.add(t.id);names.add(name.toLocaleLowerCase());tasks.push({id:t.id,name,minutes:t.minutes,done:t.done});}return {tasks,dropped};}
+  function analyze(tasks){if(!Array.isArray(tasks)||tasks.length>MAX_ITEMS||!tasks.every(validTask))throw new RangeError('Invalid tasks');const total=tasks.reduce((sum,t)=>sum+t.minutes,0),done=tasks.reduce((sum,t)=>sum+(t.done?t.minutes:0),0);return {total,done,remaining:CAPACITY-total,doneCount:tasks.filter(t=>t.done).length,count:tasks.length};}
+  function duration(minutes){if(!Number.isSafeInteger(minutes))throw new RangeError('Minutes must be a safe integer');const sign=minutes<0?'−':'',value=Math.abs(minutes),hours=Math.floor(value/60),rest=value%60;return sign+(hours?hours+'小时'+(rest?rest+'分':''):rest+'分');}
+  function layout(weights,width,height){if(!Array.isArray(weights)||!weights.every(v=>Number.isFinite(v)&&v>0)||!Number.isFinite(width)||!Number.isFinite(height)||width<=0||height<=0)throw new RangeError('Invalid layout input');if(!weights.length)return [];const total=weights.reduce((a,b)=>a+b,0);if(!Number.isFinite(total))throw new RangeError('Invalid total');const result=[];
+    function split(items,x,y,w,h){if(items.length===1){result.push({index:items[0].index,x,y,width:w,height:h});return;}const sum=items.reduce((s,t)=>s+t.weight,0);let partial=0,best=1,error=Infinity;for(let i=1;i<items.length;i++){partial+=items[i-1].weight;const diff=Math.abs(partial-sum/2);if(diff<error){error=diff;best=i;}}const left=items.slice(0,best),right=items.slice(best),ratio=left.reduce((s,t)=>s+t.weight,0)/sum;if(w>=h){split(left,x,y,w*ratio,h);split(right,x+w*ratio,y,w*(1-ratio),h);}else{split(left,x,y,w,h*ratio);split(right,x,y+h*ratio,w,h*(1-ratio));}}
+    split(weights.map((weight,index)=>({weight,index})),0,0,width,height);return result.sort((a,b)=>a.index-b.index);
+  }
+  root.TimeBento=Object.freeze({CAPACITY,MAX_ITEMS,validTask,restore,analyze,duration,layout});
+})(globalThis);
