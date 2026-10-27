@@ -1,0 +1,84 @@
+/* Shared reading scale. System font stacks keep every page usable offline. */
+:root {
+  --font-ui: Arial, "SimHei", "Heiti SC", sans-serif;
+  --font-book: "Times New Roman", "SimSun", "Songti SC", serif;
+  --font-hand: "Times New Roman", "KaiTi", "STKaiti", "SimSun", serif;
+  --text-xs: .875rem;
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+}
+html { font-size: 16px; text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font-ui); font-size: var(--text-base); line-height: 1.65; }
+body :is(button, input, select, textarea) { font-family: var(--font-ui); font-size: var(--text-sm); line-height: 1.5; }
+body :is(h1, h2) { font-family: var(--font-book); font-weight: 700; }
+body h1 :is(em, span) { font-family: inherit; font-weight: inherit; }
+body :is(.stat strong, .stats strong, .hud strong, .timer strong, .stamp strong, .result-score) {
+  font-family: var(--font-book); font-weight: 700; font-variant-numeric: tabular-nums;
+}
+body :is(table, output, .minutes, .case-btn, .link-map) { font-variant-numeric: tabular-nums; }
+body .brand { font-weight: 700; min-width: 0; }
+body header { height: auto; min-height: 96px; padding-block: 18px; gap: 18px; flex-wrap: wrap; }
+body header .brand > :last-child { min-width: 0; }
+body header .brand small { letter-spacing: .04em; line-height: 1.5; overflow-wrap: anywhere; }
+body :is(.hero, .toolbar, .stage-head, .stage-foot, .section-label, .reference-head, .status-row, footer) { flex-wrap: wrap; }
+body :is(.eyebrow, .stage-head, .stage-foot, .coords, .section-label, footer) { letter-spacing: .04em; }
+body :is(.legend, .tags, .bottom-actions, .left-actions, .editor-actions) { flex-wrap: wrap; }
+body :is(.back, .storage, .save-note, .small-note, .stage-foot, footer) { color: var(--muted); }
+body :is(.description, .notice, .task-goal, .side-note, .save-note, .storage-note) { line-height: 1.85; }
+body[data-app="index"] { --muted: #596b5c; }
+body[data-app="index"] .art-label { right: 54px; line-height: 1.5; }
+body[data-app="index"] .note b { font-weight: 700; }
+body[data-app="001"] { --muted: #b4c8b7; }
+body[data-app="001"] .coords { color: #afc6b5; }
+body[data-app="001"] .label { gap: 12px; flex-wrap: wrap; }
+body[data-app="001"] .arena-note { padding-inline: 12px; letter-spacing: .04em; }
+body[data-app="002"] { --muted: #725e60; }
+body[data-app="002"] h1 { font-family: var(--font-hand); }
+body[data-app="002"] .paper :is(input, textarea) { font-family: var(--font-book); font-size: var(--text-base); }
+body[data-app="002"] .card-top { flex-wrap: wrap; gap: 8px; }
+body[data-app="002"] .card .corner { position: static; display: block; margin-top: 12px; text-align: right; opacity: .7; }
+body[data-app="002"] .step { flex-wrap: wrap; }
+body[data-app="002"] .step small { margin-left: 0; }
+body[data-app="003"] { --muted: #536884; }
+body[data-app="003"] .instant { align-items: start; }
+body[data-app="004"] { --muted: #53684f; }
+body[data-app="004"] .stats { min-width: 0; }
+body[data-app="004"] .stat { min-width: 0; }
+body[data-app="004"] .task-action { min-height: 32px; }
+body[data-app="005"] { --muted: #b2c4c9; }
+body[data-app="005"] .input-switch { gap: 6px; }
+body[data-app="005"] .gate { width: 150px; }
+body[data-app="005"] .gate label { letter-spacing: 0; }
+body[data-app="005"] .gate-card { min-width: 0; }
+body[data-app="006"] { --muted: #c3b6d4; }
+body[data-app="006"] .cell { line-height: 1; }
+body[data-app="006"] .link-map { gap: 9px; letter-spacing: 0; }
+body[data-app="006"] .mirror small { font-weight: 700; }
+@media (min-width: 641px) {
+  body[data-app="005"] .inputs { width: 70px; }
+  body[data-app="005"] .output { width: 100px; }
+  body[data-app="005"] .lamp { margin-inline: auto; }
+  body[data-app="005"] .output small { white-space: nowrap; }
+}
+@media (max-width: 900px) {
+  body[data-app="005"] .gate { width: 142px; }
+}
+@media (max-width: 640px) {
+  body header { min-height: 92px; gap: 12px; }
+  body .hero { gap: 18px; }
+  body[data-app="005"] .gate { width: auto; }
+  body[data-app="005"] .gate.g3 { width: 80%; }
+  body[data-app="005"] .inputs { width: auto; }
+  body[data-app="005"] .input-switch { padding-inline: 4px; gap: 6px; }
+  body[data-app="005"] .toolbar > span { line-height: 1.6; }
+  body[data-app="006"] .mirror small { font-size: var(--text-xs); }
+}
+@media (max-width: 480px) {
+  body[data-app="004"] .stats { grid-template-columns: 1fr; }
+  body[data-app="004"] .task-row { grid-template-columns: 20px minmax(0,1fr) 70px 24px 24px 24px; gap: 5px; }
+  body[data-app="004"] .task-head { grid-template-columns: 20px minmax(0,1fr) 70px 82px; gap: 5px; }
+  body[data-app="004"] .minutes { width: 70px; }
+  body[data-app="004"] .food.compact { padding: 7px; gap: 3px; }
+}

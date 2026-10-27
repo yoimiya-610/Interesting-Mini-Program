@@ -27,6 +27,14 @@ jobs:
       - run: npm run check
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - name: Upload typography previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: typography-previews
+          path: test-results/**/*-typography.png
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Upload failed browser traces
         if: failure()
         uses: actions/upload-artifact@v4
