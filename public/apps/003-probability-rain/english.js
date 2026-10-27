@@ -2,7 +2,7 @@
 // Presentation dictionary. User writing and saved game state keep their original values.
 globalThis.ProgramEnglish={
   "概率落雨": "Probability Rain",
-  "把偶然，": "Let chance",
+  "把偶然，": "Let chance ",
   "堆成规律。": "build a pattern.",
   "每一次向左或向右，最后会落在哪里？": "Left or right at every step. Where will it land?",
   "投下一阵弹珠雨，对照随机的结果与理论的轮廓。": "Drop a shower of marbles and compare chance with theory.",

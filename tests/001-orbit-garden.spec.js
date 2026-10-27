@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 test('双击 HTML 的离线索引与程序可以往返直达',async({page})=>{
   await page.goto(new URL('../public/index.html',import.meta.url).href);
   await page.getByRole('link',{name:/001.*引力花园/}).click();
-  await expect(page).toHaveTitle(/^001/);expect(page.url()).toMatch(/\/001-orbit-garden\/index\.html$/);
+  await expect(page).toHaveTitle(/^001/);const url=new URL(page.url());expect(url.pathname).toMatch(/\/001-orbit-garden\/index\.html$/);expect(url.searchParams.get('lang')).toBe('zh');
   await page.getByRole('link',{name:'← 返回小程序索引'}).click();
   await expect(page).toHaveTitle(/Interesting Mini Program/);
 });

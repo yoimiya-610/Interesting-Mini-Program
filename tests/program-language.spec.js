@@ -52,7 +52,7 @@ test('006 英文联动终关保留操作状态，七步通关并导出英文 SVG
 
 test('各程序在存储禁用时仍能切换，显式链接跨页保留语言',async({page})=>{
   await page.addInitScript(()=>{Storage.prototype.getItem=function(){throw new DOMException('Blocked','SecurityError');};Storage.prototype.setItem=function(){throw new DOMException('Blocked','SecurityError');};});
-  for(const p of programs){await page.goto(path(p)+'?lang=en');await englishUI(page);await switchTo(page,'zh').click();await switchTo(page,'en').click();await expect(page.locator('#programLanguageNotice')).toContainText('could not be saved');const back=page.locator('a[href*="index.html?lang=en"]').first();await back.click();await expect(page.locator('html')).toHaveAttribute('lang','en');await page.getByRole('link',{name:p.id+' '+p.en.title,exact:true}).click();await expect(page.locator('html')).toHaveAttribute('lang','en');}
+  for(const p of programs){await page.goto(path(p)+'?lang=en');await englishUI(page);await switchTo(page,'zh').click();await switchTo(page,'en').click();await expect(page.locator('#programLanguageNotice')).toContainText('could not be saved');await page.getByRole('link',{name:'← All programs',exact:true}).click();await expect(page.locator('html')).toHaveAttribute('lang','en');await page.getByRole('link',{name:p.id+' '+p.en.title,exact:true}).click();await expect(page.locator('html')).toHaveAttribute('lang','en');}
 });
 
 test('六个英文程序在断网 file:// 下均可打开并切换',async({page,context})=>{

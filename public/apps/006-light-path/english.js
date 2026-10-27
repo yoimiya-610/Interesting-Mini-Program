@@ -23,7 +23,7 @@ globalThis.ProgramEnglish={
   "牵动另一束光": "A linked beam",
   "星光织网": "Starlight weave",
   "回响的终章": "Echo finale",
-  "让光，": "Let light",
+  "让光，": "Let light ",
   "拐个弯。": "turn a corner.",
   "旋转镜片，拾起沿途的星光。": "Turn mirrors and collect stars along the way.",
   "让那一束小小的亮，找到回家的路。": "Help a little beam find its way home.",
