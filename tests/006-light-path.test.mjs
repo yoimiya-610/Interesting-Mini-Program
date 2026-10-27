@@ -1,11 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 await import('../public/apps/006-light-path/core.js');
-const {LEVELS,trace,restore,svg}=globalThis.LightPath;
-const solutions=[['/'],['/','/'],['/','/','\\'],['\\','\\','/','\\'],['/','\\','\\','/','\\','/'],['/','\\','\\','\\','/','\\','\\']];
-test('六关初始状态均未完成，已知光路经过全部星光后抵达终点',()=>{
+const {LEVELS,trace,turn,judge,restore,svg}=globalThis.LightPath;
+const solutions=[['/'],['/','/'],['/','/','\\'],['\\','\\','/','\\'],['/','\\','\\','/','\\','/'],['/','\\','\\','\\','/','\\','\\'],['\\','\\','/','\\','\\','\\'],['/','\\','/','\\','/','\\','/','\\'],['/','/','\\','/','\\','/','\\','/','\\','/']];
+test('九关初始状态均未完成，已知光路经过全部星光后抵达终点',()=>{
   LEVELS.forEach((level,i)=>{assert.equal(trace(level,level.mirrors.map(m=>m.initial)).won,false);const result=trace(level,solutions[i]);assert.equal(result.status,'win',level.name);assert.equal(result.collected.length,level.stars.length);assert.deepEqual(result.path.at(-1),level.goal);});
   const alternate=[...solutions[4]];alternate[5]='\\';assert.equal(trace(LEVELS[4],alternate).won,true,'未经过的镜片不应影响通关');
+});
+
+test('联动关全状态独立 BFS 验证：最少 3、5、7 步，后两关无替代光路捷径',()=>{
+  const minimums=[],winningCounts=[];for(const level of LEVELS.slice(6)){
+    const n=1<<level.mirrors.length,orient=mask=>level.mirrors.map((_,i)=>mask>>i&1?'\\':'/'),stateOf=a=>a.reduce((s,c,i)=>s|(c==='\\'?1<<i:0),0),wins=Array.from({length:n},(_,i)=>i).filter(i=>trace(level,orient(i)).won),initial=stateOf(level.mirrors.map(m=>m.initial)),dist=Array(n).fill(-1),queue=[initial];dist[initial]=0;const masks=level.links.map((links,i)=>[i,...links].reduce((mask,j)=>mask^(1<<j),0));
+    for(let q=0;q<queue.length;q++){const state=queue[q];for(const mask of masks){const next=state^mask;if(dist[next]===-1){dist[next]=dist[state]+1;queue.push(next);}}}
+    const minimum=Math.min(...wins.filter(i=>dist[i]>=0).map(i=>dist[i]));minimums.push(minimum);winningCounts.push(wins.length);assert.equal(minimum,level.budget);assert.equal(queue.length,level.id==='linked-intro'?32:n);assert(wins.every(mask=>!judge(level,orient(mask),minimum+2).won));
+    for(let i=0;i<level.mirrors.length;i++){const before=level.mirrors.map(m=>m.initial),after=turn(level,before,i);assert.equal(stateOf(after),initial^masks[i]);assert.deepEqual(turn(level,after,i),before,'同一按钮两次应还原所有联动镜片');assert.deepEqual(before,level.mirrors.map(m=>m.initial),'旋转不得修改输入数组');}
+  }assert.deepEqual(minimums,[3,5,7]);assert.deepEqual(winningCounts,[4,1,1]);
+});
+
+test('联动数据、操作目标和保存恢复边界，导出标明超额未完成',()=>{
+  const level=LEVELS[8];assert.throws(()=>turn(level,solutions[8],10),RangeError);assert.throws(()=>trace({...level,links:level.links.map(()=>[99])},solutions[8]),RangeError);assert.throws(()=>trace({...level,budget:0},solutions[8]),RangeError);assert.throws(()=>judge(level,solutions[8],-1),RangeError);assert.equal(judge(level,solutions[8],7).won,true);assert.equal(judge(level,solutions[8],9).status,'overbudget');assert(svg(level,solutions[8],9).includes('未完成'));
+  const data=restore({version:1,level:'linked-finale',orientations:solutions[8],moves:7,records:{'first-turn':1,'crossing':4,'linked-finale':99}});assert.deepEqual(data.records,{'first-turn':1,'crossing':4});assert.equal(data.level,'linked-finale');assert.equal(judge(level,data.orientations,data.moves).won,true);
 });
 test('墙、出界、缺少星光与闭环正确终止；交叉空格不被误判为回环',()=>{
   const base={id:'test',name:'测试',size:4,start:{x:0,y:1,dir:'E'},goal:{x:3,y:1},mirrors:[],stars:[{x:0,y:0}],walls:[]};assert.equal(trace(base,[]).status,'missing');assert.equal(trace({...base,walls:[{x:2,y:1}]},[]).status,'wall');assert.equal(trace({...base,goal:{x:3,y:3}},[]).status,'exit');
