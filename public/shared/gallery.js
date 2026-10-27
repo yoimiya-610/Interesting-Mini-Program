@@ -16,6 +16,7 @@
     for(const attribute of ['aria-label','placeholder','content'])document.querySelectorAll('[data-zh-'+attribute+']').forEach(node=>node.setAttribute(attribute,node.getAttribute('data-'+language+'-'+attribute)));
     document.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===language)));
     document.getElementById('programLanguage').hidden=language!=='en';
+    for(const card of cards){const url=new URL(card.href,location.href);url.searchParams.set('lang',language);card.href=url.href;}
     for(const card of cards){if(language==='en')card.setAttribute('aria-describedby','programLanguage');else card.removeAttribute('aria-describedby');}
     filter();
   }
