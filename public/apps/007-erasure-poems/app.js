@@ -14,7 +14,7 @@
   function renderPoem(){
     const data=draft(),current=words(),result=lines();$('previewTitle').textContent=data.title;$('poem').textContent=result.join('\n');$('empty').hidden=result.length>0;$('breakWords').replaceChildren();
     for(const index of data.selected){const button=node('button','break-word',current[index]+(data.breaks.includes(index)?' ↵':''));button.id='break-'+index;button.dataset.userContent='';button.setAttribute('aria-pressed',String(data.breaks.includes(index)));button.setAttribute('aria-label',ProgramLanguage.t('在此词后换行：')+current[index]);button.onclick=()=>{change(()=>{const breaks=draft().breaks;draft().breaks=breaks.includes(index)?breaks.filter(i=>i!==index):[...breaks,index];},'换行已调整，词语顺序保持不变。');$('break-'+index).focus();};$('breakWords').append(button);}
-    $('exportText').disabled=$('exportSvg').disabled=result.length===0;$('selectionStats').textContent=data.selected.length+' / '+current.filter(selectable).length+ProgramLanguage.t(' 个词 · ')+result.length+ProgramLanguage.t(' 行');
+    $('exportText').disabled=$('exportSvg').disabled=result.length===0;const count=data.selected.length,total=current.filter(selectable).length;$('selectionStats').textContent=language()==='en'?count+' / '+total+' '+(count===1?'word':'words')+' · '+result.length+' '+(result.length===1?'line':'lines'):count+' / '+total+' 个词 · '+result.length+' 行';
   }
   function renderSource(){
     const current=words(),data=draft(),list=$('sourceWords');list.replaceChildren();list.classList.toggle('covered',state.cover);

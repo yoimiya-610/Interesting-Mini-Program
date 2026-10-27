@@ -18,7 +18,7 @@
     const breaks=[...new Set(Array.isArray(draft?.breaks)?draft.breaks:[])].filter(i=>selected.includes(i)).sort((a,b)=>a-b);
     return {title:typeof draft?.title==='string'?Array.from(draft.title).slice(0,60).join(''):'',selected,breaks};
   }
-  function join(words,language){if(language==='auto')return words.reduce((out,word)=>out+(out&&!/\p{Script=Han}$/u.test(out)&&!/^\p{Script=Han}/u.test(word)?' ':'')+word,'');return language==='en'?words.join(' ').replace(/\s+([,.;:!?])/g,'$1'):words.join('');}
+  function join(words,language){if(language==='auto')return words.reduce((out,word)=>out+(out&&!(/\p{Script=Han}$/u.test(out)&&/^\p{Script=Han}/u.test(word))?' ':'')+word,'');return language==='en'?words.join(' ').replace(/\s+([,.;:!?])/g,'$1'):words.join('');}
   function poem(words,draft,language='zh'){
     const data=normalize(draft,words),lines=[],line=[];
     for(const index of data.selected){line.push(words[index]);if(data.breaks.includes(index)){lines.push(join(line,language));line.length=0;}}
