@@ -18,7 +18,7 @@ for(const entry of pages)test(entry.id+' 字体、可读字号和放大后的控
     const clipped=controls.filter(n=>n.tagName==='BUTTON'&&!n.classList.contains('cell')&&n.scrollHeight>n.clientHeight+2).map(n=>({id:n.id,text:n.textContent.slice(0,30),scroll:n.scrollHeight,height:n.clientHeight}));
     return {small,undersized,clipped,overflow:document.documentElement.scrollWidth>innerWidth,bodyFont:getComputedStyle(document.body).fontFamily,titleFont:getComputedStyle(document.querySelector('h1')).fontFamily};
   });
-  expect(report.small).toEqual([]);expect(report.undersized).toEqual([]);expect(report.clipped).toEqual([]);expect(report.overflow).toBe(false);expect(report.bodyFont).toContain('Arial');expect(report.bodyFont).toContain('SimHei');expect(report.titleFont).toContain('Times New Roman');expect(errors).toEqual([]);
+  expect.soft(report.small,'visible text sizes').toEqual([]);expect.soft(report.undersized,'control text sizes').toEqual([]);expect.soft(report.clipped,'button text clipping').toEqual([]);expect.soft(report.overflow,'horizontal page overflow').toBe(false);expect(report.bodyFont).toContain('Arial');expect(report.bodyFont).toContain('SimHei');expect(report.titleFont).toContain('Times New Roman');expect(errors).toEqual([]);
   await page.screenshot({path:testInfo.outputPath(entry.id+'-typography.png'),fullPage:true,animations:'disabled'});
 });
 
