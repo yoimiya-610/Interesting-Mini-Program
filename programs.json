@@ -154,5 +154,23 @@
         "Puzzles"
       ]
     }
+  },
+  {
+    "id": "007",
+    "slug": "erasure-poems",
+    "title": "留白诗笺",
+    "subtitle": "留下一些词，让空白成为诗。",
+    "description": "从短文中挑词，保留原有顺序，用留白与换行写一首小诗。三篇中英底稿，也可以带来自己的文字。",
+    "category": "文科",
+    "tags": ["诗歌", "留白", "选词"],
+    "style": "米色书页 · 墨黑遮盖 · 朱红批注",
+    "interaction": "顺序选词的删减式诗歌创作；遮盖阅读、逐词换行、自带底稿、分稿保存与 TXT/SVG 诗笺导出",
+    "created": "2026-10-28",
+    "en": {
+      "title": "Erasure Poems",
+      "description": "Find a poem inside a passage. Keep the words in order, shape the lines, and leave space. Try three bilingual sources or bring your own text.",
+      "style": "Cream pages · Black ink · Vermilion notes",
+      "tags": ["Poetry", "White space", "Words"]
+    }
   }
 ]
