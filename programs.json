@@ -6,10 +6,24 @@
     "subtitle": "把片刻，交给引力。",
     "description": "用指尖牵引星尘，留下自己的宇宙轨迹；也可以挑战 45 秒捕星。",
     "category": "游戏",
-    "tags": ["粒子", "引力", "解压"],
+    "tags": [
+      "粒子",
+      "引力",
+      "解压"
+    ],
     "style": "暗绿星空 · 萤火光轨",
     "interaction": "按住拖动牵引粒子；限时捕星；画面留影",
-    "created": "2026-10-26"
+    "created": "2026-10-26",
+    "en": {
+      "title": "Orbit Garden",
+      "description": "Guide stardust with your touch and draw your own cosmic trails, or try a 45-second star-catching challenge.",
+      "style": "Deep green skies · Glowing trails",
+      "tags": [
+        "Particles",
+        "Gravity",
+        "Unwind"
+      ]
+    }
   },
   {
     "id": "002",
@@ -18,10 +32,24 @@
     "subtitle": "四张灵感卡，折出一个故事。",
     "description": "抽取并锁定人物、场景、目标与转折，开启三分钟自由写作。草稿留在本机，作品可导出。",
     "category": "文科",
-    "tags": ["写作", "灵感卡", "故事"],
+    "tags": [
+      "写作",
+      "灵感卡",
+      "故事"
+    ],
     "style": "暖色纸张拼贴 · 梅紫手账",
     "interaction": "抽卡与锁卡组合故事；限时写作；本机草稿快照与文本导出",
-    "created": "2026-10-26"
+    "created": "2026-10-26",
+    "en": {
+      "title": "Story Fold",
+      "description": "Draw and lock character, setting, wish and twist cards to start a three-minute story. Keep drafts on your device and export your writing.",
+      "style": "Warm paper collage · Plum notebook",
+      "tags": [
+        "Writing",
+        "Story prompts",
+        "Creativity"
+      ]
+    }
   },
   {
     "id": "003",
@@ -30,10 +58,24 @@
     "subtitle": "把偶然，堆成规律。",
     "description": "投下弹珠，调节每层向右的概率，对照实际直方图与二项分布，导出自己的实验数据。",
     "category": "理科",
-    "tags": ["概率", "弹珠", "实验"],
+    "tags": [
+      "概率",
+      "弹珠",
+      "实验"
+    ],
     "style": "蓝色实验纸 · 橙色弹珠 · 数据仪表",
     "interaction": "调节层数与左右概率；累计投珠、暂停实验、对照理论分布并导出 CSV",
-    "created": "2026-10-26"
+    "created": "2026-10-26",
+    "en": {
+      "title": "Probability Rain",
+      "description": "Drop marbles, adjust the chance of turning right, compare the histogram with a binomial distribution, and export your experiment data.",
+      "style": "Blue lab paper · Orange marbles",
+      "tags": [
+        "Probability",
+        "Marbles",
+        "Experiments"
+      ]
+    }
   },
   {
     "id": "004",
@@ -42,10 +84,24 @@
     "subtitle": "先装重要的，再留一点空。",
     "description": "把一天 24 小时装进可视化餐盒，管理事项时长、留白与超额，勾选完成进度并保存自己的时间配方。",
     "category": "生活",
-    "tags": ["时间", "计划", "便当"],
+    "tags": [
+      "时间",
+      "计划",
+      "便当"
+    ],
     "style": "薄荷绿餐盒 · 珊瑚橙按钮 · 彩色时间图块",
     "interaction": "添加与调整事项时长；图块分配时间、标记完成、重排撤销、本机保存与文本导出",
-    "created": "2026-10-26"
+    "created": "2026-10-26",
+    "en": {
+      "title": "Time Bento",
+      "description": "Pack a day into a visual 24-hour lunchbox. Plan activities, track completed time, and leave a little room for yourself.",
+      "style": "Mint lunchbox · Coral accents",
+      "tags": [
+        "Time",
+        "Planning",
+        "Daily life"
+      ]
+    }
   },
   {
     "id": "005",
@@ -54,10 +110,24 @@
     "subtitle": "拨动开关，让逻辑亮起来。",
     "description": "切换四个输入，替换六种逻辑门，实时观察信号与真值表；从六张基础任务进阶到三张器件库存挑战。",
     "category": "工科",
-    "tags": ["电路", "逻辑门", "闯关"],
+    "tags": [
+      "电路",
+      "逻辑门",
+      "闯关"
+    ],
     "style": "深色电路板 · 琥珀色器件 · 绿色信号线",
     "interaction": "二进制开关与逻辑门替换；16行真值表、等价电路与库存约束闯关、本机任务记录和接线导出",
-    "created": "2026-10-26"
+    "created": "2026-10-26",
+    "en": {
+      "title": "Logic Patch",
+      "description": "Toggle four inputs and swap six types of logic gate. Explore truth tables, then take on three limited-inventory challenges after six starter tasks.",
+      "style": "Dark circuit board · Amber components",
+      "tags": [
+        "Circuits",
+        "Logic gates",
+        "Puzzles"
+      ]
+    }
   },
   {
     "id": "006",
@@ -66,9 +136,23 @@
     "subtitle": "让光，拐个弯。",
     "description": "旋转镜片，让光束拾起全部星光并抵达终点。从六条独立光路进阶到三关联动镜片挑战，规划整条小径。",
     "category": "游戏",
-    "tags": ["镜片", "光路", "解谜"],
+    "tags": [
+      "镜片",
+      "光路",
+      "解谜"
+    ],
     "style": "午夜紫棋盘 · 青色镜片 · 金色光束",
     "interaction": "独立镜片与联动镜片的路径规划；星光收集、操作预算、撤销重试、本机纪录与 SVG 光路导出",
-    "created": "2026-10-27"
+    "created": "2026-10-27",
+    "en": {
+      "title": "Light Path",
+      "description": "Turn mirrors to collect every star and guide the beam home. Explore six paths, then plan ahead in three linked-mirror challenges.",
+      "style": "Midnight purple · Cyan mirrors · Golden light",
+      "tags": [
+        "Mirrors",
+        "Light paths",
+        "Puzzles"
+      ]
+    }
   }
 ]
