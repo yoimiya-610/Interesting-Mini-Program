@@ -18,6 +18,10 @@
 
 更多内容可以在[编号索引](index.md)中查找。在线首页支持按编号、名称或分类筛选，手机和电脑都可以使用。
 
+首页与 001–006 均支持 **中文 / English** 切换，也可以使用 `?lang=en` 直接打开英文页面。语言选择会沿着程序入口和返回链接保留；浏览器允许时，还会记住你的偏好。切换语言不重开游戏或清空实验，自己写的故事、标题与事项名称保持原文。
+
+The homepage and programs 001–006 are available in Chinese and English. Choose **English** near the top of a page, or add `?lang=en` to its address. Switching language keeps your activity in place. Your own writing stays as you wrote it.
+
 ## 怎么打开
 
 ### 在线体验

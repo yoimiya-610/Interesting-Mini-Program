@@ -4,6 +4,8 @@ const context=new Proxy({}, {get:()=>()=>{}});
 function el(id){if(!elements.has(id))elements.set(id,{id,textContent:'',hidden:false,dataset:{},classList:{add(){},remove(){},toggle(){}},setAttribute(){},addEventListener(){},focus(){},click(){this.onclick?.()},getContext(){return context},getBoundingClientRect(){return{width:800,height:600,left:0,top:0}},setPointerCapture(){},toBlob(fn){fn({})}});return elements.get(id)}
 const buttons=[0,1,2].map(i=>{const b=el('palette'+i);b.dataset.palette=String(i);return b});
 const sandbox={console,assert,document:{getElementById:el,querySelectorAll:()=>buttons,addEventListener(){},createElement:()=>el('export')},window:{addEventListener(){}},devicePixelRatio:1,matchMedia:()=>({matches:false}),localStorage:{getItem:k=>store.get(k),setItem:(k,v)=>store.set(k,v)},ResizeObserver:class{constructor(cb){this.cb=cb}observe(){this.cb()}},requestAnimationFrame(){},setTimeout(){},clearTimeout(){},URL:{createObjectURL:()=>'',revokeObjectURL(){}}};
+// This physics smoke test uses Chinese presentation; browser tests exercise the real language runtime.
+sandbox.ProgramLanguage={t:value=>value};
 const html=fs.readFileSync('public/apps/001-orbit-garden/index.html','utf8'),script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 vm.runInNewContext(script+`
 assert.equal(particles.length,360);
