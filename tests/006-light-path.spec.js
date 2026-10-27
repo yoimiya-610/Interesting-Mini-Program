@@ -16,7 +16,7 @@ test('撤销、重置和刷新恢复当前光路，保留完成纪录',async({pa
 test('九关均可完成，联动挑战符合操作目标，最佳纪录取更少旋转',async({page})=>{
   await page.goto(path);
   for(let i=0;i<solutions.length;i++){const[id,turns]=solutions[i];await page.locator('#level').selectOption(id);await expect(page.locator('#status')).not.toHaveClass(/success/);if(id==='long-way')await rotate(page,['F']);await rotate(page,turns);await expect(page.locator('#status')).toHaveClass(/success/);await expect(page.locator('#completed')).toHaveText((i+1)+' / 9');if(id==='long-way'){await expect(page.locator('#best')).toHaveText('4');await page.locator('#reset').click();await rotate(page,turns);await expect(page.locator('#best')).toHaveText('3');}}
-  await page.locator('#next').click();await expect(page.locator('#level')).toHaveValue('first-turn');await expect(page.locator('#completed')).toHaveText('6 / 9');await expect(page.locator('#status')).not.toHaveClass(/success/);
+  await page.locator('#next').click();await expect(page.locator('#level')).toHaveValue('first-turn');await expect(page.locator('#completed')).toHaveText('9 / 9');await expect(page.locator('#status')).not.toHaveClass(/success/);
 });
 
 test('联动预览、超额判定、撤销和终章保存导出在手机与桌面一致',async({page})=>{
