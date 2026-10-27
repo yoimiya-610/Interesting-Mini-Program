@@ -3,7 +3,7 @@
 globalThis.ProgramEnglish={
   "引力花园": "Orbit Garden",
   "← 小程序索引 / 001": "← All programs / 001",
-  "把片刻，": "Give a moment",
+  "把片刻，": "Give a moment ",
   "交给": "to ",
   "引力。": "gravity.",
   "你指尖的一点引力，": "A little gravity at your fingertips",

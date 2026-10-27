@@ -3,7 +3,7 @@
 globalThis.ProgramEnglish={
   "故事折叠机": "Story Fold",
   "交给": "to ",
-  "折": "Fold",
+  "折": "F",
   "把一个念头，": "Take an idea,",
   "折成一个": "fold it into a ",
   "故事。": "story.",

@@ -7,7 +7,7 @@ globalThis.ProgramEnglish={
   "先装重要的，": "Pack what matters,",
   "再留一点": "leave a little ",
   "空。": "space.",
-  "一天的容量，刚刚好。": "A day's capacity. Just enough.",
+  "一天的容量，刚刚好。": "A day's capacity. Just enough. ",
   "把想做的事装进去，也为自己留些余地。": "Pack what you want to do, and leave room for yourself.",
   "我的时间餐盒": "My time bento",
   "还有留白": "Room to spare",
