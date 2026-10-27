@@ -47,6 +47,9 @@ body[data-app="004"] { --muted: #53684f; }
 body[data-app="004"] .stats { min-width: 0; }
 body[data-app="004"] .stat { min-width: 0; }
 body[data-app="004"] .task-action { min-height: 32px; }
+body[data-app="004"] .task-row { grid-template-columns: 32px minmax(0,1fr) 70px 24px 24px 24px; }
+body[data-app="004"] .task-head { grid-template-columns: 32px minmax(0,1fr) 70px 86px; }
+body[data-app="004"] .minutes { width: 70px; }
 body[data-app="005"] { --muted: #b2c4c9; }
 body[data-app="005"] .input-switch { gap: 6px; }
 body[data-app="005"] .gate { width: 150px; }
@@ -68,6 +71,7 @@ body[data-app="006"] .mirror small { font-weight: 700; }
 @media (max-width: 640px) {
   body header { min-height: 92px; gap: 12px; }
   body .hero { gap: 18px; }
+  body[data-app="003"] h1 em { display: block; }
   body[data-app="005"] .gate { width: auto; }
   body[data-app="005"] .gate.g3 { width: 80%; }
   body[data-app="005"] .inputs { width: auto; }
@@ -77,8 +81,8 @@ body[data-app="006"] .mirror small { font-weight: 700; }
 }
 @media (max-width: 480px) {
   body[data-app="004"] .stats { grid-template-columns: 1fr; }
-  body[data-app="004"] .task-row { grid-template-columns: 20px minmax(0,1fr) 70px 24px 24px 24px; gap: 5px; }
-  body[data-app="004"] .task-head { grid-template-columns: 20px minmax(0,1fr) 70px 82px; gap: 5px; }
+  body[data-app="004"] .task-row { grid-template-columns: 32px minmax(0,1fr) 70px 24px 24px 24px; gap: 5px; }
+  body[data-app="004"] .task-head { grid-template-columns: 32px minmax(0,1fr) 70px 82px; gap: 5px; }
   body[data-app="004"] .minutes { width: 70px; }
   body[data-app="004"] .food.compact { padding: 7px; gap: 3px; }
 }
