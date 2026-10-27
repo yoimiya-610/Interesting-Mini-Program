@@ -11,7 +11,7 @@
 }
 html { font-size: 16px; text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
 body { font-family: var(--font-ui); font-size: var(--text-base); line-height: 1.65; }
-body :is(button, input, select, textarea) { font-family: var(--font-ui); font-size: var(--text-sm); line-height: 1.5; }
+body[data-app] :is(button, input, select, textarea) { font-family: var(--font-ui); font-size: var(--text-sm); line-height: 1.5; }
 body :is(h1, h2) { font-family: var(--font-book); font-weight: 700; }
 body h1 :is(em, span) { font-family: inherit; font-weight: inherit; }
 body :is(.stat strong, .stats strong, .hud strong, .timer strong, .stamp strong, .result-score) {
