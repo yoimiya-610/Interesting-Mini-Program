@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node scripts/serve.mjs",
     "build": "node scripts/build-index.mjs",
-    "check": "node scripts/check.mjs && node tests/server.test.mjs && node tests/orbit-smoke.cjs && node tests/003-probability.test.mjs && node tests/004-time-bento.test.mjs && node tests/005-logic-patch.test.mjs && node tests/006-light-path.test.mjs && node tests/007-erasure-poems.test.mjs && node tests/program-language.test.mjs",
+    "check": "node scripts/check.mjs && node tests/server.test.mjs && node tests/orbit-smoke.cjs && node tests/003-probability.test.mjs && node tests/004-time-bento.test.mjs && node tests/005-logic-patch.test.mjs && node tests/006-light-path.test.mjs && node tests/007-erasure-poems.test.mjs && node tests/008-pack-pick.test.mjs && node tests/program-language.test.mjs",
     "test:e2e": "playwright test",
     "next": "node scripts/next-program.mjs",
     "accept": "node scripts/accept-pr.mjs"
