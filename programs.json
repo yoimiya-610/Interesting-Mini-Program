@@ -172,5 +172,23 @@
       "style": "Cream pages · Black ink · Vermilion notes",
       "tags": ["Poetry", "White space", "Words"]
     }
+  },
+  {
+    "id": "008",
+    "slug": "pack-pick",
+    "title": "行囊取舍",
+    "subtitle": "把必需带上，给轻松留点空间。",
+    "description": "同时考虑随身包的重量与空间，保留必带物品，按重要度挑选可选组合，再逐项打包。清单可备份带走。",
+    "category": "生活",
+    "tags": ["行囊", "取舍", "清单"],
+    "style": "雾蓝行李牌 · 橙色封签 · 双容量仪表",
+    "interaction": "重量与空间双约束的整组取舍；锁定必带、数量与重要度、打包进度、可撤销建议以及 TXT/JSON 备份导入导出",
+    "created": "2026-10-29",
+    "en": {
+      "title": "Pack & Pick",
+      "description": "Balance weight and space, keep essentials, and choose optional items by your own priorities. Pack piece by piece and take a backup of your list.",
+      "style": "Mist-blue luggage tags · Orange seals · Dual capacity meters",
+      "tags": ["Packing", "Choices", "Checklists"]
+    }
   }
 ]

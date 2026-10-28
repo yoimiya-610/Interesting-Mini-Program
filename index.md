@@ -11,5 +11,6 @@
 | 005 | 逻辑接线台 | 工科 | 拨动开关，让逻辑亮起来。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/005-logic-patch/) | [本地](http://127.0.0.1:4173/apps/005-logic-patch/) | [HTML](public/apps/005-logic-patch/index.html) | 2026-10-26 |
 | 006 | 折光小径 | 游戏 | 让光，拐个弯。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/006-light-path/) | [本地](http://127.0.0.1:4173/apps/006-light-path/) | [HTML](public/apps/006-light-path/index.html) | 2026-10-27 |
 | 007 | 留白诗笺 | 文科 | 留下一些词，让空白成为诗。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/007-erasure-poems/) | [本地](http://127.0.0.1:4173/apps/007-erasure-poems/) | [HTML](public/apps/007-erasure-poems/index.html) | 2026-10-28 |
+| 008 | 行囊取舍 | 生活 | 把必需带上，给轻松留点空间。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/008-pack-pick/) | [本地](http://127.0.0.1:4173/apps/008-pack-pick/) | [HTML](public/apps/008-pack-pick/index.html) | 2026-10-29 |
 
 点击“体验”即可在线打开；下载仓库后，也可以通过“HTML”打开本地文件。使用方法与数据保存说明见[项目介绍](README.md)。感谢你来玩。
