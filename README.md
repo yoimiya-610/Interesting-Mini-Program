@@ -2,7 +2,7 @@
 
 A collection of small programs for play, writing, science, and everyday life.
 
-Stay for a game, explore an idea, or find a tool that makes your day a little easier. Each program has its own number and direct link. Pick one you like and start exploring.
+Stay for a game, explore an idea, or find a tool that makes your day a little easier. Each program has its own number and direct link. Every app also includes a bilingual background guide with context, examples, uses, and references. Pick one you like and start exploring.
 
 **[Start exploring](https://yoimiya-610.github.io/Interesting-Mini-Program/?lang=en) · [Full index](index.md) · [Updates](CHANGELOG.md) · [Feedback and ideas](https://github.com/yoimiya-610/Interesting-Mini-Program/issues)**
 
