@@ -4,6 +4,7 @@ globalThis.ProgramEnglish={
   '009 波形工坊：编辑十六路谐波，比较振幅与相位、保存八份方案，试听并导出 WAV、SVG 和 CSV。':'009 Wave Workshop: edit sixteen harmonics, compare amplitudes and phases, save eight versions, listen, and export WAV, SVG, and CSV.',
   '把简单的波，':'Take simple waves,','合成自己的形状。':'make a shape of your own.',
   '从一根正弦开始，听见相加之后的不同。':'Start with one sine. Hear what changes when waves add up.',
+  '阅读背景与方法 ↓':'Read the background ↓',
   '01 / 八个探索起点':'01 / Eight starting points','先试一个，再改出自己的版本。':'Try one, then make it your own.',
   '02 / 观察相加':'02 / Watch the sum','显示分量曲线':'Show component curves',
   '基频 / Hz':'Base frequency / Hz','最高阶 / n':'Harmonic cutoff / n','显示周期':'Cycles shown',
