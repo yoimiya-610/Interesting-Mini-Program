@@ -206,5 +206,23 @@
         "Checklists"
       ]
     }
+  },
+  {
+    "id": "009",
+    "slug": "wave-workshop",
+    "title": "波形工坊",
+    "subtitle": "把简单的波，合成自己的形状。",
+    "description": "从八个探索起点编辑十六路谐波的振幅、相位与参与状态，观察波形和频谱、比较八份方案，试听并导出声音与数据。",
+    "category": "理科",
+    "tags": ["波形", "谐波", "声音"],
+    "style": "浅绿实验台 · 紫色合成线 · 青绿参考谱",
+    "interaction": "八个谐波探索起点；十六路振幅相位、独奏和截断；精确 RMS 与波形参考、八份本机方案、试听及 WAV/SVG/CSV/JSON 导出",
+    "created": "2026-10-30",
+    "en": {
+      "title": "Wave Workshop",
+      "description": "Edit sixteen harmonics from eight starting points. Explore amplitude and phase, compare eight saved versions, listen, and export audio, plots, data, and backups.",
+      "style": "Pale green lab · Purple wave sum · Teal references",
+      "tags": ["Waves", "Harmonics", "Sound"]
+    }
   }
 ]

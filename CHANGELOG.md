@@ -2,6 +2,17 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-10-30
+
+### 009 Wave Workshop
+
+- Build a periodic signal from sixteen individually editable harmonic amplitudes and phases. Mute, solo, restore the mix, limit the highest harmonic, and inspect the sum, component curves, amplitude bars, exact cycle RMS, and an estimated peak.
+- Eight complete starting experiments cover a sine, square and sawtooth approximations, triangle, octave layers, a narrow pulse, missing fundamental, and identical amplitudes with different phases. Each has a concrete exploration prompt. This signal-synthesis workbench offers a different activity from the collection's particle fields and probability experiments.
+- Save eight local versions, overlay a reference on a common vertical scale, compare shape-difference RMS, and undo thirty recent actions. Custom titles stay as entered. Export a two-second WAV, an SVG plot, one-cycle CSV samples, or a restorable JSON backup.
+- A bilingual guide explains linear superposition, frequency, amplitude, phase, Fourier's heat work, finite-series ringing, interpretation of statistics, and model boundaries. Reference comparisons align base cycles rather than equal time intervals; they compare shapes rather than pitch.
+- Playback uses 24 kHz mono samples with amplitude-sum attenuation and short fades; WAV stores the same signal as 16-bit PCM. No microphone, login, network runtime, or external asset is required. Settings and saved versions stay in this browser; clearing browser data removes them, and undo does not survive reloads.
+- Validation includes independent numerical RMS and difference checks, all eight distinct signals, cutoff and mute behavior, version-1 backup rejection and restoration, SVG escaping, WAV headers and sample bounds, bilingual desktop/mobile workflows, keyboard controls, listening, exports, and offline file use.
+
 ## 2026-10-29
 
 ### 008 Pack & Pick: keep deliberately edited item names

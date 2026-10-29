@@ -18,10 +18,11 @@ Stay for a game, explore an idea, or find a tool that makes your day a little ea
 | 006 | [Light Path](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/006-light-path/index.html?lang=en) | Sixteen mirror puzzles, linked controls, move budgets, and an enlarged board view. |
 | 007 | [Erasure Poems](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/007-erasure-poems/index.html?lang=en) | Ten original bilingual sources, custom passages, and TXT/SVG poem export. |
 | 008 | [Pack & Pick](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/008-pack-pick/index.html?lang=en) | Eight packing templates, weight-and-space optimization, progress, and backups. |
+| 009 | [Wave Workshop](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/009-wave-workshop/index.html?lang=en) | Sixteen harmonic controls, eight starting experiments, saved comparisons, listening, and WAV/SVG/CSV exports. |
 
 Browse the [numbered index](index.md) for direct links. The online homepage lets you search by number or name and filter by category. You can use the collection on a phone or computer.
 
-The homepage and programs 001–008 support **Chinese / English**. Choose a language near the top of a page, or add `?lang=en` to its address to open it in English. Links between the homepage and programs keep your choice, and your browser remembers it when storage is available. Switching language keeps your current activity in place. Your own stories, titles, and item names stay as you wrote them.
+The homepage and programs 001–009 support **Chinese / English**. Choose a language near the top of a page, or add `?lang=en` to its address to open it in English. Links between the homepage and programs keep your choice, and your browser remembers it when storage is available. Switching language keeps your current activity in place. Your own stories, titles, and item names stay as you wrote them.
 
 ## How to open the collection
 
