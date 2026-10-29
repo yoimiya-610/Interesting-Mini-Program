@@ -4,6 +4,14 @@
 
 ## 2026-10-29
 
+### Background guides throughout the collection
+
+- All eight apps now offer contextual reading: the existing Logic Patch primer is joined by seven Chinese/English guides with examples, uses, references, and clear model boundaries. Compact entries sit beside the activity or in its adjacent panel; extended reading is optional and does not alter user work.
+- Orbit Garden distinguishes artistic fields from Newtonian gravity. Probability Rain explains discrete binomial counts, normal distributions, de Moivre's early approximation, and why more samples do not make every distribution normal. Its theory line remains exact binomial probabilities.
+- Story Fold introduces related combinational writing and freewriting, including Rodari and Elbow, without inventing a sole originator for the app's four-card format. Erasure Poems explains found/erasure writing and Phillips's A Humument as a related historical work rather than a universal invention claim.
+- Time Bento connects time budgets with proportional-area visualization and Shneiderman's treemap history. Light Path distinguishes reflection from refraction and physical optics from linked-button puzzle rules. Pack & Pick explains two-capacity group selection, a concrete counterexample to greedy choice, and limits of the packing model.
+- All guide text is bundled locally, with optional external reference links. Language switching preserves disclosure/focus state, main controls, custom writing, and stored progress. Core interactions and algorithms are unchanged.
+
 ### 005 Logic Patch: a beginner's guide to digital logic
 
 - Added a side guide explaining bits, AND, inclusive OR, and single-input NOT through everyday examples. It also explains the fixed workbench, inverted gates, and why four independent inputs require sixteen truth-table cases.
