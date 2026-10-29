@@ -8,8 +8,8 @@ globalThis.ProgramBackground={
     "Find a poem inside another text"
   ],
   "lead": [
-    "删减式诗歌不从空白页开始：挑选、遮盖、换行，让已有文字获得新的节奏与关系。",
-    "Erasure writing starts with existing text: selection, covering, and line breaks create new rhythms and relationships."
+    "选择、遮盖与换行，让已有文字产生新的意象和节奏。",
+    "Select and cover existing words to create new rhythms, images, and relationships."
   ],
   "sections": [
     {

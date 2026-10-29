@@ -8,8 +8,8 @@ globalThis.ProgramBackground={
     "Where do these trails come from?"
   ],
   "lead": [
-    "速度决定星尘此刻往哪走，力改变它下一刻的速度。这里借用这个想法作画，而不是复刻真实星系。",
-    "Velocity tells a particle where to move; force changes its next velocity. This playground borrows that idea for drawing rather than reproducing a real galaxy."
+    "力改变速度；这里用人为设计的力场画轨迹，不模拟真实星系。",
+    "Force changes velocity; this playground uses invented fields to draw trails rather than simulate real galaxies."
   ],
   "sections": [
     {

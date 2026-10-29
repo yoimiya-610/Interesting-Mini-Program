@@ -8,8 +8,8 @@ globalThis.ProgramBackground={
     "From marbles to a bell curve"
   ],
   "lead": [
-    "这里直接计算的是离散的二项分布；它在合适条件下可以接近连续的正态分布。多投弹珠与增加层数，改变的是两件不同的事。",
-    "This program directly computes a discrete binomial distribution. Under suitable conditions it can resemble a continuous normal distribution. Dropping more marbles and adding more rows do different things."
+    "这里模拟离散的二项计数；条件合适时，才可用连续的正态曲线近似。",
+    "A discrete binomial count can resemble a continuous normal curve under suitable conditions."
   ],
   "sections": [
     {

@@ -8,8 +8,8 @@ globalThis.ProgramBackground={
     "Why does a mirror turn the beam?"
   ],
   "lead": [
-    "名字里的「折光」是小径的意象；棋盘上的镜片使用反射规则。后段的联动则是一种规划谜题。",
-    "The name suggests a winding light path; the board’s mirrors use reflection rules. Later linked controls add a planning puzzle."
+    "镜片按反射规则转向，联动按钮再加入状态规划的挑战。",
+    "Mirrors reflect the beam; linked controls add a separate state-planning puzzle."
   ],
   "sections": [
     {

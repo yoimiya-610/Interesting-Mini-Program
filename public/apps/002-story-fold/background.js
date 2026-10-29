@@ -8,8 +8,8 @@ globalThis.ProgramBackground={
     "Why can prompt cards help you write?"
   ],
   "lead": [
-    "把不常相遇的元素放在一起，再暂时放下修改，先写出它们之间的联系。这是找材料的方法，不是故事质量的保证。",
-    "Bring unfamiliar elements together, then postpone editing while you discover a connection. This helps generate material; it does not guarantee a finished story."
+    "用随机线索制造联系，用自由写作先探索、后修改。",
+    "Random prompts make unfamiliar connections; freewriting lets you explore them before editing."
   ],
   "sections": [
     {

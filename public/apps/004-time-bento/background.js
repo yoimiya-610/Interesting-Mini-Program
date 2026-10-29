@@ -8,8 +8,8 @@ globalThis.ProgramBackground={
     "Why draw a day as a lunchbox?"
   ],
   "lead": [
-    "时间预算把有限的一天分给不同活动；面积图帮助看比例，不能替你决定什么生活最正确。",
-    "A time budget shares a finite day among activities. Area helps you compare proportions; it does not decide the right life for you."
+    "时间预算分配有限的一天，面积帮助比较比例；样例不是生活标准。",
+    "Budget a finite day and compare proportions; a sample plan is not a rule for your life."
   ],
   "sections": [
     {

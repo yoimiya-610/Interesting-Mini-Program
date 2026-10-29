@@ -8,8 +8,8 @@ globalThis.ProgramBackground={
     "Packing as a problem of trade-offs"
   ],
   "lead": [
-    "重量和空间都有限时，先保证必需，再比较哪些可选组合更值得带。这与运筹学中的背包问题有关。",
-    "With limited weight and space, keep essentials and compare optional combinations. This is related to the knapsack family of optimization problems."
+    "在重量与空间限制下挑选组合，同时保留必带物品。",
+    "Choose valuable item groups under weight and space limits, while keeping essentials."
   ],
   "sections": [
     {
