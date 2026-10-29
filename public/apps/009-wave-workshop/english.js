@@ -1,0 +1,28 @@
+'use strict';
+globalThis.ProgramEnglish={
+  '009 · 波形工坊':'009 · Wave Workshop',
+  '009 波形工坊：编辑十六路谐波，比较振幅与相位、保存八份方案，试听并导出 WAV、SVG 和 CSV。':'009 Wave Workshop: edit sixteen harmonics, compare amplitudes and phases, save eight versions, listen, and export WAV, SVG, and CSV.',
+  '把简单的波，':'Take simple waves,','合成自己的形状。':'make a shape of your own.',
+  '从一根正弦开始，听见相加之后的不同。':'Start with one sine. Hear what changes when waves add up.',
+  '阅读背景与方法 ↓':'Read the background ↓',
+  '01 / 八个探索起点':'01 / Eight starting points','先试一个，再改出自己的版本。':'Try one, then make it your own.',
+  '02 / 观察相加':'02 / Watch the sum','显示分量曲线':'Show component curves',
+  '基频 / Hz':'Base frequency / Hz','最高阶 / n':'Harmonic cutoff / n','显示周期':'Cycles shown',
+  '基频 40–600 Hz；最高阶 1–16。第 n 路频率是 n × 基频。最高阶以上的设置保留，但暂不参与相加。':'Base frequency: 40–600 Hz; cutoff: 1–16. Harmonic n has frequency n × base. Settings above the cutoff are kept but do not contribute.',
+  '● 当前合成':'● Current sum','┄ 已选参考':'┄ Saved reference','— 分量曲线；纵轴自动缩放':'— Components; vertical scale fits the curves',
+  '试听 2 秒':'Listen for 2 seconds','停止试听':'Stop playback','↶ 撤销':'↶ Undo','全部归零':'Zero amplitudes','相位归零':'Zero phases',
+  '试听与 WAV 使用同一份信号：按振幅总和衰减到 18% 并淡入淡出，避免数值削波。它不是响度匹配；请从较低设备音量开始。修改设置会停止试听。':'Playback and WAV use the same signal: divide by the amplitude sum, scale to 18%, and fade in/out to avoid numerical clipping. This is not loudness matching. Start at low device volume. Editing settings stops playback.',
+  '十六路谐波':'Sixteen harmonics','恢复全部参与':'Unmute all',
+  '每路振幅 0–1，相位 −180°–180°。取消参与不会删除数值；独奏只保留这一条路，可用撤销恢复。':'Amplitude: 0–1; phase: −180°–180°. Muting keeps the values. Solo keeps only that component; undo restores the mix.',
+  '03 / 留下可比较的版本':'03 / Keep versions to compare','方案标题（可选）':'Version title (optional)','给这个波形起个名字':'Give this wave a name','保存当前方案':'Save this version','叠加参考':'Reference overlay',
+  '最多保存 8 份。载入会替换当前参数，可以撤销。参考按各自的基准周期对齐，比较形状，不比较相同秒数里的音高。':'Save up to 8 versions. Loading replaces current settings and can be undone. References align by their own base cycles to compare shape, not pitch over the same time interval.',
+  '04 / 带走实验':'04 / Take your experiment home','↓ WAV 声音':'↓ WAV audio','↓ SVG 波形':'↓ SVG wave','↓ CSV 采样':'↓ CSV samples','↓ JSON 备份':'↓ JSON backup','导入 JSON':'Import JSON',
+  'WAV：24 kHz、16 位、单声道、2 秒。CSV：一个基准周期的 513 个点，保留未归一化振幅。JSON 包含当前参数、已存方案和参考；导入可撤销。备份不超过 150 KB。':'WAV: 24 kHz, 16-bit mono, 2 seconds. CSV: 513 points over one base cycle, with unnormalized amplitudes. JSON includes current settings, saved versions, and reference; import can be undone. Backups must be at most 150 KB.',
+  '模型是一组数学相加。':'A mathematical sum.',
+  '这里没有直流分量、噪声、非整数分音、房间声学或真实乐器包络；有限谐波只近似方波等理想形状。':'No DC term, noise, non-integer partials, room acoustics, or real instrument envelopes. Finite harmonics only approximate ideal shapes such as square waves.',
+  '数值与听感有所不同。':'Numbers and listening differ.',
+  '图中振幅为相对值，峰值是密集采样估计，RMS 是一个基准周期的精确均方根。纵轴缩放不改变数据，试听衰减也不改变图和统计。':'Amplitudes are relative. Peak is a dense-sample estimate; RMS is exact over one base cycle. Axis scaling leaves data unchanged; playback attenuation does not alter the plot or statistics.',
+  '留在自己的设备。':'Keep it on your device.',
+  '参数与方案保存在当前浏览器，不上传内容。撤销保留最近 30 步，不跨刷新；清除浏览器数据会删除记录，请用 JSON 备份。':'Settings and versions stay in this browser and are not uploaded. Undo keeps 30 steps in this visit. Clearing browser data removes records; keep a JSON backup.',
+  '009 / 理科 · 波形合成 · 完全本地':'009 / Science · Wave synthesis · Offline'
+};

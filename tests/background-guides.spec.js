@@ -1,5 +1,5 @@
 import {test,expect} from '@playwright/test';
-const entries=[['001','orbit-garden'],['002','story-fold'],['003','probability-rain'],['004','time-bento'],['006','light-path'],['007','erasure-poems'],['008','pack-pick']];
+const entries=[['001','orbit-garden'],['002','story-fold'],['003','probability-rain'],['004','time-bento'],['006','light-path'],['007','erasure-poems'],['008','pack-pick'],['009','wave-workshop']];
 const route=([id,slug])=>'/apps/'+id+'-'+slug+'/index.html';
 for(const entry of entries)test(entry[0]+' contextual reading is bilingual, collapsible, and readable alongside the activity',async({page},info)=>{
  const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.goto(route(entry)+'?lang=en');const root=page.locator('#programBackground'),detail=page.locator('#backgroundDetails');await expect(root).toBeVisible();expect(await detail.evaluate(el=>el.open)).toBe(false);expect(await root.innerText()).not.toMatch(/[\u3400-\u9fff]/);
