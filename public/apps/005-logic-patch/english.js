@@ -180,3 +180,48 @@ Object.assign(globalThis.ProgramEnglish, {
   "「A、B 全部为 1」与「C、D 恰好一个为 1」同时成立或同时不成立时，输出为 1。 请同时满足器件库存。": "Output 1 when both conditions hold or both fail: A and B are both on; C and D differ. Stay within the component inventory.",
   "两个中间信号只有一路反相时，最终的相同判定应怎样调整？": "How must the final equality test change if just one intermediate signal is inverted?"
 });
+
+Object.assign(globalThis.ProgramEnglish, {
+  "逻辑门背景与入门": "Logic gate background and introduction",
+  "先认识这些小开关": "Meet these little switches",
+  "第一次接触逻辑门？从生活里的「同时满足」与「至少一个」开始，再看看它们为什么能参与计算。": "New to logic gates? Start with everyday ideas of “both” and “at least one,” then see how they help with computation.",
+  "入门说明与小实验": "Beginner guide and mini experiment",
+  "01 / 与、或、非是什么？": "01 / What are AND, OR, and NOT?",
+  "一个比特只有 0 和 1 两种值。在这里，把 0 想成「否 / 关闭」，把 1 想成「是 / 开启」。现实电路用不同电平表示它们；这里先不涉及具体电压。": "A bit has two possible values: 0 and 1. Here, think of 0 as no/off and 1 as yes/on. Real circuits represent bits with voltage levels; this model leaves out the voltage details.",
+  "AND · 与门": "AND · Both",
+  "两路都为 1 才输出 1。像「有票，而且闸门开放，才可通行」。": "Outputs 1 only when both inputs are 1: a ticket AND an open gate are needed to enter.",
+  "OR · 或门": "OR · At least one",
+  "至少一路为 1 就输出 1，两路都是 1 也算。像「刷卡或者扫码，任一种成功即可」。": "Outputs 1 when at least one input is 1, including when both are 1: either a successful card tap OR a successful code scan is enough.",
+  "NOT · 非门": "NOT · The opposite",
+  "只有一个输入，把 0 变成 1，把 1 变成 0。像「没有检测到障碍」就是「检测到障碍」的反面。": "Has one input and flips 0 to 1 or 1 to 0. “No obstacle detected” is the opposite of “obstacle detected.”",
+  "试着切换下面的 A、B，比较三个结果。NOT A 只看 A，B 怎么变化都不会影响它。": "Toggle A and B below and compare the three results. NOT A depends only on A; changing B has no effect on it.",
+  "独立教学输入": "Independent learning inputs",
+  "教学输入 A": "Learning input A",
+  "教学输入 B": "Learning input B",
+  "基础逻辑门结果": "Basic gate results",
+  "这是独立的教学区，不会改动主接线、任务或通关记录；输入只保留在本次打开中。": "This learning area is independent: it does not change your main circuit, task, or completion records. Its inputs last for this page session.",
+  "02 / 看懂主接线台": "02 / Read the main workbench",
+  "G1 先判断 A、B，G2 先判断 C、D，再把两路结果交给 G3。前一级的输出，可以成为后一级的输入。": "G1 evaluates A and B; G2 evaluates C and D. Their outputs then enter G3. One gate’s output can become another gate’s input.",
+  "主接线台的器件都是双输入。NAND、NOR、XNOR 分别把 AND、OR、XOR 的结果取反；XOR 在两路不同时输出 1。非门 NOT 只有一个输入，所以没有放进主台的双输入器件菜单。": "Every gate in the main workbench has two inputs. NAND, NOR, and XNOR invert AND, OR, and XOR respectively; XOR outputs 1 when the inputs differ. NOT has one input, so it is not in the main two-input gate menu.",
+  "真值表像一张完整的规则清单：四个独立输入各有两种取值，一共 2 × 2 × 2 × 2 = 16 种组合。只对一次输入还不够，要让全部 16 种都符合目标。": "A truth table lists the complete behavior. Four independent inputs, each with two values, give 2 × 2 × 2 × 2 = 16 combinations. One matching input is not enough: all sixteen must follow the target rule.",
+  "查看六种器件速查 ↓": "See all six gate definitions ↓",
+  "03 / 两个门如何算加法？": "03 / How can two gates add?",
+  "继续使用教学区的 A、B。一个 XOR 给出当前位 S，一个 AND 给出进位 C，它们一起组成「半加器」。": "Keep using learning inputs A and B. XOR gives the sum bit S, while AND gives the carry bit C. Together they form a half adder.",
+  "结果按 C、S 的顺序读。把 A、B 都设为 1：S 变为 0，C 变为 1，于是得到二进制 10，也就是十进制的 2。下标 ₂ 和 ₁₀ 标明计数方式。": "Read the result as C then S. Set both inputs to 1: S becomes 0 and C becomes 1, giving binary 10, or decimal 2. Subscripts ₂ and ₁₀ identify the number bases.",
+  "半加器还没有上一位传来的进位输入。加入它，就能做成全加器；把全加器逐位连接起来，可以处理更多位的数。": "A half adder has no incoming carry from a previous bit. Adding that input gives a full adder; chaining full adders lets a circuit add wider numbers.",
+  "04 / 然后，怎么组成计算机？": "04 / How does this lead to a computer?",
+  "逻辑门 → 运算电路": "Gates → arithmetic circuits",
+  "组合判断规则，做出加法器、比较器和数据选择器。": "Combine simple rules into adders, comparators, and data selectors.",
+  "运算电路 → ALU": "Arithmetic circuits → ALU",
+  "算术逻辑单元把加法、逻辑运算等放在一起，由控制信号选择要做的操作。": "An arithmetic logic unit offers operations such as addition and logic, selected by control signals.",
+  "保存状态 → 寄存器与存储器": "State → registers and memory",
+  "触发器、寄存器等时序电路可以保留状态；时钟协调更新，存储器提供数据的存取。": "Sequential circuits, such as flip-flops and registers, retain state. A clock coordinates updates, and memory provides data storage and retrieval.",
+  "运算与控制 → CPU": "Computation and control → CPU",
+  "中央处理器把运算、寄存器和控制逻辑组织起来，按指令安排数据移动与计算。": "A central processing unit organizes arithmetic, registers, and control logic to move and process data according to instructions.",
+  "CPU + 存储器 + 输入输出": "CPU + memory + input/output",
+  "再配合指令与程序，这些部分共同构成可以执行任务的计算机系统。": "With instructions and programs, these components form a computer system that can carry out tasks.",
+  "这是一条简化的理解路径。当前主台只演示组合逻辑：输出由当前输入决定，还没有时钟、寄存器或执行指令的系统。": "This is a simplified learning path. The main workbench shows combinational logic: outputs depend on current inputs. It has no clock, registers, or instruction-execution system.",
+  "参考与继续探索：": "Sources and further exploration: "
+});
+
+Object.assign(globalThis.ProgramEnglish, {"逻辑门是处理 0 和 1 的小规则：与门要求同时满足，或门要求至少一个满足，非门把输入取反。":"Logic gates are small rules for 0s and 1s: AND needs both conditions, OR needs at least one, and NOT inverts its input."});

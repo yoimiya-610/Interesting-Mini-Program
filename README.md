@@ -14,7 +14,7 @@ Stay for a game, explore an idea, or find a tool that makes your day a little ea
 | 002 | [Story Fold](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/002-story-fold/index.html?lang=en) | 384 prompt cards across eight genres, with draw-through decks, writing, and saved drafts. |
 | 003 | [Probability Rain](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/003-probability-rain/index.html?lang=en) | Eight experiment starting points, an eight-result comparison desk, and CSV export. |
 | 004 | [Time Bento](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/004-time-bento/index.html?lang=en) | Eight editable day plans, visual time allocation, progress, and undo. |
-| 005 | [Logic Patch](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/005-logic-patch/index.html?lang=en) | Sixteen truth-table tasks, including ten component-inventory challenges. |
+| 005 | [Logic Patch](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/005-logic-patch/index.html?lang=en) | A beginner side guide, a half-adder experiment, and sixteen truth-table tasks with inventory challenges. |
 | 006 | [Light Path](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/006-light-path/index.html?lang=en) | Sixteen mirror puzzles, linked controls, move budgets, and an enlarged board view. |
 | 007 | [Erasure Poems](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/007-erasure-poems/index.html?lang=en) | Ten original bilingual sources, custom passages, and TXT/SVG poem export. |
 | 008 | [Pack & Pick](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/008-pack-pick/index.html?lang=en) | Eight packing templates, weight-and-space optimization, progress, and backups. |

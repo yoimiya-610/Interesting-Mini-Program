@@ -108,7 +108,7 @@
     "slug": "logic-patch",
     "title": "逻辑接线台",
     "subtitle": "拨动开关，让逻辑亮起来。",
-    "description": "切换四个输入与六种逻辑门，观察真值表。十六张任务从基础判定进阶到十张库存约束挑战，寻找符合全部输入的等价接法。",
+    "description": "从侧栏认识与、或、非，再试试半加器。切换四个输入与六种逻辑门，观察真值表，挑战十六张任务及器件库存约束。",
     "category": "工科",
     "tags": [
       "电路",
@@ -116,11 +116,11 @@
       "闯关"
     ],
     "style": "深色电路板 · 琥珀色器件 · 绿色信号线",
-    "interaction": "六张基础任务与十张库存挑战；16 行真值表、独立器件约束、等价电路、任务记录与接线导出",
+    "interaction": "六张基础任务与十张库存挑战；16 行真值表、独立器件约束、等价电路、任务记录与接线导出；侧栏入门、独立逻辑门与半加器实验、从逻辑门到计算机的背景说明",
     "created": "2026-10-26",
     "en": {
       "title": "Logic Patch",
-      "description": "Explore four inputs and six gate types across sixteen tasks, including ten inventory challenges that require equivalent circuits satisfying every input combination.",
+      "description": "Meet AND, OR, and NOT in a beginner side guide, try a half adder, then explore truth tables and sixteen tasks with component-inventory challenges.",
       "style": "Dark circuit board · Amber components",
       "tags": [
         "Circuits",
