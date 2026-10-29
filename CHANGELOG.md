@@ -4,6 +4,13 @@
 
 ## 2026-10-29
 
+### 005 Logic Patch: a beginner's guide to digital logic
+
+- Added a side guide explaining bits, AND, inclusive OR, and single-input NOT through everyday examples. It also explains the fixed workbench, inverted gates, and why four independent inputs require sixteen truth-table cases.
+- An independent two-input experiment shows AND, OR, and NOT A, then reuses the same inputs in a half adder. Sum and carry explain why binary 1 + 1 is 10. The experiment does not change the main circuit or saved puzzle records.
+- A progressive reading path connects gates to arithmetic circuits, ALUs, state, registers, memory, CPUs, and instruction-driven computer systems. It distinguishes the current combinational model from clocked circuits and a complete computer.
+- Chinese/English explanations, keyboard operation, collapsible sections, and a compact mobile entry keep the guide available alongside the activity. References link to Cornell CS 3410 and the original Nand to Tetris arithmetic, memory, and architecture projects; the guide and experiment work offline.
+
 ### More to explore in 001–008
 
 - **001 Orbit Garden:** eight different particle-force behaviors: attraction, repulsion, circular flow, spiral, two poles, traveling wave, horizontal rail, and hollow ring. Star catching keeps its original inward pull. These are artistic fields, not physical simulations.
