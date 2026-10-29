@@ -1,61 +1,59 @@
 # Interesting Mini Program
 
-一些打开就能玩的小程序，装着游戏、写作、科学实验和日常生活里的小点子。
+A collection of small programs for play, writing, science, and everyday life.
 
-你可以来玩一会儿，试一个新想法，或者给日常省一点事。每个小程序都有独立编号，找到喜欢的，点开就能开始。
+Stay for a game, explore an idea, or find a tool that makes your day a little easier. Each program has its own number and direct link. Pick one you like and start exploring.
 
-**[开始体验](https://yoimiya-610.github.io/Interesting-Mini-Program/) · [全部小程序](index.md) · [更新记录](CHANGELOG.md) · [反馈与建议](https://github.com/yoimiya-610/Interesting-Mini-Program/issues)**
+**[Start exploring](https://yoimiya-610.github.io/Interesting-Mini-Program/?lang=en) · [Full index](index.md) · [Updates](CHANGELOG.md) · [Feedback and ideas](https://github.com/yoimiya-610/Interesting-Mini-Program/issues)**
 
-## 先挑一个喜欢的
+## Find something to try
 
-| 编号 | 小程序 | 可以做什么 |
+| No. | Program | What you can do |
 | --- | --- | --- |
-| 001 | [引力花园](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/001-orbit-garden/index.html) | 牵引星尘作画，或来一场捕星挑战。 |
-| 002 | [故事折叠机](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/002-story-fold/index.html) | 抽取灵感卡，写一个小故事，留下自己的草稿。 |
-| 003 | [概率落雨](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/003-probability-rain/index.html) | 投下一阵弹珠雨，对照随机结果与理论分布。 |
-| 004 | [时间便当](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/004-time-bento/index.html) | 把一天的时间装进餐盒，给重要的事和留白留个位置。 |
-| 005 | [逻辑接线台](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/005-logic-patch/index.html) | 拨动开关、替换逻辑门，完成真值表任务卡。 |
-| 006 | [折光小径](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/006-light-path/index.html) | 旋转独立与联动镜片，收齐星光并引导光束回家。 |
-| 007 | [留白诗笺](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/007-erasure-poems/index.html) | 从短文中选词，用留白与换行创作小诗，导出自己的诗笺。 |
-| 008 | [行囊取舍](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/008-pack-pick/index.html) | 在重量与空间之间挑选物品，保留必带，逐项打包并备份清单。 |
+| 001 | [Orbit Garden](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/001-orbit-garden/index.html?lang=en) | Draw with stardust or try a star-catching challenge. |
+| 002 | [Story Fold](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/002-story-fold/index.html?lang=en) | Draw inspiration cards, write a short story, and save your drafts. |
+| 003 | [Probability Rain](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/003-probability-rain/index.html?lang=en) | Drop a shower of marbles and compare random results with a theoretical distribution. |
+| 004 | [Time Bento](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/004-time-bento/index.html?lang=en) | Pack your day into a visual lunchbox, with room for important activities and free time. |
+| 005 | [Logic Patch](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/005-logic-patch/index.html?lang=en) | Toggle inputs, swap logic gates, and solve truth-table puzzles. |
+| 006 | [Light Path](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/006-light-path/index.html?lang=en) | Turn independent and linked mirrors to collect every star and guide a beam home. |
+| 007 | [Erasure Poems](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/007-erasure-poems/index.html?lang=en) | Find a poem inside a passage, shape it with space and line breaks, and export a poem card. |
+| 008 | [Pack & Pick](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/008-pack-pick/index.html?lang=en) | Balance weight and space, keep essentials, track packing, and back up your list. |
 
-更多内容可以在[编号索引](index.md)中查找。在线首页支持按编号、名称或分类筛选，手机和电脑都可以使用。
+Browse the [numbered index](index.md) for direct links. The online homepage lets you search by number or name and filter by category. You can use the collection on a phone or computer.
 
-首页与 001–008 均支持 **中文 / English** 切换，也可以使用 `?lang=en` 直接打开英文页面。语言选择会沿着程序入口和返回链接保留；浏览器允许时，还会记住你的偏好。切换语言不重开游戏或清空实验，自己写的故事、标题与事项名称保持原文。
+The homepage and programs 001–008 support **Chinese / English**. Choose a language near the top of a page, or add `?lang=en` to its address to open it in English. Links between the homepage and programs keep your choice, and your browser remembers it when storage is available. Switching language keeps your current activity in place. Your own stories, titles, and item names stay as you wrote them.
 
-The homepage and programs 001–008 are available in Chinese and English. Choose **English** near the top of a page, or add `?lang=en` to its address. Switching language keeps your activity in place. Your own writing stays as you wrote it.
+## How to open the collection
 
-## 怎么打开
+### Online
 
-### 在线体验
+Open the [program collection](https://yoimiya-610.github.io/Interesting-Mini-Program/?lang=en) and choose a card. No account is needed.
 
-打开[小程序合集](https://yoimiya-610.github.io/Interesting-Mini-Program/)，选择一个卡片即可。无需注册账号。
+### Download and use locally
 
-### 下载后使用
+Download and extract this repository, then open `public/index.html` to browse the local collection. You can also open a program's `index.html` directly inside `public/apps/`.
 
-下载并解压仓库，双击 `public/index.html`，就能打开本地合集。也可以进入 `public/apps/`，直接打开某个小程序文件夹中的 `index.html`。
+Keep the extracted folder structure intact: some programs use scripts and styles stored alongside their pages.
 
-请保留解压后的文件夹结构，部分小程序需要读取同一文件夹中的脚本。
+To serve the collection at a local web address, install Node.js 22 or later, then:
 
-如果想通过本地网页地址使用，需要安装 Node.js 22 或更新版本，然后：
+- **Windows:** double-click `start.cmd`.
+- **Command line:** open the repository folder and run `npm start`.
 
-- Windows：双击 `start.cmd`。
-- 命令行：进入仓库目录，运行 `npm start`。
+Visit [the local collection](http://127.0.0.1:4173/) to browse all programs. Close the server window or press Ctrl+C to stop the local service.
 
-打开 <http://127.0.0.1:4173/> 即可浏览全部小程序。关闭启动窗口或按 Ctrl+C 可以停止本地服务。
+## Your data stays with you
 
-## 关于你的数据
+Programs run in your browser. Drafts, plans, records, and puzzle progress are saved on your device and are not uploaded. Some experiments keep temporary results that are cleared when you reload; check each program's notes for details.
 
-小程序在浏览器中运行，草稿、计划、纪录和通关进度等内容保存在本机，不会上传。部分实验中的临时数据会在刷新后清空，具体以各小程序的页面说明为准。
+Local data does not automatically follow you to another browser or device, and clearing browser data removes it. Use each program's export or backup options to keep important writing, plans, and experiment results.
 
-清除浏览器数据、换浏览器或换设备后，本机保存的内容不会自动跟随。重要的文字、计划和实验结果，请使用相应小程序的导出功能留存。
+Educational programs include references and notes about simplified models so you can read further.
 
-学习类内容保留参考资料和简化说明，方便你继续查阅。
+## Thanks for stopping by
 
-## 谢谢你来玩
+Thank you for spending a little time with these small programs. Thanks, too, to everyone who asks a question, shares an idea, or recommends the collection to a friend.
 
-感谢你愿意花一点时间，试试这些小工具。也感谢每一位提出问题、分享想法和推荐给朋友的人。
+If a program makes you smile, or something could work better, leave a note in [Issues](https://github.com/yoimiya-610/Interesting-Mini-Program/issues). A small suggestion may become the starting point for another program.
 
-如果某个小程序让你觉得有趣，或者哪里还不够好，欢迎在 [Issues](https://github.com/yoimiya-610/Interesting-Mini-Program/issues) 留言。一个小建议，也可能成为下一个小程序的起点。
-
-同时感谢公开课程、参考资料和开源工具的贡献者，让这些想法有机会变成可以使用的小东西。
+We also thank the contributors to open courses, reference materials, and open-source tools who help make these ideas possible.
