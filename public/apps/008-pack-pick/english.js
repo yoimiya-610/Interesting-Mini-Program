@@ -114,3 +114,14 @@ globalThis.ProgramEnglish={
   '无法读取旧清单；当前为样例，重要内容请导出。':'Previous list could not be read. A sample is open; export important content.',
   '旧数据未覆盖；新操作后会保存有效清单。':'Old data has not been overwritten. New actions will save a valid list.'
 };
+
+Object.assign(globalThis.ProgramEnglish, {
+  "一天出门": "A day out",
+  "一晚短途": "An overnight stay",
+  "随身创作": "A portable studio",
+  "山间徒步": "Day hike",
+  "海边半日": "At the beach",
+  "通勤上课": "Class and commute",
+  "摄影散步": "Photo walk",
+  "公园野餐": "Park picnic"
+});

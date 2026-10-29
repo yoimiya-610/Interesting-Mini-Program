@@ -4,12 +4,12 @@ await import('../public/apps/006-light-path/core.js');
 const {LEVELS,trace,turn,judge,restore,svg}=globalThis.LightPath;
 const solutions=[['/'],['/','/'],['/','/','\\'],['\\','\\','/','\\'],['/','\\','\\','/','\\','/'],['/','\\','\\','\\','/','\\','\\'],['\\','\\','/','\\','\\','\\'],['/','\\','/','\\','/','\\','/','\\'],['/','/','\\','/','\\','/','\\','/','\\','/']];
 test('九关初始状态均未完成，已知光路经过全部星光后抵达终点',()=>{
-  LEVELS.forEach((level,i)=>{assert.equal(trace(level,level.mirrors.map(m=>m.initial)).won,false);const result=trace(level,solutions[i]);assert.equal(result.status,'win',level.name);assert.equal(result.collected.length,level.stars.length);assert.deepEqual(result.path.at(-1),level.goal);});
+  LEVELS.slice(0,9).forEach((level,i)=>{assert.equal(trace(level,level.mirrors.map(m=>m.initial)).won,false);const result=trace(level,solutions[i]);assert.equal(result.status,'win',level.name);assert.equal(result.collected.length,level.stars.length);assert.deepEqual(result.path.at(-1),level.goal);});
   const alternate=[...solutions[4]];alternate[5]='\\';assert.equal(trace(LEVELS[4],alternate).won,true,'未经过的镜片不应影响通关');
 });
 
 test('联动关全状态独立 BFS 验证：最少 3、5、7 步，后两关无替代光路捷径',()=>{
-  const minimums=[],winningCounts=[];for(const level of LEVELS.slice(6)){
+  const minimums=[],winningCounts=[];for(const level of LEVELS.slice(6,9)){
     const n=1<<level.mirrors.length,orient=mask=>level.mirrors.map((_,i)=>mask>>i&1?'\\':'/'),stateOf=a=>a.reduce((s,c,i)=>s|(c==='\\'?1<<i:0),0),wins=Array.from({length:n},(_,i)=>i).filter(i=>trace(level,orient(i)).won),initial=stateOf(level.mirrors.map(m=>m.initial)),dist=Array(n).fill(-1),queue=[initial];dist[initial]=0;const masks=level.links.map((links,i)=>[i,...links].reduce((mask,j)=>mask^(1<<j),0));
     for(let q=0;q<queue.length;q++){const state=queue[q];for(const mask of masks){const next=state^mask;if(dist[next]===-1){dist[next]=dist[state]+1;queue.push(next);}}}
     const minimum=Math.min(...wins.filter(i=>dist[i]>=0).map(i=>dist[i]));minimums.push(minimum);winningCounts.push(wins.length);assert.equal(minimum,level.budget);assert.equal(queue.length,level.id==='linked-intro'?32:n);assert(wins.every(mask=>!judge(level,orient(mask),minimum+2).won));

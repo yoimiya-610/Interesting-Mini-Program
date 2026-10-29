@@ -3,7 +3,7 @@
   const $=id=>document.getElementById(id),{MAX_ITEMS,TEMPLATES,template,validItem,parseLimit,amount,analyze,suggest,restore}=PackPick,KEY='pack-pick-008-v1',t=value=>ProgramLanguage.t(value);
   let state={title:'',limits:{grams:3000,ml:8000},items:template('day')},history=[],editing=null,proposal=null;
   const clone=data=>JSON.parse(JSON.stringify(data));
-  function name(item){const match=item.id.match(/^(day|night|studio)-(\d+)$/),pair=match?TEMPLATES[match[1]][Number(match[2])]:null;return pair&&pair.slice(0,2).includes(item.name)?pair[ProgramLanguage.language==='en'?1:0]:item.name;}
+  function name(item){const match=item.id.match(/^([a-z]+)-(\d+)$/),pair=match?TEMPLATES[match[1]]?.[Number(match[2])]:null;return pair&&pair.slice(0,2).includes(item.name)?pair[ProgramLanguage.language==='en'?1:0]:item.name;}
   function el(tag,cls,text,user=false){const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;if(user)node.dataset.userContent='';return node;}
   function notice(text){$('notice').textContent=text;}
   function persist(){try{localStorage.setItem(KEY,JSON.stringify({version:1,...state}));$('storage').textContent='清单已保存在本机；重要内容请备份。撤销历史不跨刷新。';}catch{$('storage').textContent='本机保存不可用；仍可使用，请导出 TXT 或 JSON 留存。';}}

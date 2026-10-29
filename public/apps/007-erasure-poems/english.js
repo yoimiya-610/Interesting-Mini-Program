@@ -12,7 +12,7 @@ globalThis.ProgramEnglish={
   '文科 / 文字创作':'HUMANITIES / WORD ART',
   '01 / 找到你的词':'01 / Find your words',
   '选择底稿（分别保留草稿）':'Choose a source (drafts kept separately)',
-  '三篇内置原创短文提供中英对应词语。也可以使用自己的短文；自填内容保持原文。':'Three original passages offer paired Chinese and English words. You can also bring your own text; your writing stays as written.',
+  '十篇内置原创短文提供中英对应词语。也可以使用自己的短文；自填内容保持原文。':'Ten original passages offer paired Chinese and English words. You can also bring your own text; your writing stays as written.',
   '试一首示例':'Try an example',
   '遮住未选词':'Cover unselected words',
   '显示全部词语':'Show all words',
@@ -69,3 +69,16 @@ globalThis.ProgramEnglish={
   '欢迎回来，已恢复底稿、选词、换行和标题。':'Welcome back. Source, selections, line breaks and title restored.',
   '无法读取旧草稿；可以继续创作，重要作品请导出。':'Previous draft could not be read. You can still create poems; export work you want to keep.'
 };
+
+Object.assign(globalThis.ProgramEnglish, {
+  "慢车站台": "The slow-train platform",
+  "雨天的窗": "A window in the rain",
+  "海边的书架": "The seaside bookshelf",
+  "山间邮路": "The mountain mail route",
+  "种子档案": "The seed archive",
+  "修理铺的夜": "Night in the repair shop",
+  "市场散场以后": "After the market closes",
+  "天台观测记": "Rooftop observations",
+  "凌晨的厨房": "The kitchen before dawn",
+  "潮汐留言": "Tidal messages"
+});

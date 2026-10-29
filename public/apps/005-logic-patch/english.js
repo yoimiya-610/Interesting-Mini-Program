@@ -89,7 +89,7 @@ globalThis.ProgramEnglish={
   "这是理想的 0/1 组合逻辑模型，不模拟电压、电流或传播延迟。逻辑门定义与真值表按": "This ideal 0/1 combinational logic model does not simulate voltage, current or propagation delay. Gate definitions and truth tables follow",
   " 核对。固定连线用于观察和解题，不是任意电路编辑器。": ". The fixed wiring is for exploration and puzzles, rather than editing arbitrary circuits.",
   "005 / 工科 · 数字逻辑 · 完全本地": "005 / Engineering · Digital logic · Offline",
-  "005 逻辑接线台：切换四个输入、替换六种逻辑门，实时观察电路与16行真值表，完成九张任务卡。离线可用。": "005 Logic Patch: toggle four inputs, swap six gate types, explore the circuit and 16-row truth table, and solve nine task cards. Available offline.",
+  "005 逻辑接线台：切换四个输入、替换六种逻辑门，实时观察电路与16行真值表，完成十六张任务卡。离线可用。": "005 Logic Patch: toggle four inputs, swap six gate types, explore the circuit and 16-row truth table, and solve sixteen task cards. Available offline.",
   "实验模式": "Experiment mode",
   "逻辑电路实验台": "Logic circuit workbench",
   "四个二进制输入": "Four binary inputs",
@@ -156,3 +156,27 @@ globalThis.ProgramEnglish={
   "已完成": "Complete",
   "005 · 逻辑接线台 · Logic Patch": "005 · Logic Patch"
 };
+
+Object.assign(globalThis.ProgramEnglish, {
+  "两组各亮一盏": "One in each pair",
+  "每组恰好一个输入为 1，而且两组都满足时，输出才为 1。 请同时满足器件库存。": "Output 1 only when exactly one input is on in each pair. Stay within the component inventory.",
+  "分别寻找两组不满足条件的情况，再思考如何排除它们。": "Find the failure condition for each pair, then consider how to exclude both.",
+  "只让一组全亮": "Exactly one full pair",
+  "两组中恰好一组全部为 1 时输出 1；两组都满足或都不满足则输出 0。 请同时满足器件库存。": "Output 1 when exactly one pair has both inputs on; output 0 if both pairs or neither pair do. Stay within the component inventory.",
+  "原条件反相后，恰好一个成立的关系会发生什么变化？": "What happens to an exclusive relationship when both component conditions are inverted?",
+  "两边都有人": "Someone on each side",
+  "A、B 至少一个为 1，同时 C、D 也至少一个为 1 时，输出才为 1。 请同时满足器件库存。": "Output 1 only when at least one input is on in each pair. Stay within the component inventory.",
+  "试着先检测哪一组完全熄灭。": "Try detecting which pair is completely off first.",
+  "双钥匙与访客": "Two keys and a visitor",
+  "A、B 必须全部为 1，而且 C、D 至少一个为 1，输出才为 1。 请同时满足器件库存。": "Output 1 only when A and B are both on and at least one of C and D is on. Stay within the component inventory.",
+  "两组使用不同规则。选择中间信号的含义时，要同时考虑末级门。": "The two pairs use different rules. Choose the meaning of the intermediate signals with the final gate in mind.",
+  "差异或备用": "Difference or backup",
+  "A、B 不同，或者 C、D 全部为 1 时输出 1。两项都不满足才输出 0。 请同时满足器件库存。": "Output 1 if A and B differ or C and D are both on. Output 0 only when neither condition holds. Stay within the component inventory.",
+  "把只有两项都失败才输出 0，换成对失败条件的判断。": "Reframe the output in terms of both conditions failing.",
+  "同意之后有人": "Agreement and attendance",
+  "A、B 相同，并且 C、D 至少一个为 1 时，输出才为 1。 请同时满足器件库存。": "Output 1 only when A and B agree and at least one of C and D is on. Stay within the component inventory.",
+  "相同可以通过不同的反面得到；最后一级仍需兼顾另一组的含义。": "Agreement is the inverse of difference; the final gate must also account for the meaning of the other pair.",
+  "钥匙与奇偶相等": "Matching key and parity",
+  "「A、B 全部为 1」与「C、D 恰好一个为 1」同时成立或同时不成立时，输出为 1。 请同时满足器件库存。": "Output 1 when both conditions hold or both fail: A and B are both on; C and D differ. Stay within the component inventory.",
+  "两个中间信号只有一路反相时，最终的相同判定应怎样调整？": "How must the final equality test change if just one intermediate signal is inverted?"
+});

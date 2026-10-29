@@ -89,3 +89,21 @@ globalThis.ProgramEnglish={
   "已完成": "Complete",
   "003 · 概率落雨 · Probability Rain": "003 · Probability Rain"
 };
+
+Object.assign(globalThis.ProgramEnglish, {
+  "八个实验起点": "Eight experiment starting points",
+  "实验对照台": "Experiment comparison desk",
+  "保留最多八次结果，比较样本量、均值、标准差和分布差异。仅保留在本次页面；刷新前可以导出。": "Keep up to eight results to compare sample sizes, means, standard deviations, and distribution differences. Results stay in this page only; export before refreshing.",
+  "保留本轮结果": "Keep this result",
+  "清空对照": "Clear comparisons",
+  "导出对照 CSV": "Export comparisons CSV",
+  "样本量": "Samples",
+  "实际均值 / 理论": "Mean: observed / theoretical",
+  "实际标准差 / 理论": "SD: observed / theoretical",
+  "分布距离": "Distribution distance",
+  "分布距离为各槽实际比例与理论概率之差的绝对值总和的一半（0–1）；它不是显著性检验，随机样本不保证随追加投珠单调下降。": "Distribution distance is half the sum of absolute differences between observed and theoretical bin probabilities (0–1). It is not a significance test and need not decrease with every added sample.",
+  "对照台已满八次，请先导出或清空。": "All eight comparison slots are full. Export or clear them first.",
+  "这份结果已经保留；追加样本或调整参数后再比较。": "This result is already saved. Add samples or change parameters for another comparison.",
+  "结果已保留；调整参数不会清空对照台。": "Result kept. Changing parameters will not clear the comparison desk.",
+  "自定参数：先写下预测，再收集样本进行对照。": "Custom parameters: make a prediction, then collect samples and compare."
+});

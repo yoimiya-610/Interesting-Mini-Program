@@ -11,7 +11,14 @@
     {id:'all-off',name:'全灭才通',goal:'只有四个输入全部为 0 时输出 1，其他情况输出 0。',gates:['OR','OR','NOR'],hint:'先检查每组有没有 1，再寻找两组都没亮的情况。'},
     {id:'stock-same',name:'没有 AND 的相同判定',goal:'A 与 B 相同，且 C 与 D 相同时，输出才为 1。本关器件数量有限，请同时满足库存。',gates:['XNOR','XNOR','AND'],stock:{XOR:2,XNOR:1,NAND:1,NOR:1},hint:'库存没有 AND，XNOR 也只有一枚。试着用「哪些情况不成立」来组织两组判断。'},
     {id:'stock-balance',name:'不对称的平衡',goal:'「A、B 全部为 1」与「C、D 至少一个为 1」这两个条件同时成立或同时不成立时，输出为 1。请满足器件库存。',gates:['AND','OR','XNOR'],stock:{NAND:1,NOR:1,XOR:1,XNOR:1},hint:'两组条件并不相同。若两路判断都反相，它们之间的相同关系会怎样变化？'},
-    {id:'stock-conditional',name:'条件翻转',goal:'A、B 恰好一个为 1 时，要求 C、D 全部为 0；否则要求 C、D 至少一个为 1。符合要求输出 1，同时满足器件库存。',gates:['XOR','OR','XOR'],stock:{NAND:1,NOR:1,XOR:1,XNOR:1},hint:'先分别处理两组，再考虑切换条件。注意 XOR 只有一枚，可以用反相判断改变最后一级的含义。'}
+    {id:'stock-conditional',name:'条件翻转',goal:'A、B 恰好一个为 1 时，要求 C、D 全部为 0；否则要求 C、D 至少一个为 1。符合要求输出 1，同时满足器件库存。',gates:['XOR','OR','XOR'],stock:{NAND:1,NOR:1,XOR:1,XNOR:1},hint:'先分别处理两组，再考虑切换条件。注意 XOR 只有一枚，可以用反相判断改变最后一级的含义。'},
+    {"id":"stock-two-odd","name":"两组各亮一盏","goal":"每组恰好一个输入为 1，而且两组都满足时，输出才为 1。 请同时满足器件库存。","gates":["XOR","XOR","AND"],"stock":{"AND":2,"OR":1,"NOR":1,"XNOR":2},"hint":"分别寻找两组不满足条件的情况，再思考如何排除它们。"},
+    {"id":"stock-one-full","name":"只让一组全亮","goal":"两组中恰好一组全部为 1 时输出 1；两组都满足或都不满足则输出 0。 请同时满足器件库存。","gates":["AND","AND","XOR"],"stock":{"AND":1,"OR":2,"XOR":1,"NAND":2},"hint":"原条件反相后，恰好一个成立的关系会发生什么变化？"},
+    {"id":"stock-any-pair","name":"两边都有人","goal":"A、B 至少一个为 1，同时 C、D 也至少一个为 1 时，输出才为 1。 请同时满足器件库存。","gates":["OR","OR","AND"],"stock":{"AND":1,"OR":1,"XOR":1,"NOR":3},"hint":"试着先检测哪一组完全熄灭。"},
+    {"id":"stock-permission","name":"双钥匙与访客","goal":"A、B 必须全部为 1，而且 C、D 至少一个为 1，输出才为 1。 请同时满足器件库存。","gates":["AND","OR","AND"],"stock":{"AND":1,"OR":2,"NAND":1,"NOR":2},"hint":"两组使用不同规则。选择中间信号的含义时，要同时考虑末级门。"},
+    {"id":"stock-backup","name":"差异或备用","goal":"A、B 不同，或者 C、D 全部为 1 时输出 1。两项都不满足才输出 0。 请同时满足器件库存。","gates":["XOR","AND","OR"],"stock":{"AND":2,"OR":1,"NAND":2,"XNOR":1},"hint":"把只有两项都失败才输出 0，换成对失败条件的判断。"},
+    {"id":"stock-agreement","name":"同意之后有人","goal":"A、B 相同，并且 C、D 至少一个为 1 时，输出才为 1。 请同时满足器件库存。","gates":["XNOR","OR","AND"],"stock":{"AND":2,"OR":1,"XOR":1,"NOR":2},"hint":"相同可以通过不同的反面得到；最后一级仍需兼顾另一组的含义。"},
+    {"id":"stock-parity-key","name":"钥匙与奇偶相等","goal":"「A、B 全部为 1」与「C、D 恰好一个为 1」同时成立或同时不成立时，输出为 1。 请同时满足器件库存。","gates":["AND","XOR","XNOR"],"stock":{"AND":2,"OR":1,"XOR":2,"NAND":1},"hint":"两个中间信号只有一路反相时，最终的相同判定应怎样调整？"}
   ].map((p,i)=>Object.freeze({...p,tier:i<2?'入门':i<6?'进阶':'挑战',gates:Object.freeze(p.gates),...(p.stock?{stock:Object.freeze(p.stock)}:{})})));
   const DEFAULT=Object.freeze(['AND','OR','XOR']);
   function validGates(types){return Array.isArray(types)&&types.length===3&&types.every(v=>NAMES.includes(v));}
