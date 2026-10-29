@@ -2,6 +2,48 @@ import {test,expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
 const path='/apps/008-pack-pick/index.html',language=(page,lang)=>page.locator('[data-program-language="'+lang+'"]');
 async function limits(page,weight,volume){await page.locator('#weightLimit').fill(weight);await page.locator('#volumeLimit').fill(volume);await page.locator('#limitsForm button').click();}
+
+test('A deliberately translated template name stays original through language, undo, reload, and backup',async({page},info)=>{
+  await page.goto(path+'?lang=en');await page.locator('[data-template="photo"]').click();
+  await page.locator('#packed-photo-0').check();await page.getByRole('button',{name:'Edit: Camera',exact:true}).click();
+  await page.locator('#itemName').fill('相机');await page.locator('#saveItem').press('Enter');
+  await expect(page.locator('#row-photo-0 .item-name')).toHaveText('相机');
+  await page.locator('#undo').click();await expect(page.locator('#row-photo-0 .item-name')).toHaveText('Camera');
+  await page.getByRole('button',{name:'Edit: Camera',exact:true}).click();await page.locator('#itemName').fill('相机');await page.locator('#saveItem').click();
+  await language(page,'zh').click();await language(page,'en').click();await page.reload();
+  await expect(page.locator('#row-photo-0 .item-name')).toHaveText('相机');await expect(page.locator('#packed-photo-0')).toBeChecked();
+  let waiting=page.waitForEvent('download');await page.locator('#exportText').click();
+  expect(await readFile(await(await waiting).path(),'utf8')).toContain('[x] 相机 × 1');
+  waiting=page.waitForEvent('download');await page.locator('#exportJson').click();const backup=await readFile(await(await waiting).path(),'utf8');
+  expect(JSON.parse(backup).items[0]).toMatchObject({name:'相机',customName:true,packed:true});
+  await page.locator('#clear').click();await page.locator('#importFile').setInputFiles({name:'custom-name.json',mimeType:'application/json',buffer:Buffer.from(backup)});
+  await expect(page.locator('#row-photo-0 .item-name')).toHaveText('相机');await expect(page.locator('#packed-photo-0')).toBeChecked();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+  await page.screenshot({path:info.outputPath('008-custom-name-typography.png'),fullPage:true,animations:'disabled'});
+});
+
+test('Numeric-only template edits retain bilingual names even if language changes inside the editor',async({page})=>{
+  await page.goto(path+'?lang=en');await page.getByRole('button',{name:'Edit: Water bottle',exact:true}).click();
+  await page.locator('#itemGrams').fill('500');await language(page,'zh').click();await page.locator('#saveItem').click();
+  await expect(page.locator('#row-day-0 .item-name')).toHaveText('水杯');await language(page,'en').click();
+  await expect(page.locator('#row-day-0 .item-name')).toHaveText('Water bottle');await page.reload();
+  await expect(page.locator('#row-day-0 .item-name')).toHaveText('Water bottle');await expect(page.locator('#weightText')).toHaveText('2.08 kg / 3 kg');
+});
+
+test('The guide example beats a greedy choice and preserves work while reading',async({page},info)=>{
+  await page.goto(path+'?lang=en');await page.locator('#clear').click();await limits(page,'1','2');
+  for(const [name,g,ml,p] of [['Large',900,1900,5],['Small A',400,800,3],['Small B',400,800,3]]){
+    await page.locator('#itemName').fill(name);await page.locator('#itemGrams').fill(String(g));await page.locator('#itemMl').fill(String(ml));await page.locator('#itemPriority').selectOption(String(p));await page.locator('#saveItem').press('Enter');
+  }
+  await page.locator('#tripTitle').fill('Trade-off / 原文');await page.locator('#suggest').click();
+  await expect(page.locator('#suggestionNames')).toHaveText('Small A × 1 · Small B × 1');await expect(page.locator('#suggestionSummary')).toContainText('800 g / 1.6 L · Total priority: 6');
+  await expect(page.locator('#weightText')).toHaveText('1.7 kg / 1 kg');await page.locator('#applySuggestion').click();
+  await expect(page.locator('#weightText')).toHaveText('800 g / 1 kg');await page.locator('#programBackground summary').press('Enter');
+  await expect(page.locator('#programBackground')).toContainText('1957');await expect(page.locator('#programBackground')).toContainText('does not credit him with inventing');
+  await language(page,'zh').click();await language(page,'en').click();await expect(page.locator('#tripTitle')).toHaveValue('Trade-off / 原文');
+  await expect(page.locator('#weightText')).toHaveText('800 g / 1 kg');
+  await page.screenshot({path:info.outputPath('008-tradeoff-guide-typography.png'),fullPage:true,animations:'disabled'});
+});
 test('重量与空间共同取舍，预览不修改清单，必带始终保留，采用后可撤销',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(path);await limits(page,'1','2');await expect(page.locator('#weightText')).toHaveText('2.03 kg / 1 kg');await page.locator('#suggest').click();await expect(page.locator('#suggestion')).toBeVisible();await expect(page.locator('#suggestionNames')).toHaveText('水杯 × 1 · 钥匙与证件 × 1 · 纸巾 × 1 · 移动电源 × 1');await expect(page.locator('#included-day-3')).toBeChecked();await page.locator('#applySuggestion').click();await expect(page.locator('#included-day-0')).toBeChecked();await expect(page.locator('#included-day-0')).toBeDisabled();await expect(page.locator('#included-day-3')).not.toBeChecked();await expect(page.locator('#weightText')).toHaveText('830 g / 1 kg');await expect(page.locator('#volumeText')).toHaveText('1.32 L / 2 L');await page.locator('#undo').click();await expect(page.locator('#included-day-3')).toBeChecked();await expect(page.locator('#weightText')).toHaveText('2.03 kg / 1 kg');expect(errors).toEqual([]);
 });

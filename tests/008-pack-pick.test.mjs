@@ -3,8 +3,17 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 const context=vm.createContext({});vm.runInContext(readFileSync(new URL('../public/apps/008-pack-pick/core.js',import.meta.url),'utf8'),context);
-const {template,validItem,parseLimit,amount,analyze,suggest,restore}=context.PackPick,plain=value=>JSON.parse(JSON.stringify(value));
+const {template,itemName,validItem,parseLimit,amount,analyze,suggest,restore}=context.PackPick,plain=value=>JSON.parse(JSON.stringify(value));
 const item=(id,grams,ml,priority=3,required=false,quantity=1)=>({id,name:id,grams,ml,quantity,priority,required,included:true,packed:false});
+
+test('Explicit custom names survive version-1 backups even when they match a template translation',()=>{
+  const original=template('photo')[0],custom={...original,customName:true};
+  assert.equal(itemName(original,'en'),'Camera');assert.equal(itemName(custom,'en'),'相机');
+  const raw={version:1,title:'My bag',limits:{grams:3000,ml:8000},items:[custom]};
+  const loaded=restore(raw,true);assert(loaded);assert.equal(loaded.items[0].customName,true);assert.equal(itemName(loaded.items[0],'en'),'相机');
+  const legacy=restore({...raw,items:[original]},true);assert(legacy);assert.equal(itemName(legacy.items[0],'en'),'Camera');
+  assert.equal(restore({...raw,items:[{...custom,customName:'true'}]},true),null);
+});
 test('容量精确转换到整数，件数相乘；打包不释放容量，排除才改变总量',()=>{
   assert.equal(parseLimit('0.001',100000),1);assert.equal(parseLimit('0.29',100000),290);assert.equal(parseLimit('100.000',100000),100000);for(const bad of ['1.0001','-1','1e2','Infinity','','100.001'])assert.equal(parseLimit(bad,100000),null);assert.equal(amount(1001,'weight'),'1.001 kg');
   const items=[item('a',120,250,4,false,3),{...item('b',1000,2000),packed:true}],limits={grams:1000,ml:2000};const before=analyze(items,limits);assert.equal(before.grams,1360);assert.equal(before.ml,2750);assert.equal(before.packed,1);items[0].packed=true;const packed=analyze(items,limits);assert.equal(packed.grams,before.grams);assert.equal(packed.packed,4);items[0].included=false;assert.equal(analyze(items,limits).grams,1000);assert.equal(analyze(items,limits).pieces,1);

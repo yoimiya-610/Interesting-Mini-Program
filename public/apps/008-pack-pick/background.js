@@ -21,12 +21,20 @@ globalThis.ProgramBackground={
         [
           "给物品设置成本与价值，在容量内选出总价值尽可能高的一组，是经典背包问题的基本形式。它用于资源分配与组合选择，不只是旅行。本程序使用重量、空间两项约束，并把每一行视为不可拆分的一组。",
           "A basic knapsack problem assigns costs and values to items and selects a maximum-value subset within capacity. It appears in resource allocation as well as travel. This app uses two capacity constraints—weight and volume—and treats each row as an indivisible group."
+        ],
+        [
+          "这属于组合优化：比较有限的选择组合。作为相关早期研究，George B. Dantzig 在 1957 年的《Discrete-Variable Extremum Problems》中讨论了用线性规划等方法处理离散变量优化；这并不是把旅行打包法归于他。本页的双容量、必带标记和整组重要度是本程序的设计选择。",
+          "This belongs to combinatorial optimization: comparing finite combinations of choices. As related early research, George B. Dantzig's 1957 paper Discrete-Variable Extremum Problems discussed linear-programming and other approaches to discrete optimization. This does not credit him with inventing a travel-packing method. This app's two limits, essential marks, and group-priority interface are its own design choices."
         ]
       ],
       "sources": [
         {
           "label": "Google OR-Tools · Knapsack",
           "href": "https://developers.google.com/optimization/pack/knapsack"
+        },
+        {
+          "label": "G. B. Dantzig · Discrete-Variable Extremum Problems (1957)",
+          "href": "https://doi.org/10.1287/opre.5.2.266"
         }
       ]
     },
