@@ -69,3 +69,16 @@ globalThis.ProgramEnglish={
   '欢迎回来，已恢复底稿、选词、换行和标题。':'Welcome back. Source, selections, line breaks and title restored.',
   '无法读取旧草稿；可以继续创作，重要作品请导出。':'Previous draft could not be read. You can still create poems; export work you want to keep.'
 };
+
+Object.assign(globalThis.ProgramEnglish, {
+  "慢车站台": "The slow-train platform",
+  "雨天的窗": "A window in the rain",
+  "海边的书架": "The seaside bookshelf",
+  "山间邮路": "The mountain mail route",
+  "种子档案": "The seed archive",
+  "修理铺的夜": "Night in the repair shop",
+  "市场散场以后": "After the market closes",
+  "天台观测记": "Rooftop observations",
+  "凌晨的厨房": "The kitchen before dawn",
+  "潮汐留言": "Tidal messages"
+});

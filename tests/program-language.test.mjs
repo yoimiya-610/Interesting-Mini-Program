@@ -23,6 +23,11 @@ test('用户文字逐字保留，包括与界面同名的文字、标点与特�
     const protectedText=language.user(value);assert.equal(language.t(protectedText),value);assert.equal(language.t('完成：'+protectedText),'Complete: '+value);assert.equal(language.t('完成：'+protectedText,'zh'),'完成：'+value);
   }
 });
+
+test('Every built-in poem source name has an English selector label',()=>{
+  const context=runtime('007-erasure-poems');vm.runInContext(read('public/apps/007-erasure-poems/core.js'),context);
+  for(const source of context.ErasurePoems.PASSAGES)assert.equal(context.ProgramLanguage.t(source.name[0]),source.name[1]);
+});
 test('语言参数优先于保存偏好，未知值安全回退；故事提示使用英语句序',()=>{
   assert.equal(runtime('002-story-fold','en','zh').ProgramLanguage.language,'en');assert.equal(runtime('002-story-fold','fr','en').ProgramLanguage.language,'en');assert.equal(runtime('002-story-fold','fr','fr').ProgramLanguage.language,'zh');
   const {ProgramLanguage:language}=runtime('002-story-fold');const text=language.t('替人保管秘密的邮递员来到雨停后的旧书店，想要把一封没有地址的信送达。偏偏这时，对方也在寻找同一个人……');assert(text.includes(' arrives at '));assert(text.includes(', hoping to deliver a letter with no address. But '));assert(!/[\u3400-\u9fff]/.test(text));
