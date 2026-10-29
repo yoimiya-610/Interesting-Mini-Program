@@ -17,6 +17,6 @@
   }
   get('primerA').onclick=()=>{a=1-a;render();};
   get('primerB').onclick=()=>{b=1-b;render();};
-  get('logicPrimer').open=matchMedia('(min-width:901px)').matches;
+  get('logicPrimer').open=false;
   render();
 })();

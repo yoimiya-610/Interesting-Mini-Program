@@ -223,3 +223,5 @@ Object.assign(globalThis.ProgramEnglish, {
   "这是一条简化的理解路径。当前主台只演示组合逻辑：输出由当前输入决定，还没有时钟、寄存器或执行指令的系统。": "This is a simplified learning path. The main workbench shows combinational logic: outputs depend on current inputs. It has no clock, registers, or instruction-execution system.",
   "参考与继续探索：": "Sources and further exploration: "
 });
+
+Object.assign(globalThis.ProgramEnglish, {"逻辑门是处理 0 和 1 的小规则：与门要求同时满足，或门要求至少一个满足，非门把输入取反。":"Logic gates are small rules for 0s and 1s: AND needs both conditions, OR needs at least one, and NOT inverts its input."});

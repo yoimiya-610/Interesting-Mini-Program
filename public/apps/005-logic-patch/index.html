@@ -7,11 +7,9 @@
 <header><a class="brand" href="../../index.html"><span class="symbol">⊕</span><span>005 · 逻辑接线台<small>LOGIC PATCH / A TINY DIGITAL WORKBENCH</small></span></a><a class="back" href="../../index.html">← 小程序索引</a></header>
 <main><section class="hero"><div><div class="eyebrow">SMALL SWITCHES. CLEAR THINKING.</div><h1>拨动一个开关，<br>让<em>逻辑亮起来。</em></h1></div><p>四个输入，三个器件，一盏输出灯。<br>让 0 和 1 走一段路，看懂它们如何作出选择。</p></section>
 <div class="toolbar"><div class="modes" role="group" aria-label="实验模式"><button id="exploreMode" aria-pressed="true">自由实验</button><button id="challengeMode" aria-pressed="false">真值表闯关 ↗</button></div><span>005 / IDEAL COMBINATIONAL LOGIC</span></div>
-<div class="layout"><div class="logic-sidebar"><aside class="panel"><div class="explore" id="explorePanel"><h2>把逻辑，接起来。</h2><div class="mini-step"><b>01</b><span>点击 A–D，切换 0 / 1。<br>亮线表示该路信号为 1。</span></div><div class="mini-step"><b>02</b><span>替换 G1、G2、G3 的器件。<br>G1 接 A/B，G2 接 C/D，<br>两路结果一起进入 G3。</span></div><div class="mini-step"><b>03</b><span>展开下方真值表，<br>点选任意一组输入试一试。</span></div></div>
-<div class="challenge" id="challengePanel" hidden><h2>任务卡 / 让输出符合规则</h2><label class="small-label" for="puzzle">选择任务（切换会重置接线）</label><select id="puzzle"></select><div class="task-goal" id="goal"></div><div class="inventory" id="inventory" hidden><b>挑战 / 器件库存（每种最多）</b><p id="stockRules"></p><p id="inventoryState" role="status"></p></div><button class="primary" id="verify">检测全部 16 组输入</button><div class="side-actions"><button id="hintToggle">显示提示</button><button id="nextPuzzle">下一张任务卡 →</button></div><div class="hint" id="hint" hidden></div></div><div class="small-note">通关按全部 16 组输入判断，<br>挑战任务还需满足器件库存。<br>切换任务保留已完成记录。<br>任务记录仅保存在当前浏览器。</div></aside>
-<aside class="panel primer" aria-label="逻辑门背景与入门">
+<div class="layout"><div class="logic-sidebar"><aside class="panel primer" aria-label="逻辑门背景与入门">
 <h2>先认识这些小开关</h2>
-<p class="primer-lead">第一次接触逻辑门？从生活里的「同时满足」与「至少一个」开始，再看看它们为什么能参与计算。</p>
+<p class="primer-lead">逻辑门是处理 0 和 1 的小规则：与门要求同时满足，或门要求至少一个满足，非门把输入取反。</p>
 <details id="logicPrimer"><summary>入门说明与小实验</summary>
 <section aria-labelledby="primerBasics"><h3 id="primerBasics">01 / 与、或、非是什么？</h3>
 <p>一个比特只有 0 和 1 两种值。在这里，把 0 想成「否 / 关闭」，把 1 想成「是 / 开启」。现实电路用不同电平表示它们；这里先不涉及具体电压。</p>
@@ -48,6 +46,8 @@
 </details>
 <p class="primer-sources">参考与继续探索：<a href="https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/logic.html" target="_blank" rel="noopener noreferrer">Cornell · Gates &amp; Logic</a><br><a href="https://www.nand2tetris.org/project02" target="_blank" rel="noopener noreferrer">Nand to Tetris · Arithmetic</a> · <a href="https://www.nand2tetris.org/project03" target="_blank" rel="noopener noreferrer">Memory</a> · <a href="https://www.nand2tetris.org/project05" target="_blank" rel="noopener noreferrer">Computer Architecture</a></p>
 </details></aside>
+<aside class="panel"><div class="explore" id="explorePanel"><h2>把逻辑，接起来。</h2><div class="mini-step"><b>01</b><span>点击 A–D，切换 0 / 1。<br>亮线表示该路信号为 1。</span></div><div class="mini-step"><b>02</b><span>替换 G1、G2、G3 的器件。<br>G1 接 A/B，G2 接 C/D，<br>两路结果一起进入 G3。</span></div><div class="mini-step"><b>03</b><span>展开下方真值表，<br>点选任意一组输入试一试。</span></div></div>
+<div class="challenge" id="challengePanel" hidden><h2>任务卡 / 让输出符合规则</h2><label class="small-label" for="puzzle">选择任务（切换会重置接线）</label><select id="puzzle"></select><div class="task-goal" id="goal"></div><div class="inventory" id="inventory" hidden><b>挑战 / 器件库存（每种最多）</b><p id="stockRules"></p><p id="inventoryState" role="status"></p></div><button class="primary" id="verify">检测全部 16 组输入</button><div class="side-actions"><button id="hintToggle">显示提示</button><button id="nextPuzzle">下一张任务卡 →</button></div><div class="hint" id="hint" hidden></div></div><div class="small-note">通关按全部 16 组输入判断，<br>挑战任务还需满足器件库存。<br>切换任务保留已完成记录。<br>任务记录仅保存在当前浏览器。</div></aside>
 </div>
 <section class="stage" aria-label="逻辑电路实验台"><div class="stage-head"><span><strong>LIVE CIRCUIT</strong> / 2-STAGE NETWORK</span><div class="legend"><span><i></i>0 / LOW</span><span><i class="high"></i>1 / HIGH</span></div></div>
 <div class="board" id="board"><svg class="wires" id="wires" aria-hidden="true"><path id="wireA"></path><path id="wireB"></path><path id="wireC"></path><path id="wireD"></path><path id="wireG1"></path><path id="wireG2"></path><path id="wireY"></path></svg>
