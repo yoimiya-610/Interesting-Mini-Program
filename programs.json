@@ -4,7 +4,7 @@
     "slug": "orbit-garden",
     "title": "引力花园",
     "subtitle": "把片刻，交给引力。",
-    "description": "用指尖牵引星尘，留下自己的宇宙轨迹；也可以挑战 45 秒捕星。",
+    "description": "用八种不同受力方式牵引星尘：聚拢、排斥、环流、螺旋、双极、行波、水平轨道与空心星环，也可挑战 45 秒捕星。",
     "category": "游戏",
     "tags": [
       "粒子",
@@ -12,11 +12,11 @@
       "解压"
     ],
     "style": "暗绿星空 · 萤火光轨",
-    "interaction": "按住拖动牵引粒子；限时捕星；画面留影",
+    "interaction": "八种粒子受力画法；限时捕星；画面留影",
     "created": "2026-10-26",
     "en": {
       "title": "Orbit Garden",
-      "description": "Guide stardust with your touch and draw your own cosmic trails, or try a 45-second star-catching challenge.",
+      "description": "Explore eight particle fields, from inward pull and repulsion to traveling waves and hollow rings, or try a 45-second star-catching challenge.",
       "style": "Deep green skies · Glowing trails",
       "tags": [
         "Particles",
@@ -30,7 +30,7 @@
     "slug": "story-fold",
     "title": "故事折叠机",
     "subtitle": "四张灵感卡，折出一个故事。",
-    "description": "抽取并锁定人物、场景、目标与转折，开启三分钟自由写作。草稿留在本机，作品可导出。",
+    "description": "八种题材、四类卡片，每类 12 条，合计 384 条灵感素材。抽完一轮再洗牌；锁定卡片，写作、保存草稿并导出。",
     "category": "文科",
     "tags": [
       "写作",
@@ -38,11 +38,11 @@
       "故事"
     ],
     "style": "暖色纸张拼贴 · 梅紫手账",
-    "interaction": "抽卡与锁卡组合故事；限时写作；本机草稿快照与文本导出",
+    "interaction": "八题材四类共 384 条卡片，抽尽洗牌与锁卡组合；限时写作、本机草稿快照与文本导出",
     "created": "2026-10-26",
     "en": {
       "title": "Story Fold",
-      "description": "Draw and lock character, setting, wish and twist cards to start a three-minute story. Keep drafts on your device and export your writing.",
+      "description": "Explore 384 prompt cards across eight genres, with 12 cards per category. Draw through each deck, lock favorites, write, save drafts, and export.",
       "style": "Warm paper collage · Plum notebook",
       "tags": [
         "Writing",
@@ -56,7 +56,7 @@
     "slug": "probability-rain",
     "title": "概率落雨",
     "subtitle": "把偶然，堆成规律。",
-    "description": "投下弹珠，调节每层向右的概率，对照实际直方图与二项分布，导出自己的实验数据。",
+    "description": "从八个实验起点观察二项分布，调节层数和向右概率；在对照台保留八次结果，比较均值、标准差与分布距离并导出。",
     "category": "理科",
     "tags": [
       "概率",
@@ -64,11 +64,11 @@
       "实验"
     ],
     "style": "蓝色实验纸 · 橙色弹珠 · 数据仪表",
-    "interaction": "调节层数与左右概率；累计投珠、暂停实验、对照理论分布并导出 CSV",
+    "interaction": "八个概率实验起点；自定参数与累计投珠；八次结果对照、均值与标准差及分布距离、CSV 导出",
     "created": "2026-10-26",
     "en": {
       "title": "Probability Rain",
-      "description": "Drop marbles, adjust the chance of turning right, compare the histogram with a binomial distribution, and export your experiment data.",
+      "description": "Explore eight binomial experiments. Keep up to eight results to compare sample sizes, means, standard deviations, and distribution distance, then export your data.",
       "style": "Blue lab paper · Orange marbles",
       "tags": [
         "Probability",
@@ -82,7 +82,7 @@
     "slug": "time-bento",
     "title": "时间便当",
     "subtitle": "先装重要的，再留一点空。",
-    "description": "把一天 24 小时装进可视化餐盒，管理事项时长、留白与超额，勾选完成进度并保存自己的时间配方。",
+    "description": "从工作、备考、居家、陪伴、出行等八份时间样例开始，把一天装进可视化餐盒，调整事项、留白与完成进度。",
     "category": "生活",
     "tags": [
       "时间",
@@ -90,11 +90,11 @@
       "便当"
     ],
     "style": "薄荷绿餐盒 · 珊瑚橙按钮 · 彩色时间图块",
-    "interaction": "添加与调整事项时长；图块分配时间、标记完成、重排撤销、本机保存与文本导出",
+    "interaction": "八份至少八项的时间样例；自定事项与时长、时间图块、完成进度、重排撤销、本机保存与文本导出",
     "created": "2026-10-26",
     "en": {
       "title": "Time Bento",
-      "description": "Pack a day into a visual 24-hour lunchbox. Plan activities, track completed time, and leave a little room for yourself.",
+      "description": "Start with eight day plans, from exam preparation and remote work to travel and caring. Adjust activities, track progress, and leave room in a visual 24-hour lunchbox.",
       "style": "Mint lunchbox · Coral accents",
       "tags": [
         "Time",
@@ -108,7 +108,7 @@
     "slug": "logic-patch",
     "title": "逻辑接线台",
     "subtitle": "拨动开关，让逻辑亮起来。",
-    "description": "切换四个输入，替换六种逻辑门，实时观察信号与真值表；从六张基础任务进阶到三张器件库存挑战。",
+    "description": "切换四个输入与六种逻辑门，观察真值表。十六张任务从基础判定进阶到十张库存约束挑战，寻找符合全部输入的等价接法。",
     "category": "工科",
     "tags": [
       "电路",
@@ -116,11 +116,11 @@
       "闯关"
     ],
     "style": "深色电路板 · 琥珀色器件 · 绿色信号线",
-    "interaction": "二进制开关与逻辑门替换；16行真值表、等价电路与库存约束闯关、本机任务记录和接线导出",
+    "interaction": "六张基础任务与十张库存挑战；16 行真值表、独立器件约束、等价电路、任务记录与接线导出",
     "created": "2026-10-26",
     "en": {
       "title": "Logic Patch",
-      "description": "Toggle four inputs and swap six types of logic gate. Explore truth tables, then take on three limited-inventory challenges after six starter tasks.",
+      "description": "Explore four inputs and six gate types across sixteen tasks, including ten inventory challenges that require equivalent circuits satisfying every input combination.",
       "style": "Dark circuit board · Amber components",
       "tags": [
         "Circuits",
@@ -134,7 +134,7 @@
     "slug": "light-path",
     "title": "折光小径",
     "subtitle": "让光，拐个弯。",
-    "description": "旋转镜片，让光束拾起全部星光并抵达终点。从六条独立光路进阶到三关联动镜片挑战，规划整条小径。",
+    "description": "十六关镜片谜题，从独立光路走到十镜联动迷宫；收集全部星光并控制操作预算，新增后段挑战最少需要六至十步。",
     "category": "游戏",
     "tags": [
       "镜片",
@@ -142,11 +142,11 @@
       "解谜"
     ],
     "style": "午夜紫棋盘 · 青色镜片 · 金色光束",
-    "interaction": "独立镜片与联动镜片的路径规划；星光收集、操作预算、撤销重试、本机纪录与 SVG 光路导出",
+    "interaction": "十六张不同光路；独立与联动镜片、星光收集与操作预算、可放大棋盘、撤销、本机纪录和 SVG 导出",
     "created": "2026-10-27",
     "en": {
       "title": "Light Path",
-      "description": "Turn mirrors to collect every star and guide the beam home. Explore six paths, then plan ahead in three linked-mirror challenges.",
+      "description": "Explore sixteen mirror puzzles, from simple paths to ten-mirror mazes. Collect every star and plan linked moves; new advanced paths require six to ten moves.",
       "style": "Midnight purple · Cyan mirrors · Golden light",
       "tags": [
         "Mirrors",
@@ -160,17 +160,25 @@
     "slug": "erasure-poems",
     "title": "留白诗笺",
     "subtitle": "留下一些词，让空白成为诗。",
-    "description": "从短文中挑词，保留原有顺序，用留白与换行写一首小诗。三篇中英底稿，也可以带来自己的文字。",
+    "description": "从十篇原创中英底稿中挑词，保留顺序，用留白与换行写诗；涵盖邮路、种子、修理铺、市场与天台观测，也可自带短文。",
     "category": "文科",
-    "tags": ["诗歌", "留白", "选词"],
+    "tags": [
+      "诗歌",
+      "留白",
+      "选词"
+    ],
     "style": "米色书页 · 墨黑遮盖 · 朱红批注",
-    "interaction": "顺序选词的删减式诗歌创作；遮盖阅读、逐词换行、自带底稿、分稿保存与 TXT/SVG 诗笺导出",
+    "interaction": "十篇原创中英底稿的删减式诗歌创作；选词、遮盖阅读、换行、自带底稿、分稿保存与 TXT/SVG 导出",
     "created": "2026-10-28",
     "en": {
       "title": "Erasure Poems",
-      "description": "Find a poem inside a passage. Keep the words in order, shape the lines, and leave space. Try three bilingual sources or bring your own text.",
+      "description": "Find poems in ten original bilingual passages, from mountain mail and seed archives to repair shops and rooftop observations. Keep words in order or bring your own text.",
       "style": "Cream pages · Black ink · Vermilion notes",
-      "tags": ["Poetry", "White space", "Words"]
+      "tags": [
+        "Poetry",
+        "White space",
+        "Words"
+      ]
     }
   },
   {
@@ -178,17 +186,25 @@
     "slug": "pack-pick",
     "title": "行囊取舍",
     "subtitle": "把必需带上，给轻松留点空间。",
-    "description": "同时考虑随身包的重量与空间，保留必带物品，按重要度挑选可选组合，再逐项打包。清单可备份带走。",
+    "description": "八份打包样例覆盖徒步、海边、通勤、摄影和野餐等场景；同时考虑重量与空间，保留必带物品，比较可选组合并逐项打包。",
     "category": "生活",
-    "tags": ["行囊", "取舍", "清单"],
+    "tags": [
+      "行囊",
+      "取舍",
+      "清单"
+    ],
     "style": "雾蓝行李牌 · 橙色封签 · 双容量仪表",
-    "interaction": "重量与空间双约束的整组取舍；锁定必带、数量与重要度、打包进度、可撤销建议以及 TXT/JSON 备份导入导出",
+    "interaction": "八份至少八项的场景清单；双容量整组取舍、必带、数量和重要度、打包进度、建议撤销及 TXT/JSON 备份",
     "created": "2026-10-29",
     "en": {
       "title": "Pack & Pick",
-      "description": "Balance weight and space, keep essentials, and choose optional items by your own priorities. Pack piece by piece and take a backup of your list.",
+      "description": "Start with eight packing lists, from hikes and beach trips to commuting and photo walks. Balance weight and space, keep essentials, compare choices, and track packing.",
       "style": "Mist-blue luggage tags · Orange seals · Dual capacity meters",
-      "tags": ["Packing", "Choices", "Checklists"]
+      "tags": [
+        "Packing",
+        "Choices",
+        "Checklists"
+      ]
     }
   }
 ]

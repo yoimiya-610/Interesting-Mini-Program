@@ -75,3 +75,5 @@ globalThis.ProgramEnglish={
   "让": "make ",
   "001 · 引力花园 · Orbit Garden": "001 · Orbit Garden"
 };
+
+Object.assign(globalThis.ProgramEnglish,{"八种引力画法":"Eight ways to draw with force","这是艺术粒子场，不是真实力学模拟；捕星使用指尖聚拢。":"These artistic particle fields are not a physical simulation. Star catching uses the inward pull."});

@@ -4,6 +4,18 @@
 
 ## 2026-10-29
 
+### More to explore in 001–008
+
+- **001 Orbit Garden:** eight different particle-force behaviors: attraction, repulsion, circular flow, spiral, two poles, traveling wave, horizontal rail, and hollow ring. Star catching keeps its original inward pull. These are artistic fields, not physical simulations.
+- **002 Story Fold:** eight genres with four decks of twelve cards each (384 cards). New genres include historical fiction, science fiction, journeys, comedy, and fables. Each deck is drawn through before reshuffling; locked cards and writing are preserved.
+- **003 Probability Rain:** eight guided experiment starting points and a comparison desk for up to eight results. Compare sample size, observed/theoretical mean and standard deviation, and total variation distance; export comparisons as CSV. Comparisons last for the current page session. The distance is descriptive, not a significance test, and need not decrease after every additional sample.
+- **004 Time Bento:** eight editable plans with at least eight activities each, including exam preparation, working from home, caring, travel, and creative work. Existing plans, undo, and local records remain usable.
+- **005 Logic Patch:** sixteen tasks, including ten inventory challenges. Seven new targets have different truth tables and exactly one inventory-valid circuit each; satisfying the truth table alone still does not bypass inventory.
+- **006 Light Path:** sixteen paths with seven new ten-mirror boards. Each new board has one complete optical solution; minimum linked-control counts are 6, 7, 8, 8, 9, 9, and 10. Enlarge the board and scroll within its viewport for closer inspection.
+- **007 Erasure Poems:** ten original bilingual passages spanning everyday life, making, nature, travel, and observation. Each source has aligned words, an editable example, and its own saved draft. Custom writing and titles stay as written.
+- **008 Pack & Pick:** eight editable packing templates with at least eight item groups each, including hikes, beach trips, commuting, photo walks, and picnics. Template measurements are illustrative; adjust them to your own items and capacity.
+- Validation covers deck exhaustion and translation coverage, complete source examples, template validity, distinct finite particle forces, probability comparison calculations, exhaustive circuit search, and independent breadth-first searches of mirror states. Browser checks cover new content, Chinese/English, keyboard controls, mobile layouts, local records, exports, and offline files.
+
 ### 008 行囊取舍
 
 - 同时设置重量和空间上限，为物品填写单件数值、数量和整组重要度，保留必带物品，再比较可选组合。建议先预览再采用，不会默默修改清单；必带已超额时明确提示。

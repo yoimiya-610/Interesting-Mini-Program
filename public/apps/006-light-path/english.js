@@ -55,7 +55,7 @@ globalThis.ProgramEnglish={
   "03 / 留下这一条小径": "03 / Keep your path",
   "选择任一关都可以开始；切换或重置不清除已完成纪录。SVG 可离线打开或分享。这是格子谜题，不是光学模拟；清除浏览器数据后，本机纪录不会保留。": "Start at any level. Switching or resetting keeps completed records. Open or share exported SVGs offline. This is a grid puzzle, not an optics simulation. Clearing browser data removes local records.",
   "006 / 游戏 · 镜片谜题 · 完全本地": "006 / Games · Mirror puzzles · Offline",
-  "006 折光小径：旋转镜片，让光束经过所有星光并抵达终点。九个格子谜题，支持撤销、本机进度与 SVG 光路导出。": "006 Light Path: turn mirrors to collect every star and reach the goal. Nine grid puzzles with undo, local progress and SVG export.",
+  "006 折光小径：旋转镜片，让光束经过所有星光并抵达终点。十六个格子谜题，支持撤销、本机进度与 SVG 光路导出。": "006 Light Path: turn mirrors to collect every star and reach the goal. Sixteen grid puzzles with undo, local progress and SVG export.",
   "光路棋盘": "Light-path board",
   "进度与最佳次数已保存在本机。撤销历史不跨刷新保留。": "Progress and best move counts saved locally. Undo history does not survive reloads.",
   "本机保存不可用；仍可游玩并导出 SVG 留存光路。": "Local saving unavailable. You can still play and export SVG paths.",
@@ -106,3 +106,15 @@ globalThis.ProgramEnglish={
   "已完成": "Complete",
   "006 · 折光小径 · Light Path": "006 · Light Path"
 };
+
+Object.assign(globalThis.ProgramEnglish, {
+  "潮港折线": "Harbor switchbacks",
+  "梯田回声": "Terrace echoes",
+  "峡谷回旋": "Ravine turns",
+  "钟楼回廊": "Clockwork gallery",
+  "十镜书库": "Ten-mirror archive",
+  "夜车换轨": "Night-train junctions",
+  "星环迷宫": "Starlit labyrinth"
+});
+
+Object.assign(globalThis.ProgramEnglish, {"放大棋盘":"Enlarge board","适应窗口":"Fit to window","棋盘视窗；放大后可横向滚动":"Board viewport; scroll horizontally when enlarged"});

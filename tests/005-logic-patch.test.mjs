@@ -18,7 +18,7 @@ test('六张任务的规则正确，等价接法通过，不只检查当前输�
 
 test('库存挑战独立校验条件，穷举所有电路确认可解且拒绝超库存捷径',()=>{
   const predicates=[b=>Number(b[0]===b[1]&&b[2]===b[3]),b=>Number(Boolean(b[0]&&b[1])===Boolean(b[2]||b[3])),b=>Number(b[0]!==b[1]?!(b[2]||b[3]):Boolean(b[2]||b[3]))];
-  const counts=[];for(const [i,puzzle] of PUZZLES.slice(6).entries()){
+  const counts=[];for(const [i,puzzle] of PUZZLES.slice(6,9).entries()){
     assert(truthTable(puzzle.gates).every(row=>row.y===predicates[i](row.bits)));assert.equal(assess(puzzle.gates,puzzle).matches,16);assert.equal(assess(puzzle.gates,puzzle).passed,false,'直接照搬目标门应违反库存');
     let solutions=0;for(const a of NAMES)for(const b of NAMES)for(const c of NAMES){const types=[a,b,c],functional=truthTable(types).every(row=>row.y===predicates[i](row.bits)),withinStock=NAMES.every(name=>types.filter(t=>t===name).length<=(puzzle.stock[name]||0));assert.equal(assess(types,puzzle).passed,functional&&withinStock);if(functional&&withinStock)solutions++;}counts.push(solutions);
   }assert.deepEqual(counts,[1,1,2]);assert.equal(inventory(['XOR','XOR','NOR'],PUZZLES[6]).valid,true);assert.equal(inventory(['XNOR','XNOR','AND'],PUZZLES[6]).valid,false);assert.equal(assess(DEFAULT,PUZZLES[8]).passed,false);assert.throws(()=>inventory(['BAD'],PUZZLES[6]),RangeError);

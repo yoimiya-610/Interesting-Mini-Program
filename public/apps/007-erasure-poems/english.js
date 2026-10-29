@@ -12,7 +12,7 @@ globalThis.ProgramEnglish={
   '文科 / 文字创作':'HUMANITIES / WORD ART',
   '01 / 找到你的词':'01 / Find your words',
   '选择底稿（分别保留草稿）':'Choose a source (drafts kept separately)',
-  '三篇内置原创短文提供中英对应词语。也可以使用自己的短文；自填内容保持原文。':'Three original passages offer paired Chinese and English words. You can also bring your own text; your writing stays as written.',
+  '十篇内置原创短文提供中英对应词语。也可以使用自己的短文；自填内容保持原文。':'Ten original passages offer paired Chinese and English words. You can also bring your own text; your writing stays as written.',
   '试一首示例':'Try an example',
   '遮住未选词':'Cover unselected words',
   '显示全部词语':'Show all words',
