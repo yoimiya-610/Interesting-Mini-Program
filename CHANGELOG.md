@@ -4,6 +4,13 @@
 
 ## 2026-10-29
 
+### 008 Pack & Pick: keep deliberately edited item names
+
+- An item renamed to an existing Chinese or English template label now stays exactly as entered when changing language, reloading, previewing a selection, or exporting and restoring a backup.
+- Editing only a template item's measurements still keeps its bilingual label. Existing version-1 records and backups remain compatible; item quantities, selections, and packed marks are preserved.
+- The background guide adds a referenced example of early discrete-optimization research, distinguishing that history from this app's packing controls and avoiding an inventor claim for travel packing.
+- Regression coverage exercises both naming paths, undo, saved records, TXT/JSON exports, and backup import on desktop and mobile.
+
 ### Background guides throughout the collection
 
 - All eight apps now offer contextual reading: the existing Logic Patch primer is joined by seven Chinese/English guides with examples, uses, references, and clear model boundaries. Compact entries sit beside the activity or in its adjacent panel; extended reading is optional and does not alter user work.
