@@ -2,6 +2,17 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-10-31
+
+### 010 Critical Path Desk
+
+- Explore eight complete projects with 79 bilingual tasks: a community exhibition, repair workshop, zine, environment logger, shared dinner, rooftop garden, interview episode, and school science day. Each has different dependencies and an exploration prompt.
+- Edit up to 24 tasks, durations, and finish-to-start dependencies. Inspect earliest and latest schedules, total/free float, all critical tasks, critical connections, and the number of longest paths. Cycles are rejected without overwriting the network. This engineering workbench explores precedence and parallelism rather than daily time allocation or packing choices.
+- Preview a duration change across the whole network before adopting it, inspect each task’s independent one-unit acceleration, compare eight saved networks, and undo thirty recent changes. Custom names and titles remain as entered; language changes preserve unapplied edits.
+- Export an SVG timeline, a CSV calculation table, or a strict version-1 JSON backup. Invalid, cyclic, or oversized imports preserve existing work; successful replacement can be undone. Applied networks and saved versions stay in this browser; drafts, previews, and undo history do not survive reloads.
+- The bilingual contextual guide introduces dependencies, early/late times, float, multiple critical paths, an exhibition example, Kelley and Walker’s related work, and model limits. Durations use abstract units, all tasks are required, and resources are assumed sufficient. There are no calendars, staffing constraints, costs, or probabilistic estimates.
+- Validation coverage includes independent exhaustive-path comparisons on every template and 200 generated networks, float thresholds and tied paths, backup rejection and restoration, real SVG/CSV exports, and desktop/mobile bilingual editing, previews, versions, keyboard controls, and offline use.
+
 ## 2026-10-30
 
 ### 009 Wave Workshop
