@@ -214,7 +214,11 @@
     "subtitle": "把简单的波，合成自己的形状。",
     "description": "从八个探索起点编辑十六路谐波的振幅、相位与参与状态，观察波形和频谱、比较八份方案，试听并导出声音与数据。",
     "category": "理科",
-    "tags": ["波形", "谐波", "声音"],
+    "tags": [
+      "波形",
+      "谐波",
+      "声音"
+    ],
     "style": "浅绿实验台 · 紫色合成线 · 青绿参考谱",
     "interaction": "八个谐波探索起点；十六路振幅相位、独奏和截断；精确 RMS 与波形参考、八份本机方案、试听及 WAV/SVG/CSV/JSON 导出",
     "created": "2026-10-30",
@@ -222,7 +226,37 @@
       "title": "Wave Workshop",
       "description": "Edit sixteen harmonics from eight starting points. Explore amplitude and phase, compare eight saved versions, listen, and export audio, plots, data, and backups.",
       "style": "Pale green lab · Purple wave sum · Teal references",
-      "tags": ["Waves", "Harmonics", "Sound"]
+      "tags": [
+        "Waves",
+        "Harmonics",
+        "Sound"
+      ]
+    }
+  },
+  {
+    "id": "010",
+    "slug": "critical-path",
+    "title": "关键路径台",
+    "subtitle": "找出牵动全局的那一条线。",
+    "description": "从八份项目底稿编辑任务、工时与依赖，找出关键路径和可用时差，试算变化、保存八份版本并导出时间图与计算表。",
+    "category": "工科",
+    "tags": [
+      "项目",
+      "依赖",
+      "关键路径"
+    ],
+    "style": "米色工程纸 · 铁蓝时间条 · 砖红关键线",
+    "interaction": "八份含 8–12 项任务的依赖网络；24 项可编辑任务、早晚安排和两种时差、单项工时试算与加速影响、八份本机对照版本、撤销与 SVG/CSV/JSON 导出",
+    "created": "2026-10-31",
+    "en": {
+      "title": "Critical Path Desk",
+      "description": "Edit tasks, durations, and dependencies in eight projects. Find critical paths and float, preview changes, compare eight saved versions, and export timelines and calculations.",
+      "style": "Cream engineering paper · Steel-blue bars · Brick-red critical work",
+      "tags": [
+        "Projects",
+        "Dependencies",
+        "Critical paths"
+      ]
     }
   }
 ]
