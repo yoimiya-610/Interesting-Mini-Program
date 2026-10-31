@@ -2,6 +2,17 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-01
+
+### 011 Measure Quest
+
+- Play sixteen complete pouring puzzles, moving from two-vessel remainders to closed-water conservation, four simultaneous goals, and restricted two-way pipe networks. Every effective action pours to an empty/full boundary; arbitrary partial pours are not allowed.
+- The six late pipe puzzles require at least 10, 11, 12, 12, 13, and 14 moves. Their constraints remove genuine shortcuts: the final board takes 14 moves with its ring pipes and 4 without them. Every reachable state on every board still has a route to its goal; there are no irreversible dead ends or timers.
+- Keep separate independent and assisted records, with gold marks for independent shortest routes. Optional hints reveal one next move and mark the current attempt as assisted. Undo/redo, per-puzzle attempts, a complete action log, and original strategy notes support repeat play. Longer solutions still count as finishes.
+- A separate two-vessel divisibility experiment and bilingual contextual guide explain states, capacity, conservation, greatest common divisors, shortest-path search, related teaching authors, and the limits of idealized integer pours. Pictures show fractions of individual capacities rather than physical vessel scale.
+- Export the current log as TXT or all attempts, redo moves, records, and notes as a compact version-1 JSON backup. Imports replay and verify every stored move/record, reject bad or oversized files atomically, and can be undone before further activity in the same visit. Records stay in this browser; clearing browser data removes them. Each attempt allows 200 moves, with undo/restart available at the limit.
+- Validation includes independent unit-by-unit pouring over every reachable state, exhaustive shortest routes and pipe-removal comparisons, restoration and maximum-backup boundaries, representative early/middle/late browser play, keyboard controls, bilingual preservation, actual downloads/imports, responsive layouts, and offline files with blocked storage.
+
 ## 2026-10-31
 
 ### 010 Critical Path Desk: complete timeline exports

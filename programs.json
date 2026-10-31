@@ -258,5 +258,31 @@
         "Critical paths"
       ]
     }
+  },
+  {
+    "id": "011",
+    "slug": "measure-quest",
+    "title": "瓶中分寸",
+    "subtitle": "把刚刚好，倒进每个瓶子。",
+    "description": "十六关倒水谜题，从双容器余量到四容器受限管路；规划空位，满足全部目标，挑战后段最少 10–14 步的路线。",
+    "category": "游戏",
+    "tags": [
+      "量水",
+      "规划",
+      "解谜"
+    ],
+    "style": "浅绿陶瓷桌 · 蓝绿水位 · 蜂蜜色目标线",
+    "interaction": "十六个精确量水目标；无限水源、闭合守恒、四容器中转与受限管路；独立和辅助成绩、撤销重做、单步提示、数论试验与 TXT/JSON 备份",
+    "created": "2026-11-01",
+    "en": {
+      "title": "Measure Quest",
+      "description": "Solve sixteen pouring puzzles, from two-vessel remainders to four-vessel pipe networks. Plan empty space, meet every target, and tackle late routes requiring 10–14 moves.",
+      "style": "Pale green ceramics · Teal water · Honey-colored target lines",
+      "tags": [
+        "Measuring",
+        "Planning",
+        "Puzzles"
+      ]
+    }
   }
 ]

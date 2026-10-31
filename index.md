@@ -14,5 +14,6 @@
 | 008 | 行囊取舍 | 生活 | 把必需带上，给轻松留点空间。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/008-pack-pick/) | [本地](http://127.0.0.1:4173/apps/008-pack-pick/) | [HTML](public/apps/008-pack-pick/index.html) | 2026-10-29 |
 | 009 | 波形工坊 | 理科 | 把简单的波，合成自己的形状。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/009-wave-workshop/) | [本地](http://127.0.0.1:4173/apps/009-wave-workshop/) | [HTML](public/apps/009-wave-workshop/index.html) | 2026-10-30 |
 | 010 | 关键路径台 | 工科 | 找出牵动全局的那一条线。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/010-critical-path/) | [本地](http://127.0.0.1:4173/apps/010-critical-path/) | [HTML](public/apps/010-critical-path/index.html) | 2026-10-31 |
+| 011 | 瓶中分寸 | 游戏 | 把刚刚好，倒进每个瓶子。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/011-measure-quest/) | [本地](http://127.0.0.1:4173/apps/011-measure-quest/) | [HTML](public/apps/011-measure-quest/index.html) | 2026-11-01 |
 
 点击“体验”即可在线打开；下载仓库后，也可以通过“HTML”打开本地文件。使用方法与数据保存说明见[项目介绍](README.md)。感谢你来玩。
