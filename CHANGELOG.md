@@ -4,6 +4,12 @@
 
 ## 2026-10-31
 
+### 010 Critical Path Desk: complete timeline exports
+
+- SVG timelines now keep full task names and project titles, including long Chinese, English, and emoji text. Labels wrap without splitting graphemes, and rows grow to keep them clear of neighboring work.
+- Duration values use a separate readable column, so a short task remains legible beside a much longer task. Critical work is labeled in text as well as color; the final time-axis value is included.
+- Existing networks, saved versions, backups, calculations, and CSV exports remain compatible. Regression checks cover all built-in labels, long custom writing, both languages, 24-task networks, export bounds, and saved-record preservation.
+
 ### 010 Critical Path Desk
 
 - Explore eight complete projects with 79 bilingual tasks: a community exhibition, repair workshop, zine, environment logger, shared dinner, rooftop garden, interview episode, and school science day. Each has different dependencies and an exploration prompt.
