@@ -71,16 +71,37 @@
   function template(key){const t=TEMPLATES.find(t=>t.key===key);if(!t)return null;return {title:'',tasks:copy(t.tasks)};}
   const escape=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
   const name=(t,lang)=>lang==='en'&&t.en!==null?t.en:t.name;
+  // Conservative widths keep long local-script labels readable without a font dependency.
+  // Wrap whole graphemes and retain every character, including inter-word spaces.
+  function lines(value,width){
+    const clusters=[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(value)].map(s=>s.segment);
+    const size=s=>/^[\x20-\x7e]$/.test(s)?(/[MWmw]/.test(s)?16:/[A-Z]/.test(s)?12:/[ il.,:;!|'`]/.test(s)?6:10):20,out=[];
+    for(let at=0;at<clusters.length;){
+      let end=at,total=0,space=-1;
+      while(end<clusters.length&&(end===at||total+size(clusters[end])<=width)){total+=size(clusters[end]);if(clusters[end]===' ')space=end;end++;}
+      if(end<clusters.length&&space>=at+(end-at)/2)end=space+1;
+      out.push(clusters.slice(at,end).join(''));at=end;
+    }
+    return out.length?out:[''];
+  }
   function svg(project,lang='en',width=1000){
     const a=analyze(project.tasks);if(a.error)throw new Error('Invalid graph');
-    const w=Math.max(640,width),left=200,right=50,scale=(w-left-right)/a.finish,h=100+project.tasks.length*44;
-    let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" role="img"><title>${escape(project.title||'010 · Critical Path Desk')}</title><rect width="${w}" height="${h}" fill="#faf7ef"/><g font-family="Arial,SimHei,sans-serif" font-size="16" fill="#25363e"><text x="16" y="25">${escape(project.title||'010 · Critical Path Desk')}</text>`;
-    const step=Math.max(1,Math.ceil(a.finish/8));for(let t=0;t<=a.finish;t+=step){const x=left+t*scale;s+=`<path d="M${x} 46V${h-20}" stroke="#d7d8cf"/><text x="${x}" y="43">${t}</text>`;}
-    for(let i=0;i<project.tasks.length;i++){const t=project.tasks[i],r=a.rows[t.id],y=62+i*44;
-      s+=`<text x="12" y="${y+16}">${escape(t.id+' '+name(t,lang).slice(0,18))}</text><rect x="${left+r.es*scale}" y="${y}" width="${t.duration*scale}" height="25" rx="4" fill="${r.critical?'#b84b35':'#387583'}"/><text x="${left+r.es*scale+5}" y="${y+18}" fill="white">${t.duration}</text>`;
-      if(r.float)s+=`<path d="M${left+r.ef*scale} ${y+13}H${left+r.lf*scale}" stroke="#387583" stroke-width="3" stroke-dasharray="4 4"/>`;
+    const w=Math.max(760,width),left=Math.min(340,w*.4),right=48,scale=(w-left-right)/a.finish;
+    const title=project.title||(lang==='en'?'010 · Critical Path Desk':'010 · 关键路径台'),titleLines=lines(title,w-32),top=titleLines.length*24+80;
+    const rows=project.tasks.map(t=>({task:t,label:lines(t.id+' '+name(t,lang),left-110)}));
+    const h=top+rows.reduce((sum,row)=>sum+Math.max(70,row.label.length*22+34),0)+50;
+    const multiline=(parts,x,y,role,id='')=>`<text data-role="${role}"${id?` data-task-id="${id}"`:''} xml:space="preserve">${parts.map((line,i)=>`<tspan x="${x}" y="${y+i*22}">${escape(line)}</tspan>`).join('')}</text>`;
+    let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" role="img"><title>${escape(title)}</title><rect width="${w}" height="${h}" fill="#faf7ef"/><g font-family="Arial,SimHei,sans-serif" font-size="16" fill="#25363e">${multiline(titleLines,16,28,'project-title')}<text x="16" y="${top-38}">${lang==='en'?'Task / start → finish':'任务 / 开始 → 结束'}</text><text x="${left-16}" y="${top-38}" text-anchor="end">${lang==='en'?'Duration':'工时'}</text>`;
+    const step=Math.max(1,Math.ceil(a.finish/8)),ticks=[];for(let t=0;t<a.finish;t+=step)ticks.push(t);ticks.push(a.finish);
+    for(const t of ticks){const x=left+t*scale;s+=`<path d="M${x} ${top-10}V${h-50}" stroke="#d7d8cf"/><text x="${x}" y="${top-18}" text-anchor="middle">${t}</text>`;}
+    let y=top;
+    for(const {task:t,label}of rows){const r=a.rows[t.id],height=Math.max(70,label.length*22+34),barY=y+height/2-12;
+      const status=(r.critical?(lang==='en'?'Critical':'关键'):(lang==='en'?'Float ':'总时差 ')+r.float)+' · '+r.es+' → '+r.ef;
+      s+=multiline(label,16,y+18,'task-label',t.id)+`<text data-role="task-status" x="16" y="${y+label.length*22+20}">${status}</text><rect data-task-bar="${t.id}" x="${left+r.es*scale}" y="${barY}" width="${Math.max(.5,t.duration*scale)}" height="25" rx="2" fill="${r.critical?'#b84b35':'#387583'}"/><text data-role="task-duration" x="${left-16}" y="${barY+18}" text-anchor="end">${t.duration}</text>`;
+      if(r.float)s+=`<path d="M${left+r.ef*scale} ${barY+13}H${left+r.lf*scale}" stroke="#387583" stroke-width="3" stroke-dasharray="4 4"/>`;
+      y+=height;
     }
-    s+=`<text x="12" y="${h-5}">${lang==='en'?'Solid: duration · Dashed: total float · Red: critical':'实线：工时 · 虚线：总时差 · 红色：关键任务'}</text></g></svg>`;return s;
+    s+=`<text x="16" y="${h-18}">${lang==='en'?'Solid: duration · Dashed: total float · Red + label: critical':'实线：工时 · 虚线：总时差 · 红色与文字：关键任务'}</text></g></svg>`;return s;
   }
   function csv(project,lang='en'){
     const a=analyze(project.tasks),cell=x=>'"'+String(x).replaceAll('"','""')+'"';

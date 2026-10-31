@@ -43,3 +43,9 @@ test('Malformed graphs and backups are rejected atomically; titles and custom bi
 test('CSV exposes real early/late and float data; SVG escapes custom content and renders the calculated schedule',()=>{
  const p=plain(C.template('exhibit'));p.title='<Mine> & "project"';p.tasks[0].name='a,"b"';p.tasks[0].en=null;const svg=C.svg(p);assert(svg.includes('&lt;Mine&gt; &amp; &quot;project&quot;'));assert(!svg.includes('<Mine>'));assert.equal((svg.match(/<rect /g)||[]).length,9);const csv=C.csv(p);assert(csv.includes('"a,""b"""'));assert(csv.includes('"T3","Confirm venue","3","T1","2","5","7","10","5","0","false"'));
 });
+test('SVG keeps complete built-in and custom labels, wraps titles and preserves whole graphemes',()=>{
+ const p=plain(C.template('sensor'));p.title='完整项目标题'.repeat(10)+' <&> 🧭';p.tasks[0].name='项目任务'.repeat(14)+' 👩‍🔬 end';p.tasks[0].en=null;
+ const escaped=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+ for(const width of [760,1000])for(const lang of ['zh','en']){const svg=C.svg(p,lang,width),visible=svg.replace(/<[^>]*>/g,'');assert(visible.includes(escaped(p.title)));for(const t of p.tasks)assert(visible.includes(escaped(t.id+' '+C.name(t,lang))));assert(svg.includes('👩‍🔬'));assert(!svg.includes('👩</tspan>'));assert.equal((svg.match(/data-role="task-duration"/g)||[]).length,p.tasks.length);assert(svg.includes('text-anchor="end"'));}
+ for(const t of C.TEMPLATES){const p=C.template(t.key),visible=C.svg(p).replace(/<[^>]*>/g,'');for(const task of p.tasks)assert(visible.includes(task.id+' '+task.en));}
+});
