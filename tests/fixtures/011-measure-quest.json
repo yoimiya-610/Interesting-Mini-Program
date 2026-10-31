@@ -1,0 +1,308 @@
+[
+  {
+    "id": "first",
+    "minimum": 2,
+    "reachable": 16,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "f1",
+      "p10"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "remainder",
+    "minimum": 4,
+    "reachable": 18,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "f1",
+      "p10",
+      "e0",
+      "p10"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "four",
+    "minimum": 6,
+    "reachable": 16,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "f1",
+      "p10",
+      "e0",
+      "p10",
+      "f1",
+      "p10"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "return",
+    "minimum": 8,
+    "reachable": 22,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "f0",
+      "p01",
+      "f0",
+      "p01",
+      "e1",
+      "p01",
+      "f0",
+      "p01"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "halves",
+    "minimum": 7,
+    "reachable": 16,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p12",
+      "p20",
+      "p12",
+      "p01",
+      "p12",
+      "p20"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "reserve",
+    "minimum": 8,
+    "reachable": 18,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p02",
+      "p21",
+      "p02",
+      "p21",
+      "p10",
+      "p21",
+      "p02",
+      "p21"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "equal",
+    "minimum": 9,
+    "reachable": 20,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p12",
+      "p20",
+      "p12",
+      "p20",
+      "p12",
+      "p01",
+      "p12",
+      "p20"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "twelve",
+    "minimum": 11,
+    "reachable": 24,
+    "optimalRoutes": 1,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p12",
+      "p20",
+      "p12",
+      "p01",
+      "p12",
+      "p20",
+      "p12",
+      "p01",
+      "p12",
+      "p20"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "four-way",
+    "minimum": 9,
+    "reachable": 108,
+    "optimalRoutes": 4,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p12",
+      "p23",
+      "p31",
+      "p23",
+      "p12",
+      "p23",
+      "p30",
+      "p13"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "small-pair",
+    "minimum": 10,
+    "reachable": 135,
+    "optimalRoutes": 3,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p12",
+      "p23",
+      "p31",
+      "p23",
+      "p12",
+      "p23",
+      "p30",
+      "p23",
+      "p30"
+    ],
+    "unrestrictedMinimum": null
+  },
+  {
+    "id": "hub",
+    "minimum": 10,
+    "reachable": 33,
+    "optimalRoutes": 4,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p02",
+      "p10",
+      "p03",
+      "p01",
+      "p30",
+      "p02",
+      "p03",
+      "p10",
+      "p20"
+    ],
+    "unrestrictedMinimum": 5
+  },
+  {
+    "id": "fork",
+    "minimum": 11,
+    "reachable": 74,
+    "optimalRoutes": 6,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p12",
+      "p01",
+      "p13",
+      "p21",
+      "p10",
+      "p31",
+      "p01",
+      "p13",
+      "p21",
+      "p31"
+    ],
+    "unrestrictedMinimum": 5
+  },
+  {
+    "id": "junction",
+    "minimum": 12,
+    "reachable": 74,
+    "optimalRoutes": 4,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p12",
+      "p01",
+      "p21",
+      "p13",
+      "p10",
+      "p31",
+      "p12",
+      "p13",
+      "p21",
+      "p01",
+      "p12"
+    ],
+    "unrestrictedMinimum": 5
+  },
+  {
+    "id": "around",
+    "minimum": 12,
+    "reachable": 135,
+    "optimalRoutes": 3,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p03",
+      "p12",
+      "p01",
+      "p30",
+      "p23",
+      "p30",
+      "p23",
+      "p12",
+      "p01",
+      "p30",
+      "p23"
+    ],
+    "unrestrictedMinimum": 7
+  },
+  {
+    "id": "two-ones",
+    "minimum": 13,
+    "reachable": 151,
+    "optimalRoutes": 12,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p03",
+      "p32",
+      "p03",
+      "p12",
+      "p10",
+      "p23",
+      "p21",
+      "p32",
+      "p03",
+      "p32",
+      "p21",
+      "p10"
+    ],
+    "unrestrictedMinimum": 9
+  },
+  {
+    "id": "last-drop",
+    "minimum": 14,
+    "reachable": 135,
+    "optimalRoutes": 7,
+    "statesWithoutRoute": 0,
+    "solution": [
+      "p01",
+      "p03",
+      "p12",
+      "p10",
+      "p21",
+      "p32",
+      "p03",
+      "p32",
+      "p21",
+      "p10",
+      "p21",
+      "p32",
+      "p03",
+      "p32"
+    ],
+    "unrestrictedMinimum": 4
+  }
+]
