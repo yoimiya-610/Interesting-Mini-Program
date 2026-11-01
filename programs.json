@@ -284,5 +284,23 @@
         "Puzzles"
       ]
     }
+  },
+  {
+    "id": "012",
+    "slug": "argument-loom",
+    "title": "论证织台",
+    "subtitle": "把观点摊开，让理由彼此相连。",
+    "description": "八份完整论证案例，展开主张、依据与推理桥梁；用三十二个追问检视条件，改写六张卡，保存八份版本并逐字对照。",
+    "category": "文科",
+    "tags": ["论证", "写作", "思辨"],
+    "style": "奶油纸卡 · 蓝墨理由 · 赭红桥梁",
+    "interaction": "八份六卡双语案例与三十二个专属追问；独立草稿、原文改写、八份版本逐字对照、撤销和 TXT/JSON 备份",
+    "created": "2026-11-02",
+    "en": {
+      "title": "Argument Loom",
+      "description": "Explore eight complete arguments through six role cards and thirty-two pressure questions. Revise assumptions and scope, compare eight saved versions, and export your writing.",
+      "style": "Cream cards · Blue-ink reasons · Rust-colored bridges",
+      "tags": ["Arguments", "Writing", "Reasoning"]
+    }
   }
 ]
