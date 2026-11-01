@@ -2,6 +2,17 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-02
+
+### 012 Argument Loom
+
+- Examine eight original fictional cases: library opening, museum labels, reading-group turns, shared-room quiet hours, seed provenance, repair-event notes, notice boards, and writing-group drafts. Each contains six bilingual role cards, an alternative view, and four specific pressure questions: 48 complete cards and 32 questions in total.
+- Make the connection between grounds and a claim explicit, then revise its assumptions, supporting principles, scope, and possible exceptions. This argument-analysis workbench offers a different activity from random writing prompts or erasure poetry. Counts show writing present, never truth, soundness, or the quality of a position; optional roles need not be filled.
+- Keep separate drafts for all eight cases and an empty workspace. Applied rewrites, titles, notes, and all four responses retain their original wording across languages. Compare the exact text of six cards against any of eight independent saved versions; undo the thirty most recent changes during the current visit.
+- A bilingual guide introduces Toulmin's related framework, its six perspectives, a concrete example, practical uses, and limits. All case observations are invented practice material, not research findings. Real arguments require verified, attributed sources and fair attention to other views.
+- Export the current argument and all responses as TXT, or all draft spaces and saved versions as a compact version-1 JSON backup. Invalid or oversized imports preserve existing work; successful replacement is undoable. Imports are limited to 1 MB, cards to 800 characters, notes to 1,500, and each response to 600. Browser records do not sync; clearing browser data removes them. Unapplied card edits and undo history do not survive reloads.
+- Validation covers content completeness, literal custom text, strict restoration, maximum-size Unicode backups, actual desktop/mobile editing and downloads, comparison and undo, conflicting asynchronous imports, bilingual background reading, keyboard controls, and offline files with unavailable storage.
+
 ## 2026-11-01
 
 ### 011 Measure Quest
