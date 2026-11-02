@@ -15,7 +15,7 @@ globalThis.ProgramEnglish={
  '保存当前版本':'Save this version','06 / 六张卡逐字对照':'06 / Compare the six cards','选择一个已保存版本':'Choose a saved version',
  '这里比较已应用的卡片文字。文字不同不等于论证更好；请检查变化是否回应了依据、假设或适用条件。':'This compares committed card text. Different wording does not imply better reasoning; consider whether changes address evidence, assumptions, or scope.',
  '07 / 带走自己的文字':'07 / Take your writing home','↓ TXT 当前论证':'↓ TXT current argument','↓ JSON 完整备份':'↓ JSON full backup','导入 JSON':'Import JSON',
- 'TXT 包含当前六卡、全部追问回应与笔记。JSON 包含九个草稿入口、最多八份保存版本与对照选择；上限 1 MB。导入整体替换且可撤销，无效文件不会覆盖原内容。':'TXT contains the current six cards, all pressure responses, and notes. JSON includes the nine draft spaces, up to eight versions, and comparison choice; maximum 1 MB. Import replaces everything and can be undone; invalid files keep existing work.',
+ 'TXT 包含当前六卡、全部追问回应与笔记。JSON 包含九个草稿入口、最多八份保存版本与对照选择；上限 1.5 MB。导入整体替换且可撤销，无效文件不会覆盖原内容。':'TXT contains the current six cards, all pressure responses, and notes. JSON includes the nine draft spaces, up to eight versions, and comparison choice; maximum 1.5 MB. Import replaces everything and can be undone; invalid files keep existing work.',
  '框架帮助提问。':'A framework for questions. ','它不代替资料核查，也不会替你确认一条推理已经成立。真实写作需要注明证据来源，认真对待不同意见。':'It does not replace source verification or establish that a line of reasoning is sound. Real writing needs evidence attribution and fair attention to other views.',
  '文字留在本机。':'Keep writing on your device. ','没有上传或账号。清除浏览器数据会删除草稿与版本，请导出备份。未应用的卡片编辑不跨刷新。':'No uploads or accounts. Clearing browser data removes drafts and versions; export backups. Unapplied card edits do not survive reloading.',
  '012 / 文科 · 论证与改写 · 完全本地':'012 / Humanities · Arguments and revision · Offline'

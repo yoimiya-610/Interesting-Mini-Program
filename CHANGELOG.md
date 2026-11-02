@@ -4,6 +4,12 @@
 
 ## 2026-11-02
 
+### 012 Argument Loom: full-backup restoration
+
+- Full backups containing many JSON-escaped characters can now be imported again, including all nine draft spaces and eight saved versions. The import allowance is 1.5 MB to cover every supported document at its existing text limits; original writing is preserved without trimming or filtering.
+- Existing version-1 backups remain compatible. Malformed or oversized files still leave current work intact, and successful replacement remains undoable. Chinese and English instructions show the updated limit.
+- Regression checks cover full-capacity emoji, control characters, lone surrogate code units, quotes, backslashes, and newlines, plus actual large-file export/import, language changes, reloads, and oversized-file rejection on desktop and mobile.
+
 ### 012 Argument Loom
 
 - Examine eight original fictional cases: library opening, museum labels, reading-group turns, shared-room quiet hours, seed provenance, repair-event notes, notice boards, and writing-group drafts. Each contains six bilingual role cards, an alternative view, and four specific pressure questions: 48 complete cards and 32 questions in total.
