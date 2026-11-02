@@ -26,9 +26,11 @@ test('Strict atomic restoration rejects malformed records and removes unrelated 
  for(const mutate of [s=>s.version=2,s=>s.source='missing',s=>s.role='unknown',s=>delete s.docs.library,s=>s.docs.library.source='labels',s=>s.docs.library.cards.claim.text=['one'],s=>s.docs.library.cards.claim.custom=1,s=>s.docs.library.cards.claim={custom:true,text:['a','b']},s=>s.docs.library.notes='x'.repeat(1501),s=>s.docs.library.answers.push('fifth'),s=>s.docs.library.probe=4,s=>s.docs.library.cards.extra={},s=>s.slots.push(cp(s.slots[0])),s=>s.comparison='missing',s=>s.docs.unknown=C.newDoc('own')]){const bad=cp(s);mutate(bad);assert.equal(C.restore(bad),null);}
  const extra=cp(s);extra.remote='discard';extra.docs.library.secret='discard';extra.slots[0].secret='discard';assert.deepEqual(C.restore(extra),s);
 });
-test('Maximum seventeen full documents round trip below the disclosed one-megabyte import limit',()=>{
- const s=C.fresh();for(const id of [...C.CASES.map(c=>c.id),'own']){let d=C.newDoc(id);for(const r of C.ROLES)d=C.edited(d,r.id,'🧵'.repeat(800));d.title='🧵'.repeat(80);d.notes='🧵'.repeat(1500);d.answers=Array(4).fill('🧵'.repeat(600));s.docs[id]=d;}
- s.slots=Array.from({length:8},(_,i)=>({id:'s'+i,doc:cp(s.docs.own)}));s.comparison='s7';const raw=JSON.stringify(s);assert(Buffer.byteLength(raw)<1000000);assert.deepEqual(C.restore(JSON.parse(raw)),s);
+test('Maximum seventeen full documents including six-byte JSON escapes fit the import limit',()=>{
+ for(const character of ['🧵','\u0001','\ud800','"','\\','\n']){
+  const s=C.fresh();for(const id of [...C.CASES.map(c=>c.id),'own']){let d=C.newDoc(id);for(const r of C.ROLES)d=C.edited(d,r.id,character.repeat(800));d.title=character.repeat(80);d.notes=character.repeat(1500);d.answers=Array(4).fill(character.repeat(600));s.docs[id]=d;}
+  s.slots=Array.from({length:8},(_,i)=>({id:'s'+String(i).repeat(64),doc:cp(s.docs.own)}));s.comparison=s.slots[7].id;const raw=JSON.stringify(s);assert(Buffer.byteLength(raw)<C.MAX_IMPORT_BYTES);if(character==='\u0001'||character==='\ud800')assert(Buffer.byteLength(raw)>1000000);assert.deepEqual(C.restore(JSON.parse(raw)),s);
+ }
 });
 test('TXT keeps all role text, all four authored questions and every original response',()=>{
  let d=C.newDoc('library');for(const r of C.ROLES)d=C.edited(d,r.id,'Original '+r.id+' <&>');d.title='Title 原文';d.notes='Notes 原文';d.answers=['Answer 1','Answer 2','Answer 3','Answer 4'];

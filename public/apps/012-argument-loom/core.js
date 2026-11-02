@@ -1,6 +1,6 @@
 'use strict';
 (() => {
-  const MAX_CARD=800,MAX_NOTES=1500,MAX_ANSWER=600,MAX_SLOTS=8;
+  const MAX_CARD=800,MAX_NOTES=1500,MAX_ANSWER=600,MAX_SLOTS=8,MAX_IMPORT_BYTES=1500000;
   const copy=x=>JSON.parse(JSON.stringify(x)),size=s=>[...s].length;
   const freeze=x=>{if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;};
   const ROLES=freeze([
@@ -39,5 +39,5 @@
   function txt(doc,lang='zh'){
     const c=getCase(doc.source),en=lang==='en';return ['012 · '+(en?'Argument Loom':'论证织台'),doc.title||pair(c.name,lang),en?'Practice scenarios are fictional. Real arguments need verified sources.':'练习情境为虚构材料；真实论证需要核查来源。','',...ROLES.flatMap(r=>[pair(r.name,lang),display(doc,r.id,lang),'']),en?'Pressure questions and your responses':'追问与自己的回应',...c.probes.flatMap((p,i)=>[String(i+1)+'. '+pair(p.text,lang),doc.answers[i],'']),en?'Your notes':'自己的笔记',doc.notes].join('\n');
   }
-  globalThis.ArgumentLoom=Object.freeze({MAX_CARD,MAX_NOTES,MAX_ANSWER,MAX_SLOTS,ROLES,CASES,copy,pair,getCase,getRole,newDoc,fresh,display,edited,analyze,compare,validDoc,restore,txt});
+  globalThis.ArgumentLoom=Object.freeze({MAX_CARD,MAX_NOTES,MAX_ANSWER,MAX_SLOTS,MAX_IMPORT_BYTES,ROLES,CASES,copy,pair,getCase,getRole,newDoc,fresh,display,edited,analyze,compare,validDoc,restore,txt});
 })();
