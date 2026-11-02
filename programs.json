@@ -302,5 +302,23 @@
       "style": "Cream cards · Blue-ink reasons · Rust-colored bridges",
       "tags": ["Arguments", "Writing", "Reasoning"]
     }
+  },
+  {
+    "id": "013",
+    "slug": "choice-compass",
+    "title": "选择罗盘",
+    "subtitle": "选择之前，看看自己在意什么。",
+    "description": "八份完整情境，比较六个方案与五项尺度；编辑评分和偏好，检查逐项贡献、支配关系与权重变化，再留下自己的选择理由。",
+    "category": "生活",
+    "tags": ["选择", "偏好", "取舍"],
+    "style": "奶油纸面 · 紫色罗盘 · 多色贡献条",
+    "interaction": "八份六方案五方面情境、240 个原创评分；方向和尺度可编辑、缺失值与必须条件排除、逐项贡献对照、11 档权重试算、八份版本与 CSV/JSON 导出",
+    "created": "2026-11-03",
+    "en": {
+      "title": "Choice Compass",
+      "description": "Compare six options on five anchored scales in eight complete cases. Edit ratings and priorities, inspect contribution differences and dominance, preview weight changes, and record your reasoning.",
+      "style": "Cream paper · Purple compass · Multicolor contribution bars",
+      "tags": ["Choices", "Preferences", "Trade-offs"]
+    }
   }
 ]

@@ -2,6 +2,17 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-03
+
+### 013 Choice Compass
+
+- Explore eight original fictional cases: picnic spots, reading corners, weekend projects, group activities, leisurely routes, shared-room layouts, small displays, and feedback formats. Each includes six described alternatives, five anchored scales, and a concrete question: 48 options, 40 scales, and 240 authored ratings in total.
+- Edit up to eight options and six criteria, their names and scale anchors, higher/lower preferences, integer ratings, and relative weights. Blank active ratings remain unknown, excluded options stay out of ranking, all-zero weights produce no leader, and exact ties are preserved. Fixed scales keep an unrelated new option from rescaling existing scores.
+- Inspect colored contribution bars, Pareto dominance on active criteria, and an A-minus-B contribution table. Preview all eleven integer values of one weight while holding the others fixed, then adopt a change explicitly. This preference-comparison tool differs from packing optimization and daily time allocation; it does not claim an objective best choice.
+- A bilingual contextual guide explains related decision-matrix practice, verified publication history, a hand-calculable example, weights tied to defined scale improvements, missing values, dominance, uses, and limitations. Ratings are fictional judgments, not real route, place, product, or safety data. Requirements should be checked before trading preferences; additive scores can hide interactions and double-counted benefits.
+- Keep eight independent local versions, original names/notes, and thirty session undo steps. Export a CSV of ratings, scales, weights, contributions and notes, or a compact version-1 JSON backup. Formula-like CSV text receives a protective apostrophe; JSON keeps original text. Imports up to 1 MB are atomic and undoable; invalid or racing imports preserve work. Text limits, eight-option/six-criterion bounds, browser-only saving and reload limits are shown in the interface.
+- Validation includes independent integer score/dominance comparisons across every built-in one-weight sweep, a manually verified tie/crossover, missing/excluded/zero-weight boundaries, structural rating alignment, worst-case escaped backups, and desktop/mobile bilingual editing, previews, exports/imports, keyboard use and offline files with unavailable storage.
+
 ## 2026-11-02
 
 ### 012 Argument Loom: full-backup restoration
