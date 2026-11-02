@@ -22,10 +22,11 @@ Stay for a game, explore an idea, or find a tool that makes your day a little ea
 | 010 | [Critical Path Desk](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/010-critical-path/index.html?lang=en) | Eight editable dependency networks, critical paths and float, what-if previews, saved comparisons, and SVG/CSV/JSON exports. |
 | 011 | [Measure Quest](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/011-measure-quest/index.html?lang=en) | Sixteen pouring puzzles, pipe constraints, independent/assisted records, undo/redo, optional hints, and TXT/JSON backups. |
 | 012 | [Argument Loom](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/012-argument-loom/index.html?lang=en) | Eight complete argument cases, six editable role cards, thirty-two pressure questions, saved comparisons, and TXT/JSON backups. |
+| 013 | [Choice Compass](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/013-choice-compass/index.html?lang=en) | Eight complete comparison cases, editable scales and priorities, contribution differences, dominance, weight previews, and CSV/JSON exports. |
 
 Browse the [numbered index](index.md) for direct links. The online homepage lets you search by number or name and filter by category. You can use the collection on a phone or computer.
 
-The homepage and programs 001–012 support **Chinese / English**. Choose a language near the top of a page, or add `?lang=en` to its address to open it in English. Links between the homepage and programs keep your choice, and your browser remembers it when storage is available. Switching language keeps your current activity in place. Your own stories, titles, and item names stay as you wrote them.
+The homepage and programs 001–013 support **Chinese / English**. Choose a language near the top of a page, or add `?lang=en` to its address to open it in English. Links between the homepage and programs keep your choice, and your browser remembers it when storage is available. Switching language keeps your current activity in place. Your own stories, titles, and item names stay as you wrote them.
 
 ## How to open the collection
 
