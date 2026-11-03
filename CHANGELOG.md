@@ -4,6 +4,12 @@
 
 ## 2026-11-03
 
+### 013 Choice Compass: preserve incomplete rating edits
+
+- An unfinished numeric entry now keeps the previous rating intact when Apply is pressed. Complete the number or intentionally clear the field before applying; incomplete input also survives language changes instead of silently becoming a blank rating.
+- Weight explanations now distinguish the direction of improvement: raw ratings rise from 0 to 10 for higher-is-better scales and fall from 10 to 0 for lower-is-better scales. Utility rises in both cases.
+- Existing scores, original writing, saved versions, and version-1 backups remain compatible. Desktop/mobile regression checks cover invalid numeric drafts, language changes, correction, intentional blanks, undo, and the revised bilingual guide.
+
 ### 013 Choice Compass
 
 - Explore eight original fictional cases: picnic spots, reading corners, weekend projects, group activities, leisurely routes, shared-room layouts, small displays, and feedback formats. Each includes six described alternatives, five anchored scales, and a concrete question: 48 options, 40 scales, and 240 authored ratings in total.
