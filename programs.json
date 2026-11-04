@@ -362,5 +362,31 @@
         "Experiments"
       ]
     }
+  },
+  {
+    "id": "015",
+    "slug": "gear-studio",
+    "title": "齿轮工坊",
+    "subtitle": "转动之间，藏着比例与方向。",
+    "description": "九份齿轮传动案例，编辑齿数、啮合与同轴连接；计算精确速度比，识别闭环冲突，比较八份模型并留下实验笔记。",
+    "category": "工科",
+    "tags": [
+      "齿轮",
+      "传动",
+      "速度比"
+    ],
+    "style": "暖白机工纸 · 铜色输入 · 青绿轮系",
+    "interaction": "九份完整固定轴案例；八轮十二连接可编辑、精确分数与闭环一致性、未驱动状态、统一减速动画、八份版本对照、撤销及 CSV/JSON 导出",
+    "created": "2026-11-05",
+    "en": {
+      "title": "Gear Studio",
+      "description": "Edit tooth counts, external meshes and fixed shafts in nine complete cases. Explore exact speed ratios, conflicting loops, unpowered components and eight saved comparisons.",
+      "style": "Warm workshop paper · Copper input · Sage gear trains",
+      "tags": [
+        "Gears",
+        "Transmission",
+        "Speed ratios"
+      ]
+    }
   }
 ]

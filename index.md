@@ -18,5 +18,6 @@
 | 012 | 论证织台 | 文科 | 把观点摊开，让理由彼此相连。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/012-argument-loom/) | [本地](http://127.0.0.1:4173/apps/012-argument-loom/) | [HTML](public/apps/012-argument-loom/index.html) | 2026-11-02 |
 | 013 | 选择罗盘 | 生活 | 选择之前，看看自己在意什么。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/013-choice-compass/) | [本地](http://127.0.0.1:4173/apps/013-choice-compass/) | [HTML](public/apps/013-choice-compass/index.html) | 2026-11-03 |
 | 014 | 生命方格 | 理科 | 规则很小，世界慢慢展开。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/014-life-atlas/) | [本地](http://127.0.0.1:4173/apps/014-life-atlas/) | [HTML](public/apps/014-life-atlas/index.html) | 2026-11-04 |
+| 015 | 齿轮工坊 | 工科 | 转动之间，藏着比例与方向。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/015-gear-studio/) | [本地](http://127.0.0.1:4173/apps/015-gear-studio/) | [HTML](public/apps/015-gear-studio/index.html) | 2026-11-05 |
 
 点击“体验”即可在线打开；下载仓库后，也可以通过“HTML”打开本地文件。使用方法与数据保存说明见[项目介绍](README.md)。感谢你来玩。
