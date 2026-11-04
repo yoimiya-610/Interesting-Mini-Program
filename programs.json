@@ -292,7 +292,11 @@
     "subtitle": "把观点摊开，让理由彼此相连。",
     "description": "八份完整论证案例，展开主张、依据与推理桥梁；用三十二个追问检视条件，改写六张卡，保存八份版本并逐字对照。",
     "category": "文科",
-    "tags": ["论证", "写作", "思辨"],
+    "tags": [
+      "论证",
+      "写作",
+      "思辨"
+    ],
     "style": "奶油纸卡 · 蓝墨理由 · 赭红桥梁",
     "interaction": "八份六卡双语案例与三十二个专属追问；独立草稿、原文改写、八份版本逐字对照、撤销和 TXT/JSON 备份",
     "created": "2026-11-02",
@@ -300,7 +304,11 @@
       "title": "Argument Loom",
       "description": "Explore eight complete arguments through six role cards and thirty-two pressure questions. Revise assumptions and scope, compare eight saved versions, and export your writing.",
       "style": "Cream cards · Blue-ink reasons · Rust-colored bridges",
-      "tags": ["Arguments", "Writing", "Reasoning"]
+      "tags": [
+        "Arguments",
+        "Writing",
+        "Reasoning"
+      ]
     }
   },
   {
@@ -310,7 +318,11 @@
     "subtitle": "选择之前，看看自己在意什么。",
     "description": "八份完整情境，比较六个方案与五项尺度；编辑评分和偏好，检查逐项贡献、支配关系与权重变化，再留下自己的选择理由。",
     "category": "生活",
-    "tags": ["选择", "偏好", "取舍"],
+    "tags": [
+      "选择",
+      "偏好",
+      "取舍"
+    ],
     "style": "奶油纸面 · 紫色罗盘 · 多色贡献条",
     "interaction": "八份六方案五方面情境、240 个原创评分；方向和尺度可编辑、缺失值与必须条件排除、逐项贡献对照、11 档权重试算、八份版本与 CSV/JSON 导出",
     "created": "2026-11-03",
@@ -318,7 +330,37 @@
       "title": "Choice Compass",
       "description": "Compare six options on five anchored scales in eight complete cases. Edit ratings and priorities, inspect contribution differences and dominance, preview weight changes, and record your reasoning.",
       "style": "Cream paper · Purple compass · Multicolor contribution bars",
-      "tags": ["Choices", "Preferences", "Trade-offs"]
+      "tags": [
+        "Choices",
+        "Preferences",
+        "Trade-offs"
+      ]
+    }
+  },
+  {
+    "id": "014",
+    "slug": "life-atlas",
+    "title": "生命方格",
+    "subtitle": "规则很小，世界慢慢展开。",
+    "description": "十六种经典生命游戏图样，探索静物、振荡、移动和持续生成；编辑棋盘，逐代观察，比较边界并保存自己的实验。",
+    "category": "理科",
+    "tags": [
+      "元胞自动机",
+      "图样",
+      "实验"
+    ],
+    "style": "深蓝实验台 · 青绿细胞 · 琥珀光标",
+    "interaction": "十六种图样与独立实验问题；同步 B3/S23 演化、硬边界和环绕、绘画和键盘编辑、旋转叠加、128 代整板重复检测、八份版本与 PNG/RLE/JSON 导出",
+    "created": "2026-11-04",
+    "en": {
+      "title": "Life Atlas",
+      "description": "Explore sixteen classic Game of Life patterns, from still lifes and oscillators to spaceships and a glider gun. Edit cells, advance generations, compare boundaries, and save your experiments.",
+      "style": "Deep-blue workbench · Teal cells · Amber cursor",
+      "tags": [
+        "Cellular automata",
+        "Patterns",
+        "Experiments"
+      ]
     }
   }
 ]
