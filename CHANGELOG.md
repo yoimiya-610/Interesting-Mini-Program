@@ -2,6 +2,17 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-04
+
+### 014 Life Atlas
+
+- Explore sixteen standard Game of Life configurations: five still lifes, five oscillators, two spaceships, three long transients, and a Gosper glider gun. Each has bilingual commentary and a different experiment question. All use Conway's synchronous B3/S23 rule; these are different starting configurations rather than different rules.
+- Paint continuous strokes, erase or toggle cells, rotate and mirror patterns, and stamp at a keyboard-controlled cursor. Advance one, ten, or one hundred generations, or play at four speeds. Inspect population, births, deaths, edge contact, and exact whole-board repeats within the last 128 generations. A translated spaceship is not mislabeled as an in-place repeat.
+- Compare three finite board sizes and hard or wrapped boundaries, reproduce seeded starting fields, restart an experiment, and keep eight independent snapshots with original titles and notes. Thirty session undo steps group each stroke or playback run into one action. Resizing preserves the current live-cell bounding box or rejects the change instead of cropping it.
+- Export a clean PNG board, a cropped Conway RLE configuration, or a full JSON backup with settings and snapshots. Strict imports reject unsupported rules and malformed or oversized files, preserve work changed during a delayed read, and allow successful replacements to be undone. JSON allows 500 KB, including full-capacity escaped writing; the RLE subset is limited to 64×48 and 20 KB. Repeat caches, playback, paste drafts, and undo history do not survive reloads.
+- The bilingual background guide explains Conway's rule, Gardner's introduction, simultaneous updates, concrete neighbor counts, translated shapes, boundary effects, applications, and limits with references. This discrete local-rule workbench differs from particle fields, sampling experiments, and harmonic synthesis. It is a finite mathematical model, not a biological prediction or an infinite-plane solver.
+- Validation covers all 512 local neighborhoods, independently calculated sparse boards, canonical periods and spaceship displacements, gun emission, Diehard's 130-generation lifetime, repeat-window boundaries, lossless resizing, strict RLE parsing, and maximum escaped backups. Desktop/mobile browser coverage exercises editing, playback, keyboard and touch use, bilingual reading, offline files, blocked storage, actual exports, import races, snapshots, and data preservation.
+
 ## 2026-11-03
 
 ### 013 Choice Compass: preserve incomplete rating edits
