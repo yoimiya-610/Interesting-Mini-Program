@@ -2,6 +2,18 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-05
+
+### 015 Gear Studio
+
+- Explore nine original teaching cases with 35 gear entries and 27 connections: reduction, idlers, compound reduction/increase, branching, a compatible even loop, two different locking mechanisms, and disconnected components. Each provides bilingual context, an experiment question, and an optional starting-point check.
+- Edit up to eight named gears and twelve external-mesh or fixed-shaft links. Choose any input and output, set signed integer RPM, and inspect exact reduced speed coefficients, decimal RPM, direction, one calculation path, and conflicts across all routes. A separate locked component does not stop the main train; an unpowered component has unknown absolute speed, not an invented zero.
+- Play a uniformly slowed motion schematic, with a 30-RPM ceiling for its fastest driven icon. The stated speeds retain their original values. This fixed-axis kinematics workbench differs from truth-table circuits, project dependencies, and cellular automata; it is neither a physical layout nor a torque/load simulation.
+- Apply configuration edits explicitly, preserving unfinished numeric entries and original names across language changes. Invalid input keeps the draft and previous model; other model replacements and exports wait for pending drafts to be applied or discarded. Keep eight independent versions, compare each version's own selected input/output, and undo thirty operations during the current visit.
+- Export CSV models/results or full version-1 JSON backups up to 500 KB. Formula-like CSV text receives a protective apostrophe while signed numeric RPM stays numeric. Backups preserve original writing and full supported capacity, including heavily escaped text; malformed, oversized and stale reads keep current work. Browser-only storage, reload limits and export scopes are shown in both languages.
+- A five-section bilingual guide introduces gears through a documented ancient example, explains tooth counts, sign conventions, idlers, compound shafts, loop consistency and unknown speed, and points to further technical reading. All examples use ideal fixed-axis external meshes; geometry, module, tooth-contact phase, friction, strength, moving carriers and manufacturing feasibility remain outside the model.
+- Validation includes independently solved exact gear/shaft equations over 1,200 generated networks, hand-checked cases and driver reversals, idler cancellation, disconnected locks, editing bounds, strict restoration, maximum escaped backups, and CSV preservation. Browser coverage exercises the actual model, animation, bilingual drafts, keyboard use, snapshots/comparison, export/import, offline files, mobile layouts and blocked storage.
+
 ## 2026-11-04
 
 ### 014 Life Atlas
