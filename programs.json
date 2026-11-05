@@ -388,5 +388,31 @@
         "Speed ratios"
       ]
     }
+  },
+  {
+    "id": "016",
+    "slug": "crate-courier",
+    "title": "推箱邮局",
+    "subtitle": "一步能到，不代表还能回来。",
+    "description": "二十关原创推箱谜题；安排临时停放与送达次序，支持逐步撤销、推箱撤销、按需提示、独立笔记与完整备份。",
+    "category": "游戏",
+    "tags": [
+      "推箱",
+      "空间规划",
+      "关卡"
+    ],
+    "style": "奶油邮政纸 · 铜色木箱 · 蓝绿邮递员",
+    "interaction": "二十关原创空间谜题；一至四箱、后段目标让位依赖、独立最少推箱基准、撤销及重做、按需下一推提示、二十关笔记和 TXT/JSON 备份",
+    "created": "2026-11-06",
+    "en": {
+      "title": "Crate Courier",
+      "description": "Plan twenty original push-only puzzles, from first steps to shared corridors and temporary goal evacuation. Undo moves or pushes, request optional hints, and keep separate notes and backups.",
+      "style": "Cream postal paper · Copper crates · Blue-green courier",
+      "tags": [
+        "Crates",
+        "Spatial planning",
+        "Puzzles"
+      ]
+    }
   }
 ]

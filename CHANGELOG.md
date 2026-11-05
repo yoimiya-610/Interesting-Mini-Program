@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-06
+
+### 016 Crate Courier
+
+- Added twenty original push-only crate puzzles with one to four crates, keyboard and touch controls, step/push undo, redo, and optional next-push hints. Goals remain movable, and all levels are available immediately.
+- Later boards introduce shared passages, temporary parking and delivery dependencies. The final eight have minimum push counts ranging from 12 to 16; seven require moving a crate away from a goal again. Minimum pushes are independently checked with a separate cell-by-cell 0–1 search, rather than inferred from a supplied route.
+- Added twenty persistent notebooks, separate no-hint/assisted records, enlarged and text board views, readable TXT routes and a replay-validated full JSON backup. Browser-only data does not sync; backups are limited to 1 MB and 10,000 steps per level.
+- Included bilingual guidance on Sokoban’s origins, standing positions, deadlocks and search boundaries. These original boards and graphics are distinct from the collection’s mirror, logic and pouring puzzles.
+- Validation: all twenty solutions and push minima, late dependency/deadlock evidence, undo rules, full-capacity backup validation, desktop/mobile play, language preservation, local/offline use and repository checks.
+
 ## 2026-11-05
 
 ### 015 Gear Studio: exact integer configuration
