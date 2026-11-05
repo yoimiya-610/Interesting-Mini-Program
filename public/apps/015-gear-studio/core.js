@@ -16,6 +16,19 @@
  function addGear(doc){if(doc.gears.length>=8)return null;const d=copy(doc),id=nextId(d.gears,'g');d.gears.push({id,name:['自己的齿轮 '+id,'Your gear '+id],teeth:24});d.source='custom';return d;}
  function removeGear(doc,id){if(doc.gears.length<=1||!doc.gears.some(g=>g.id===id))return null;const d=copy(doc);d.gears=d.gears.filter(g=>g.id!==id);d.links=d.links.filter(e=>e.from!==id&&e.to!==id);if(d.driver===id)d.driver=d.gears[0].id;if(d.output===id)d.output=d.gears.at(-1).id;d.source='custom';return d;}
  function addLink(doc,from,to,kind){if(doc.links.length>=12||from===to||!['mesh','shaft'].includes(kind)||![from,to].every(id=>doc.gears.some(g=>g.id===id))||doc.links.some(e=>[e.from,e.to].includes(from)&&[e.from,e.to].includes(to)))return null;const d=copy(doc);d.links.push({id:nextId(d.links,'e'),from,to,kind});d.source='custom';return d;}
+ function integerText(text,min,max){
+  if(typeof text!=='string')return null;
+  const m=text.trim().match(/^([+-]?)(\d*)(?:\.(\d*))?(?:[eE]([+-]?\d+))?$/);
+  if(!m||!(m[2]||m[3]))return null;
+  let digits=(m[2]+(m[3]||'')).replace(/^0+/,'');
+  if(!digits)return min<=0&&max>=0?0:null;
+  const shift=BigInt(m[4]||'0')-BigInt((m[3]||'').length),maxDigits=String(Math.max(Math.abs(min),Math.abs(max))).length;
+  if(shift>=0n){if(BigInt(digits.length)+shift>BigInt(maxDigits))return null;digits+='0'.repeat(Number(shift));}
+  else {const places=-shift,trailing=digits.length-digits.replace(/0+$/,'').length;if(places>BigInt(trailing))return null;digits=digits.slice(0,digits.length-Number(places));}
+  if(digits.length>maxDigits)return null;
+  const value=BigInt(digits)*(m[1]==='-'?-1n:1n);
+  return value<BigInt(min)||value>BigInt(max)?null:Number(value);
+ }
  const txt=(s,n)=>typeof s==='string'&&[...s].length<=n,integer=(n,min,max)=>Number.isInteger(n)&&n>=min&&n<=max,validPair=p=>Array.isArray(p)&&p.length===2&&p.every(s=>txt(s,40)&&s.trim());
  function validDoc(d){if(!d||(d.source!=='custom'&&!getCase(d.source))||!txt(d.title,80)||!txt(d.notes,1500)||!integer(d.rpm,-10000,10000)||!Array.isArray(d.gears)||d.gears.length<1||d.gears.length>8||!Array.isArray(d.links)||d.links.length>12)return false;const ids=new Set(),edges=new Set(),pairs=new Set();for(const g of d.gears){if(!g||!/^g[1-9]\d{0,7}$/.test(g.id)||ids.has(g.id)||!validPair(g.name)||!integer(g.teeth,6,120))return false;ids.add(g.id);}if(!ids.has(d.driver)||!ids.has(d.output))return false;for(const e of d.links){if(!e||!/^e[1-9]\d{0,7}$/.test(e.id)||edges.has(e.id)||!ids.has(e.from)||!ids.has(e.to)||e.from===e.to||!['mesh','shaft'].includes(e.kind))return false;const key=[e.from,e.to].sort().join(':');if(pairs.has(key))return false;pairs.add(key);edges.add(e.id);}return true;}
  const cleanDoc=d=>({source:d.source,title:d.title,notes:d.notes,gears:d.gears.map(g=>({id:g.id,name:[...g.name],teeth:g.teeth})),links:d.links.map(e=>({id:e.id,from:e.from,to:e.to,kind:e.kind})),driver:d.driver,output:d.output,rpm:d.rpm});
@@ -23,5 +36,5 @@
  function pathRatio(analysis){return analysis.path.reduce((r,p)=>mul(r,p.ratio),fraction(1));}
  const csvCell=v=>'"'+(typeof v==='string'&&/^[=+\-@\t\r]/.test(v)?"'":'')+String(v).replaceAll('"','""')+'"';
  function csv(doc,language='en'){const a=analyze(doc),name=id=>pair(doc.gears.find(g=>g.id===id).name,language),rows=[['015 Gear Studio'],['Title',doc.title],['Notes',doc.notes],['Input',name(doc.driver)],['Input RPM',doc.rpm],['Output',name(doc.output)],[],['ID','Gear','Teeth','Status','Output/input of this gear','RPM (positive CCW)']];for(const g of doc.gears){const r=a.rows.find(r=>r.id===g.id);rows.push([g.id,pair(g.name,language),g.teeth,r.status,r.ratio?format(r.ratio):'',r.rpm===null?'':r.rpm]);}rows.push([],['Link','From','To','Kind']);for(const e of doc.links)rows.push([e.id,name(e.from),name(e.to),e.kind]);return '\uFEFF'+rows.map(row=>row.map(csvCell).join(',')).join('\r\n');}
- globalThis.GearStudio=Object.freeze({CASES,getCase,copy,pair,fraction,mul,div,equal,number,format,template,fresh,analyze,pathRatio,addGear,removeGear,addLink,validDoc,restore,csv,MAX_IMPORT_BYTES:500000});
+ globalThis.GearStudio=Object.freeze({CASES,getCase,copy,pair,fraction,mul,div,equal,number,format,template,fresh,analyze,pathRatio,addGear,removeGear,addLink,integerText,validDoc,restore,csv,MAX_IMPORT_BYTES:500000});
 })();

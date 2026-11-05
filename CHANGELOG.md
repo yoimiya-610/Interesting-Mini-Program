@@ -4,6 +4,13 @@
 
 ## 2026-11-05
 
+### 015 Gear Studio: exact integer configuration
+
+- Numeric configuration drafts now require an exact integer in the supported range. Tiny nonzero RPM values cannot silently become zero, and fractional tooth counts cannot pass validation by rounding to a nearby integer.
+- Decimal and exponent notation remain supported when they represent an exact integer. Rejected entries retain the original model, writing and configuration draft across language changes; successful edits remain undoable. Existing version-1 backups stay compatible.
+- Background notes now explicitly define external meshes and rigid shaft links before explaining the tooth-count calculation.
+- Regression coverage includes decimal boundaries, underflow, long fractional tails, exact exponent notation, bilingual draft preservation, unchanged rejected models and undo on desktop and mobile.
+
 ### 015 Gear Studio
 
 - Explore nine original teaching cases with 35 gear entries and 27 connections: reduction, idlers, compound reduction/increase, branching, a compatible even loop, two different locking mechanisms, and disconnected components. Each provides bilingual context, an experiment question, and an optional starting-point check.
