@@ -414,5 +414,31 @@
         "Puzzles"
       ]
     }
+  },
+  {
+    "id": "017",
+    "slug": "text-collation",
+    "title": "校勘书房",
+    "subtitle": "不同的字，留下不同的线索。",
+    "description": "八组三传本原创短文，逐处比较异文、改写来源、编订六处读法并记录理由；保留独立笔记与对照快照。",
+    "category": "文科",
+    "tags": [
+      "校勘",
+      "细读",
+      "异文"
+    ],
+    "style": "暖灰书房 · 紫墨编订 · 红绿差异标记",
+    "interaction": "八案二十四篇双语传本文字、一百四十四处读法与四十八个比较问题；逐字符差异、可选规范化、逐处编订与自订、八案快照对照、分组撤销及 TXT/CSV/JSON 导出",
+    "created": "2026-11-07",
+    "en": {
+      "title": "Text Collation Desk",
+      "description": "Compare eight original three-witness cases at six locations each. Edit sources, choose or compose readings, explain decisions and compare saved checkpoints without treating highlights as historical proof.",
+      "style": "Warm-gray study · Plum editorial ink · Red-green differences",
+      "tags": [
+        "Collation",
+        "Close reading",
+        "Textual variants"
+      ]
+    }
   }
 ]

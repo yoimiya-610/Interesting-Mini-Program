@@ -2,6 +2,17 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-07
+
+### 017 Text Collation Desk
+
+- Compare eight original fictional cases, each with three complete bilingual witnesses, six pre-aligned locations and six focused questions: 24 short texts, 144 paired witness readings and 48 editorial questions. Explore omission, punctuation, lexical changes, uncertain attribution, transcription and authorial revision.
+- Edit source readings, select A/B/C or a custom reading at each location, retain reasons and read a six-part composite with an expandable apparatus. Character highlights use a local longest-common-subsequence comparison; optional spacing/punctuation rules affect comparison only, preserving literal sources and exports.
+- Keep eight independent notebooks and one full comparison checkpoint per case. Checkpoint comparisons include unselected sources, custom drafts and reasons; retrieval, replacement and imports are undoable. Focus-grouped editing supports thirty undo operations per visit.
+- Export current-language TXT/CSV editions and apparatus, or all eight cases/checkpoints as a full JSON backup up to 3 MB. Literal edits never change with interface language. Browser-only saving, field limits, CSV formula protection and reload/undo boundaries are explained in both languages.
+- Added bilingual context grounded in TEI and CollateX documentation: witnesses, readings, editorial aims, normalization and the limits of automatic comparison. This close-reading workbench differs from random story prompts, erasure poetry and argument-role cards; its fictional sources are not historical evidence or real-world advice.
+- Validation: exhaustive independent subsequence comparison, content completeness and bilingual coverage, full-capacity escaped backups, actual desktop/mobile editing, normalization, checkpoints, cursor/composition handling, atomic/stale imports, exports and offline operation.
+
 ## 2026-11-06
 
 ### 016 Crate Courier
