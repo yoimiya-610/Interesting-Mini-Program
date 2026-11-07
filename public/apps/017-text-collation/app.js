@@ -40,13 +40,69 @@
  function renderCheckpoint(){const saved=entry().checkpoint,c=source(),m=model();if(!saved){$('checkpoint').replaceChildren(node('p',P(['本案尚无对照快照。','No checkpoint for this case yet.'])));return;}const items=C.differences(c,m,saved,lang()),changes=items.filter(d=>d.before!==d.after||d.choiceChanged||d.reasonChanged||d.customChanged||d.sourcesChanged),root=$('checkpoint'),checkpointOpen=opened(root);root.replaceChildren(node('p',P(['不同的位置：','Changed locations: '])+changes.length+' / 6'),node('p',P(['快照标题：','Checkpoint title: '])+saved.title),node('p',P(['快照总笔记：','Checkpoint notes: '])+saved.notes));if(saved.title!==m.title||saved.notes!==m.notes)root.append(node('p',P(['当前标题或总笔记也与快照不同。','The current title or case notes also differ.'])));
   for(const d of changes){const details=node('details',undefined,'checkpoint-row'),i=d.unit,choiceName=choice=>choice==='custom'?P(['自订','Custom']):String.fromCharCode(65+choice);details.dataset.location=i;details.open=checkpointOpen.has(String(i));details.append(node('summary',P(['位置 ','Location '])+(i+1)),node('p',P(['快照来源：','Checkpoint source: '])+choiceName(saved.choices[i])),node('p',P(['当前来源：','Current source: '])+choiceName(m.choices[i])),node('p',P(['快照采用：','Checkpoint reading: '])+d.before),node('p',P(['当前采用：','Current reading: '])+d.after),node('p',P(['快照理由：','Checkpoint reason: '])+saved.reasons[i]),node('p',P(['当前理由：','Current reason: '])+m.reasons[i]));if(d.customChanged)details.append(node('p',P(['快照自订：','Checkpoint custom: '])+saved.customs[i]),node('p',P(['当前自订：','Current custom: '])+m.customs[i]));if(d.sourcesChanged)for(let w=0;w<3;w++)if(saved.readings[i][w]!==m.readings[i][w])details.append(node('p',String.fromCharCode(65+w)+' '+P(['快照：','checkpoint: '])+C.reading(c,saved,i,w,lang())),node('p',String.fromCharCode(65+w)+' '+P(['当前：','current: '])+C.reading(c,m,i,w,lang())));root.append(details);}
  }
- function bindInput(id,max,write){$(id).onfocus=()=>{activeInput=null;};const input=event=>{if(event.isComposing)return;if(activeInput!==id){remember();activeInput=id;}const value=[...$(id).value].slice(0,max).join('');notice=value!==$(id).value?['已到本字段的字符上限。','This field has reached its character limit.']:null;if($(id).value!==value)$(id).value=value;write(value);changed();renderComputed();};$(id).oninput=input;$(id).addEventListener('compositionend',input);}
+ let composingInput = null;
+ function bindInput(id, max, write) {
+  const field = $(id);
+  field.onfocus = () => { activeInput = null; };
+  function input(event) {
+   if (event.isComposing) return;
+   if (activeInput !== id) {
+    remember();
+    activeInput = id;
+   }
+   const value = [...field.value].slice(0, max).join('');
+   notice = value !== field.value ? ['已到本字段的字符上限。', 'This field has reached its character limit.'] : null;
+   if (field.value !== value) field.value = value;
+   write(value);
+   changed();
+   renderComputed();
+  }
+  field.oninput = input;
+  field.addEventListener('compositionstart', () => {
+   composingInput = field;
+   revision++;
+  });
+  field.addEventListener('compositionend', event => {
+   if (composingInput === field) composingInput = null;
+   input(event);
+  });
+ }
  for(let w=0;w<3;w++)bindInput('reading-'+w,400,value=>model().readings[unit()][w]=value);bindInput('custom',400,value=>model().customs[unit()]=value);bindInput('reason',200,value=>model().reasons[unit()]=value);bindInput('title',80,value=>model().title=value);bindInput('notes',1000,value=>model().notes=value);
  $('case').onchange=()=>navigate(()=>state.selected=$('case').value);$('base').onchange=()=>navigate(()=>state.view.base=Number($('base').value));$('mode').onchange=()=>navigate(()=>state.view.mode=$('mode').value);$('previous').onclick=()=>navigate(()=>entry().unit--);$('next').onclick=()=>navigate(()=>entry().unit++);$('chooseCustom').onclick=()=>{if(model().choices[unit()]==='custom')return;transaction(()=>model().choices[unit()]='custom');};
  $('restoreSources').onclick=()=>transaction(()=>model().readings=Array.from({length:6},()=>[null,null,null]));$('saveCheckpoint').onclick=()=>transaction(()=>entry().checkpoint=C.copy(model()));$('loadCheckpoint').onclick=()=>{if(!entry().checkpoint)return;transaction(()=>entry().model=C.copy(entry().checkpoint));};
  $('undo').onclick=()=>{if(!history.length)return;future.push(C.copy(state));state=history.pop();activeInput=null;notice=null;changed();render();};$('redo').onclick=()=>{if(!future.length)return;history.push(C.copy(state));state=future.pop();activeInput=null;notice=null;changed();render();};
  function download(text,type,name){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  $('exportText').onclick=()=>download(C.text(source(),model(),lang()),'text/plain;charset=utf-8','017-'+state.selected+'.txt');$('exportCsv').onclick=()=>download(C.csv(source(),model(),lang()),'text/csv;charset=utf-8','017-'+state.selected+'.csv');$('exportJson').onclick=()=>download(JSON.stringify(state,null,2),'application/json','017-text-collation-backup.json');
- $('importFile').onchange=async()=>{const file=$('importFile').files[0];if(!file)return;const started=revision;let restored;try{if(file.size>C.MAX_IMPORT_BYTES)throw Error();const text=await file.text();if(revision!==started){notice=['文件读取期间已有修改或导航，未覆盖任何内容。','Edits or navigation occurred while reading; nothing was replaced.'];$('importFile').value='';renderComputed();return;}restored=C.restore(JSON.parse(text));if(!restored)throw Error();}catch{notice=['文件无效或超过 3 MB，未覆盖任何内容。','Invalid file or file over 3 MB; nothing was replaced.'];$('importFile').value='';renderComputed();return;}remember();state=restored;activeInput=null;changed();notice=['全部八案已导入，可撤销本次导入。','All eight cases imported. You can undo this import.'];$('importFile').value='';render();};
+ const importFile = $('importFile');
+ importFile.onchange = async () => {
+  const file = importFile.files[0];
+  if (!file) return;
+  const started = revision;
+  let restored;
+  try {
+   if (file.size > C.MAX_IMPORT_BYTES) throw Error();
+   const text = await file.text();
+   if (revision !== started || composingInput) {
+    notice = ['读取期间有编辑、输入法组字或页面切换，已保留当前内容。', 'Your current work was kept because editing, text composition, or navigation occurred while reading, so nothing was replaced.'];
+    importFile.value = '';
+    renderComputed();
+    return;
+   }
+   restored = C.restore(JSON.parse(text));
+   if (!restored) throw Error();
+  } catch {
+   notice = ['文件无效或超过 3 MB，未覆盖任何内容。', 'Invalid file or file over 3 MB; nothing was replaced.'];
+   importFile.value = '';
+   renderComputed();
+   return;
+  }
+  remember();
+  state = restored;
+  activeInput = null;
+  changed();
+  notice = ['全部八案已导入，可撤销本次导入。', 'All eight cases imported. You can undo this import.'];
+  importFile.value = '';
+  render();
+ };
  window.addEventListener('programlanguagechange',()=>{activeInput=null;render();});render();
 })();

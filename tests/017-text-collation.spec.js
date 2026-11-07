@@ -5,6 +5,70 @@ test('017 checkpoint source changes stay visible even when the readings are iden
  const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);await page.locator('#reading-0').fill('Same wording');await page.locator('#reading-1').fill('Same wording');await page.locator('#saveCheckpoint').click();await page.locator('#adopt-1').click();await expect(page.locator('#checkpoint')).toContainText('Changed locations: 1 / 6');await page.locator('#checkpoint summary').click();await expect(page.locator('#checkpoint')).toContainText('Checkpoint source: A');await expect(page.locator('#checkpoint')).toContainText('Current source: B');await page.locator('[data-program-language=zh]').click();await expect(page.locator('#checkpoint')).toContainText('快照来源：A');expect(await page.locator('#checkpoint details').evaluate(el=>el.open)).toBe(true);await page.locator('[data-program-language=en]').click();await expect(page.locator('#checkpoint')).toContainText('Current source: B');await page.locator('#reason').fill('Provenance differs');expect(await page.locator('#checkpoint details').evaluate(el=>el.open)).toBe(true);expect(errors).toEqual([]);
 });
 async function downloadText(page,id){const promise=page.waitForEvent('download');await page.locator(id).click();const download=await promise,stream=await download.createReadStream(),chunks=[];for await(const c of stream)chunks.push(c);return Buffer.concat(chunks).toString();}
+
+test('017 a delayed backup read preserves an active composition and allows a later import', async ({page, context}) => {
+ await page.goto(route);
+ await page.locator('#case').selectOption('library');
+ await page.locator('#notes').fill('Saved before composing');
+ const backup = await page.evaluate(() => JSON.stringify(TextCollation.fresh()));
+ await page.evaluate(() => {
+  const read = File.prototype.text;
+  File.prototype.text = function () {
+   return new Promise(resolve => {
+    window.finishCompositionTestRead = async () => resolve(await read.call(this));
+   });
+  };
+ });
+ const file = {name:'backup.json', mimeType:'application/json', buffer:Buffer.from(backup)};
+ await page.locator('#importFile').setInputFiles(file);
+ await page.locator('#notes').focus();
+ const cdp = await context.newCDPSession(page);
+ const draft = '保留组字中的笔记';
+ await cdp.send('Input.imeSetComposition', {text:draft, selectionStart:draft.length, selectionEnd:draft.length, replacementStart:0, replacementEnd:22});
+ await expect(page.locator('#notes')).toHaveValue(draft);
+ await page.evaluate(() => window.finishCompositionTestRead());
+ await expect(page.locator('#notice')).toContainText('nothing was replaced');
+ await expect(page.locator('#case')).toHaveValue('library');
+ await expect(page.locator('#notes')).toHaveValue(draft);
+ expect((await state(page)).entries.library.model.notes).toBe('Saved before composing');
+ await cdp.send('Input.insertText', {text:draft});
+ expect((await state(page)).entries.library.model.notes).toBe(draft);
+ await page.locator('#importFile').setInputFiles(file);
+ await page.evaluate(() => window.finishCompositionTestRead());
+ await expect(page.locator('#notice')).toContainText('All eight cases imported');
+ await page.locator('#undo').click();
+ await expect(page.locator('#notes')).toHaveValue(draft);
+});
+
+test('017 both languages isolate punctuation and export localized apparatus labels', async ({page}) => {
+ await page.goto(route);
+ await page.locator('#case').selectOption('library');
+ await page.locator('[data-unit="2"]').press('Enter');
+ for (const language of ['en', 'zh']) {
+  await page.locator('[data-program-language="' + language + '"]').click();
+  const source = await page.locator('#reading-1').inputValue();
+  await page.locator('#mode').selectOption('exact');
+  expect(await page.locator('#diff-b-1 .added').count()).toBeGreaterThan(0);
+  await page.locator('#mode').selectOption('light');
+  await expect(page.locator('#diff-b-1 .added')).toHaveCount(0);
+  await expect(page.locator('#diff-b-2 .added')).toHaveCount(0);
+  await expect(page.locator('#diff-a-1 .removed')).toHaveCount(0);
+  await expect(page.locator('#diff-a-2 .removed')).toHaveCount(0);
+  await expect(page.locator('#reading-1')).toHaveValue(source);
+  await expect(page.locator('#diff-b-1')).toHaveText(source);
+ }
+ await page.locator('#custom').fill('=原文 "Quoted"');
+ await page.locator('#chooseCustom').click();
+ const before = await state(page);
+ const zh = await downloadText(page, '#exportCsv');
+ expect(zh.split('\r\n')[0]).toBe('\uFEFF"位置","采用读法","来源","理由","传本 A","传本 B","传本 C"');
+ expect(zh).toContain('"\'=原文 ""Quoted""","自订"');
+ await page.locator('[data-program-language="en"]').click();
+ const en = await downloadText(page, '#exportCsv');
+ expect(en.split('\r\n')[0]).toBe('\uFEFF"Unit","Chosen reading","Source","Reason","Witness A","Witness B","Witness C"');
+ expect(en).toContain('"\'=原文 ""Quoted""","Custom"');
+ expect(await state(page)).toEqual(before);
+});
 test('017 all eight cases support complete six-location editions and retain separate work',async({page},info)=>{
  test.setTimeout(120000);const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);const ids=await page.locator('#case option').evaluateAll(nodes=>nodes.map(n=>n.value));expect(ids).toHaveLength(8);for(const id of ids){await page.locator('#case').selectOption(id);await page.locator('#title').fill('My '+id);for(let i=0;i<6;i++){await page.locator('[data-unit="'+i+'"]').click();await page.locator('#adopt-'+i%3).click();await page.locator('#reason').fill('Reason '+id+' '+i);}await expect(page.locator('#stats')).toContainText('Without reasons: 0 / 6');expect(await page.locator('#editionText p').count()).toBe(6);}await page.locator('#case').selectOption('letter');await page.locator('[data-unit="1"]').click();await expect(page.locator('#reading-0')).toHaveValue('The lamp is inside.\nThe mist is outside.');await page.locator('#custom').fill('My combined edition\n保留原文');await page.locator('#chooseCustom').click();await expect(page.locator('#editionText')).toContainText('My combined edition');await page.locator('#reading-2').fill('My source / 我的来源');const before=await state(page);await page.locator('[data-program-language=zh]').click();await expect(page.locator('#reading-2')).toHaveValue('My source / 我的来源');await expect(page.locator('#custom')).toHaveValue('My combined edition\n保留原文');await expect(page.locator('#title')).toHaveValue('My letter');expect(await state(page)).toEqual(before);await page.locator('#workbench').scrollIntoViewIfNeeded();await page.screenshot({path:info.outputPath('017-actual-edition.png'),fullPage:true});await page.reload();await expect(page.locator('#custom')).toHaveValue('My combined edition\n保留原文');await expect(page.locator('#undo')).toBeDisabled();await page.locator('#case').selectOption('ferry');await expect(page.locator('#title')).toHaveValue('My ferry');await expect(page.locator('#stats')).toContainText('未写理由: 0 / 6');expect(errors).toEqual([]);
 });

@@ -4,6 +4,12 @@
 
 ## 2026-11-07
 
+### 017 Text Collation Desk review fixes
+
+- A backup read now preserves active text composition, including a Chinese note that is still being entered. The current case and saved work remain available when the read is interrupted by editing.
+- Chinese CSV exports label columns and custom choices in Chinese. Both languages preserve user text and apply the same protection for formula-like cells.
+- The library punctuation exercise now isolates punctuation in both languages. The ferry prompt asks how changing the arrival condition affects the delivery instruction.
+
 ### 017 Text Collation Desk
 
 - Compare eight original fictional cases, each with three complete bilingual witnesses, six pre-aligned locations and six focused questions: 24 short texts, 144 paired witness readings and 48 editorial questions. Explore omission, punctuation, lexical changes, uncertain attribution, transcription and authorial revision.

@@ -24,7 +24,19 @@
  function restore(raw){if(!raw||raw.version!==1||!caseFor(raw.selected)||!raw.entries||Object.keys(raw.entries).length!==CASES.length||!raw.view||![0,1,2].includes(raw.view.base)||!['exact','spacing','light'].includes(raw.view.mode))return null;const entries={};for(const c of CASES){const e=raw.entries[c.id],model=validateModel(e?.model);if(!model||!Number.isInteger(e.unit)||e.unit<0||e.unit>=6)return null;const checkpoint=e.checkpoint===null?null:validateModel(e.checkpoint);if(e.checkpoint!==null&&!checkpoint)return null;entries[c.id]={model,checkpoint,unit:e.unit};}return {version:1,selected:raw.selected,entries,view:{base:raw.view.base,mode:raw.view.mode}};}
  function differences(source,current,saved,lang){return Array.from({length:6},(_,u)=>({unit:u,before:output(source,saved,u,lang),after:output(source,current,u,lang),choiceChanged:saved.choices[u]!==current.choices[u],reasonChanged:saved.reasons[u]!==current.reasons[u],customChanged:saved.customs[u]!==current.customs[u],sourcesChanged:JSON.stringify(saved.readings[u])!==JSON.stringify(current.readings[u])}));}
  const guard=v=>/^[\s]*[=+\-@]/u.test(String(v))?"'"+v:String(v),csvCell=v=>'"'+guard(v).replace(/"/g,'""')+'"';
- function csv(source,model,lang){const rows=[['Unit','Chosen reading','Source','Reason','Witness A','Witness B','Witness C']];for(let u=0;u<6;u++)rows.push([String(u+1),output(source,model,u,lang),model.choices[u]==='custom'?'Custom':String.fromCharCode(65+model.choices[u]),model.reasons[u],...[0,1,2].map(w=>reading(source,model,u,w,lang))]);return '\uFEFF'+rows.map(row=>row.map(csvCell).join(',')).join('\r\n');}
+ function csv(source, model, lang) {
+  const headings = lang === 'en'
+   ? ['Unit', 'Chosen reading', 'Source', 'Reason', 'Witness A', 'Witness B', 'Witness C']
+   : ['位置', '采用读法', '来源', '理由', '传本 A', '传本 B', '传本 C'];
+  const rows = [headings];
+  for (let unit = 0; unit < 6; unit++) {
+   const choice = model.choices[unit];
+   const label = choice === 'custom' ? pair(['自订', 'Custom'], lang) : String.fromCharCode(65 + choice);
+   const witnesses = [0, 1, 2].map(witness => reading(source, model, unit, witness, lang));
+   rows.push([String(unit + 1), output(source, model, unit, lang), label, model.reasons[unit], ...witnesses]);
+  }
+  return '\uFEFF' + rows.map(row => row.map(csvCell).join(',')).join('\r\n');
+ }
  function text(source,model,lang){const lines=['017 · '+pair(['校勘书房','Text Collation Desk'],lang),pair(source.name,lang),model.title,model.notes,'',pair(['编订读法（保留六处边界）','Edited reading (six locations retained)'],lang)];for(let u=0;u<6;u++)lines.push('['+(u+1)+'] '+output(source,model,u,lang));lines.push('',pair(['校勘记录','Apparatus'],lang));for(let u=0;u<6;u++){const selected=model.choices[u];lines.push('['+(u+1)+'] '+pair(['采用：','Chosen: '],lang)+(selected==='custom'?pair(['自订','Custom'],lang):String.fromCharCode(65+selected)),pair(['理由：','Reason: '],lang)+model.reasons[u]);for(let w=0;w<3;w++)lines.push(String.fromCharCode(65+w)+': '+reading(source,model,u,w,lang));}return lines.join('\n');}
  globalThis.TextCollation=Object.freeze({CASES,caseFor,pair,blank,fresh,copy,reading,output,diff,summary,restore,validateModel,differences,csv,text,MAX_READING,MAX_IMPORT_BYTES});
 })();
