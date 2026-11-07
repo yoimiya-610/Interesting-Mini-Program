@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-08
+
+### 018 Shelf Basket
+
+- Compare prices in eight original bilingual shopping cases with 32 offers. Work through weight, volume, and count examples with editable offers, inventory, budgets, and quantity limits.
+- Build a basket pack by pack, or compare the lowest checkout cost, least surplus, and best single-offer plan. The comparison distinguishes insufficient stock, gaps between reachable whole-pack quantities, and a budget below the minimum cost.
+- Keep a separate basket and note for each case, undo recent changes during a visit, and download a TXT receipt or a full JSON backup up to 256 KB. Drafts are stored in the current browser when storage is available.
+- Read a bilingual guide to unit pricing and the limits of a whole-pack model. All example prices are fictional. The comparison uses entered pack prices and available quantities.
+- Validation covers independent enumeration of whole-pack baskets, bilingual case content, editable drafts, browser exports, and offline use.
+
 ## 2026-11-07
 
 ### 017 Text Collation Desk review fixes

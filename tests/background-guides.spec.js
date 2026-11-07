@@ -1,5 +1,5 @@
 import {test,expect} from '@playwright/test';
-const entries=[['001','orbit-garden'],['002','story-fold'],['003','probability-rain'],['004','time-bento'],['006','light-path'],['007','erasure-poems'],['008','pack-pick'],['009','wave-workshop'],['010','critical-path'],['011','measure-quest'],['012','argument-loom'],['013','choice-compass'],['014','life-atlas'],['015','gear-studio'],['016','crate-courier'],['017','text-collation']];
+const entries=[['001','orbit-garden'],['002','story-fold'],['003','probability-rain'],['004','time-bento'],['006','light-path'],['007','erasure-poems'],['008','pack-pick'],['009','wave-workshop'],['010','critical-path'],['011','measure-quest'],['012','argument-loom'],['013','choice-compass'],['014','life-atlas'],['015','gear-studio'],['016','crate-courier'],['017','text-collation'],['018','shelf-basket']];
 const route=([id,slug])=>'/apps/'+id+'-'+slug+'/index.html';
 for(const entry of entries)test(entry[0]+' contextual reading is bilingual, collapsible, and readable alongside the activity',async({page},info)=>{
  const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.goto(route(entry)+'?lang=en');const root=page.locator('#programBackground'),detail=page.locator('#backgroundDetails');await expect(root).toBeVisible();expect(await detail.evaluate(el=>el.open)).toBe(false);expect(await root.innerText()).not.toMatch(/[\u3400-\u9fff]/);
@@ -20,6 +20,6 @@ test('Poetry background preserves selections, line breaks, and original custom t
  await page.goto(route(entries[5])+'?lang=en');await page.locator('#source').selectOption('garden');await page.locator('#demo').click();await page.locator('#poemTitle').fill('My 自己的诗');const before=await page.locator('#poem').innerText();await page.locator('#programBackground summary').click();await page.locator('[data-program-language="zh"]').click();await page.locator('[data-program-language="en"]').click();await expect(page.locator('#source')).toHaveValue('garden');await expect(page.locator('#poemTitle')).toHaveValue('My 自己的诗');await expect(page.locator('#poem')).toHaveText(before);await page.reload();await expect(page.locator('#poemTitle')).toHaveValue('My 自己的诗');
 });
 
-test('All seven new guides and reference text remain readable in offline file mode',async({page,context})=>{
+test('Shared guides and reference text remain readable in offline file mode',async({page,context})=>{
  const errors=[];page.on('pageerror',error=>errors.push(error.message));await context.setOffline(true);for(const[id,slug]of entries){await page.goto(new URL('../public/apps/'+id+'-'+slug+'/index.html?lang=en',import.meta.url).href);await page.locator('#programBackground summary').click();await expect(page.locator('.background-section').first()).toBeVisible();expect(await page.locator('#programBackground').innerText()).not.toMatch(/[\u3400-\u9fff]/);}expect(errors).toEqual([]);
 });
