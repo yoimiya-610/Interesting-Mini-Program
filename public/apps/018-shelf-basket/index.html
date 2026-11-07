@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="018 货架算账。用单价比较包装，再按库存、预算和余量组合购物篮。">
+  <title>018 · 货架算账</title>
+  <link rel="stylesheet" href="../../shared/typography.css">
+  <link rel="stylesheet" href="../../shared/program-language.css">
+  <link rel="stylesheet" href="../../shared/background-guide.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="english.js"></script>
+  <script src="../../shared/program-language.js"></script>
+</head>
+<body data-app="018">
+  <div class="wrap">
+    <header>
+      <a class="brand" href="../../index.html">018 · 货架算账</a>
+      <a href="../../index.html">← 小程序索引</a>
+    </header>
+    <main data-user-content>
+      <section class="hero">
+        <p class="kicker" data-i="kicker"></p>
+        <h1 data-i="hero"></h1>
+        <p data-i="intro"></p>
+        <nav class="actions">
+          <a href="#limits" data-i="start"></a>
+          <a href="#results" data-i="goResults"></a>
+          <a href="#programBackground" data-i="readGuide"></a>
+        </nav>
+      </section>
+      <section class="panel" id="limits" aria-labelledby="caseTitle">
+        <p class="kicker" data-i="caseStep"></p>
+        <h2 id="caseTitle"></h2>
+        <p id="brief"></p>
+        <p class="exercise" id="exercise"></p>
+        <div class="limit-grid">
+          <label><span data-i="caseLabel"></span><select id="case"></select></label>
+          <label><span id="targetLabel"></span><input id="target" inputmode="numeric" maxlength="20" aria-describedby="issues"></label>
+          <label><span id="surplusLabel"></span><input id="surplus" inputmode="numeric" maxlength="20" aria-describedby="issues"></label>
+          <label><span data-i="budgetLabel"></span><input id="budget" inputmode="decimal" maxlength="20" aria-describedby="issues"></label>
+        </div>
+        <p class="hint" data-i="limitsHint"></p>
+        <div id="issues" role="status"></div>
+      </section>
+      <div class="workspace">
+        <section class="panel" id="shelf" aria-labelledby="shelfHeading">
+          <p class="kicker" data-i="shelfStep"></p>
+          <h2 id="shelfHeading" data-i="shelfHeading"></h2>
+          <p class="hint" data-i="shelfHint"></p>
+          <div id="offers"></div>
+          <div class="actions">
+            <button id="addOffer" data-i="addOffer"></button>
+            <button id="resetCase" data-i="resetCase"></button>
+            <button id="undo" data-i="undo"></button>
+            <button id="redo" data-i="redo"></button>
+          </div>
+        </section>
+        <div class="side">
+          <section class="panel" id="results" aria-labelledby="resultHeading">
+            <p class="kicker" data-i="resultStep"></p>
+            <h2 id="resultHeading" data-i="resultHeading"></h2>
+            <div id="basket" tabindex="-1"></div>
+            <button id="clearBasket" data-i="clearBasket"></button>
+            <h3 data-i="planner"></h3>
+            <div id="plans"></div>
+          </section>
+          <section class="panel" aria-labelledby="rankingHeading">
+            <h2 id="rankingHeading" data-i="ranking"></h2>
+            <label><span data-i="basis"></span><select id="basis"></select></label>
+            <p class="hint" data-i="rankingHint"></p>
+            <ol id="rates" class="rates"></ol>
+          </section>
+        </div>
+      </div>
+      <div class="bottom-grid">
+        <section class="panel" aria-labelledby="dataHeading">
+          <h2 id="dataHeading" data-i="dataHeading"></h2>
+          <label><span data-i="note"></span><textarea id="note" rows="4" maxlength="2000"></textarea></label>
+          <p class="hint" data-i="dataHint"></p>
+          <div class="actions">
+            <button id="exportText" data-i="exportText"></button>
+            <button id="exportJson" data-i="exportJson"></button>
+          </div>
+          <button id="importJson" type="button" data-i="importJson"></button>
+          <input id="importFile" type="file" accept=".json,application/json" hidden>
+          <p id="storage" class="hint"></p>
+          <p id="notice" role="status"></p>
+        </section>
+        <div class="guide-anchor"></div>
+      </div>
+    </main>
+    <footer>018 / SHELF BASKET</footer>
+  </div>
+  <script src="content.js"></script>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+  <script src="background.js"></script>
+  <script src="../../shared/background-guide.js"></script>
+</body>
+</html>

@@ -440,5 +440,23 @@
         "Textual variants"
       ]
     }
+  },
+  {
+    "id": "018",
+    "slug": "shelf-basket",
+    "title": "货架算账",
+    "subtitle": "看清单价，算好一篮",
+    "description": "八个双语购物案例，换算每克、每毫升或每件单价，按需求、余量、预算与库存比较整包买法。",
+    "category": "生活",
+    "tags": ["单位价格", "购物预算", "整数规划"],
+    "style": "松针绿货架 · 暖纸价签 · 结算小票",
+    "interaction": "八个原创案例与三十二种规格；手动购物篮、精确单价排序、预算和库存约束、付款与余量取舍、独立笔记和 TXT/JSON 导出",
+    "created": "2026-11-08",
+    "en": {
+      "title": "Shelf Basket",
+      "description": "Compare unit prices in eight shopping cases. Build a basket by hand or compare whole-pack plans for the lowest checkout cost and least surplus under stock and budget limits.",
+      "style": "Pine-green shelves · Warm price tags · Paper receipts",
+      "tags": ["Unit prices", "Shopping budget", "Whole-pack planning"]
+    }
   }
 ]
