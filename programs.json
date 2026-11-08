@@ -458,5 +458,23 @@
       "style": "Pine-green shelves · Warm price tags · Paper receipts",
       "tags": ["Unit prices", "Shopping budget", "Whole-pack planning"]
     }
+  },
+  {
+    "id": "019",
+    "slug": "heat-mosaic",
+    "title": "热流拼图",
+    "subtitle": "热从哪儿走？",
+    "description": "八个双语导热实验。涂画温度与材料，比较绝热、恒温外界与环绕边缘，保存快照并测量差值。",
+    "category": "理科",
+    "tags": ["热传导", "温度场", "边界条件"],
+    "style": "青灰实验板 · 蓝金热图 · 斜纹隔断",
+    "interaction": "八个原创实验、140 格热板、三种材料与三种边界、矩形画笔和探针、逐步与连续扩散、同一步数的快照差值图、CSV 与 JSON 导出",
+    "created": "2026-11-09",
+    "en": {
+      "title": "Heat Mosaic",
+      "description": "Paint temperature and material on a grid in eight conduction experiments. Compare sealed, reservoir and wrap edges with a probe, a saved snapshot and a difference map.",
+      "style": "Teal lab plate · Blue-to-gold heat map · Hatched barriers",
+      "tags": ["Conduction", "Temperature field", "Boundary conditions"]
+    }
   }
 ]

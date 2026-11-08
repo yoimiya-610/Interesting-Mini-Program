@@ -22,5 +22,6 @@
 | 016 | 推箱邮局 | 游戏 | 一步能到，不代表还能回来。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/016-crate-courier/) | [本地](http://127.0.0.1:4173/apps/016-crate-courier/) | [HTML](public/apps/016-crate-courier/index.html) | 2026-11-06 |
 | 017 | 校勘书房 | 文科 | 不同的字，留下不同的线索。 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/017-text-collation/) | [本地](http://127.0.0.1:4173/apps/017-text-collation/) | [HTML](public/apps/017-text-collation/index.html) | 2026-11-07 |
 | 018 | 货架算账 | 生活 | 看清单价，算好一篮 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/018-shelf-basket/) | [本地](http://127.0.0.1:4173/apps/018-shelf-basket/) | [HTML](public/apps/018-shelf-basket/index.html) | 2026-11-08 |
+| 019 | 热流拼图 | 理科 | 热从哪儿走？ | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/019-heat-mosaic/) | [本地](http://127.0.0.1:4173/apps/019-heat-mosaic/) | [HTML](public/apps/019-heat-mosaic/index.html) | 2026-11-09 |
 
 点击“体验”即可在线打开；下载仓库后，也可以通过“HTML”打开本地文件。使用方法与数据保存说明见[项目介绍](README.md)。感谢你来玩。

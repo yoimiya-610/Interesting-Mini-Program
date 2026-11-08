@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-09
+
+### 019 Heat Mosaic
+
+- Explore eight original bilingual conduction experiments on a 14 × 10 thermal plate. Paint single tiles or rectangles with temperature and material brushes, and compare sealed, fixed-reservoir and wraparound edges.
+- Step once, advance twelve steps or run continuously. Read individual tiles with a probe, compare board averages and ranges, and use a saved frame to map temperature changes between two runs.
+- Keep one comparison snapshot and a note for each experiment. Use up to twelve session undo operations per experiment visit, download cell readings as CSV, or back up all eight experiments as JSON. The import limit is 512 KB.
+- The bilingual guide introduces Fourier's work and explains the first step of a hot spot. Heat Mosaic tracks continuous temperature on equal-capacity tiles, with model steps and temperatures. This makes it a different experiment from the discrete birth and survival rules in Life Atlas.
+- Validation covers hand-calculated steps, independent per-cell updates, blocked and slow materials, heat conservation, bounded temperatures, complete backups and desktop/mobile interaction.
+
 ## 2026-11-08
 
 ### 018 Shelf Basket improvements
