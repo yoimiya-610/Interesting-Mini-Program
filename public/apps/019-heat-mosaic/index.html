@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="019 热流拼图。画温度、换材料，比较不同边界中的热扩散。">
+  <title>019 · 热流拼图</title>
+  <link rel="stylesheet" href="../../shared/typography.css">
+  <link rel="stylesheet" href="../../shared/program-language.css">
+  <link rel="stylesheet" href="../../shared/background-guide.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="english.js"></script>
+  <script src="../../shared/program-language.js"></script>
+</head>
+<body data-app="019">
+  <div class="shell">
+    <header>
+      <a class="brand" href="../../index.html">019 · 热流拼图</a>
+      <a href="../../index.html">← 小程序索引</a>
+    </header>
+    <main data-user-content>
+      <section class="hero">
+        <p class="kicker" data-i="kicker"></p>
+        <h1 data-i="headline"></h1>
+        <p data-i="intro"></p>
+        <nav class="actions">
+          <a href="#experiment" data-i="choose"></a>
+          <a href="#programBackground" data-i="guide"></a>
+        </nav>
+      </section>
+      <section class="panel" id="experiment" aria-labelledby="caseTitle">
+        <div class="case-head">
+          <div><p class="kicker" data-i="start"></p><h2 id="caseTitle"></h2></div>
+          <label><span data-i="case"></span><select id="case"></select></label>
+        </div>
+        <p class="exercise" id="task"></p>
+        <div class="settings">
+          <label><span data-i="edge"></span><select id="edge"></select></label>
+          <label><span data-i="rate"></span><select id="rate"></select></label>
+          <label><span data-i="brush"></span><select id="brush"></select></label>
+          <label><span data-i="view"></span><select id="view"></select></label>
+        </div>
+        <div class="actions toggles">
+          <label class="toggle"><input id="rectangle" type="checkbox"><span data-i="rectangle"></span></label>
+          <label class="toggle"><input id="zoom" type="checkbox"><span data-i="zoom"></span></label>
+        </div>
+        <p class="hint" id="brushHint"></p>
+      </section>
+      <div class="workspace">
+        <section class="panel field" aria-labelledby="fieldTitle">
+          <div class="case-head">
+            <div><p class="kicker" data-i="plate"></p><h2 id="fieldTitle" data-i="plateTitle"></h2></div>
+            <p id="stepCount" class="step"></p>
+          </div>
+          <div class="board-frame" id="boardFrame">
+            <div class="board" id="board" role="group" aria-labelledby="fieldTitle" aria-describedby="boardHint"></div>
+          </div>
+          <div id="legend" class="legend"></div>
+          <p class="hint" id="boardHint" data-i="boardHint"></p>
+          <div class="actions">
+            <button id="single" type="button" data-i="single"></button>
+            <button id="twelve" type="button" data-i="twelve"></button>
+            <button id="play" type="button"></button>
+            <button id="reset" type="button" data-i="reset"></button>
+            <button id="undo" type="button" data-i="undo"></button>
+            <button id="redo" type="button" data-i="redo"></button>
+          </div>
+        </section>
+        <section class="panel instruments" aria-labelledby="measureTitle">
+          <p class="kicker" data-i="measure"></p>
+          <h2 id="measureTitle" data-i="measureTitle"></h2>
+          <div id="probe" class="probe" aria-live="polite"></div>
+          <dl id="metrics" class="metrics"></dl>
+          <div class="snapshot">
+            <h3 data-i="snapshot"></h3>
+            <p class="hint" data-i="snapshotHint"></p>
+            <p id="comparison"></p>
+            <div class="actions">
+              <button id="capture" type="button" data-i="capture"></button>
+              <button id="recall" type="button" data-i="recall"></button>
+              <button id="clear" type="button" data-i="clear"></button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="lower">
+        <section class="panel" aria-labelledby="dataTitle">
+          <h2 id="dataTitle" data-i="dataTitle"></h2>
+          <label><span data-i="note"></span><textarea id="note" rows="4" maxlength="2000"></textarea></label>
+          <p class="hint" data-i="dataHint"></p>
+          <div class="actions">
+            <button id="csv" type="button" data-i="csv"></button>
+            <button id="backup" type="button" data-i="backup"></button>
+            <button id="import" type="button" data-i="import"></button>
+          </div>
+          <input id="file" type="file" accept=".json,application/json" hidden>
+          <p id="storage" class="hint"></p>
+          <p id="notice" role="status"></p>
+        </section>
+        <div class="guide-anchor"></div>
+      </div>
+    </main>
+    <footer>019 / HEAT MOSAIC</footer>
+  </div>
+  <script src="content.js"></script>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+  <script src="background.js"></script>
+  <script src="../../shared/background-guide.js"></script>
+</body>
+</html>
