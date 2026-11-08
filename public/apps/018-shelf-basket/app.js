@@ -31,7 +31,7 @@
     rankingHint: ['按精确比例排序，金额显示到分。售罄规格仍可用于比较单价。', 'Ranking uses exact ratios. Displayed money rounds to cents. Sold-out offers stay visible for price comparison.'],
     dataHeading: ['笔记与备份', 'Notes and backup'],
     note: ['本案笔记', 'Case notes'],
-    dataHint: ['八案各自保存于当前浏览器。可撤销最近 20 次编辑或操作，刷新会清除撤销历史。JSON 可备份全部案例与未完成输入，导入上限 256 KB。TXT 保存当前有效购物篮与笔记。', 'Each case saves separately in this browser. Undo up to 20 recent edits or actions. Reload clears undo history. JSON backs up all cases and incomplete inputs, with a 256 KB import limit. TXT records the current valid basket and notes.'],
+    dataHint: ['八案各自保存于当前浏览器。可撤销最近 20 次编辑或操作，刷新会清除撤销历史。JSON 可备份全部案例与未完成输入，导入上限 256 KB。输入可计算时，TXT 保存购物篮、限制检查结果和笔记。', 'Each case saves separately in this browser. Undo up to 20 recent edits or actions. Reload clears undo history. JSON backs up all cases and incomplete inputs, with a 256 KB import limit. When the inputs can be calculated, TXT records the basket, whether it fits the limits, and your notes.'],
     exportText: ['下载购物单 TXT', 'Download basket TXT'],
     exportJson: ['备份全部 JSON', 'Back up all cases as JSON'],
     importJson: ['导入完整备份', 'Import full backup'],
@@ -248,12 +248,7 @@
     return counts.flatMap((count, index) => count ? [offerName(draft().offers[index], index) + ' × ' + count] : []);
   }
 
-  function renderBasket(model, basket) {
-    const root = $('basket');
-    const receipt = node('div', undefined, 'receipt');
-    receipt.append(node('h3', P(['当前购物篮', 'Current basket'])));
-    receipt.append(node('p', money(basket.cost) + ' · ' + amount(basket.quantity, model.family), 'tally'));
-    receipt.append(node('p', packCount(basket.packs)));
+  function basketWarnings(model, basket) {
     const flags = [];
     if (basket.overStock) flags.push(P(['有规格超过库存。', 'At least one offer exceeds its stock.']));
     if (basket.quantity < model.target) {
@@ -264,8 +259,22 @@
     if (model.budget !== null && basket.cost > model.budget) {
       flags.push(P(['超出预算 ', 'Over budget by ']) + money(basket.cost - model.budget));
     }
+    return flags;
+  }
+
+  function basketFits(model, basket) {
+    return P(['符合条件，余量 ', 'Fits all limits with surplus ']) + amount(basket.quantity - model.target, model.family);
+  }
+
+  function renderBasket(model, basket) {
+    const root = $('basket');
+    const receipt = node('div', undefined, 'receipt');
+    receipt.append(node('h3', P(['当前购物篮', 'Current basket'])));
+    receipt.append(node('p', money(basket.cost) + ' · ' + amount(basket.quantity, model.family), 'tally'));
+    receipt.append(node('p', packCount(basket.packs)));
+    const flags = basketWarnings(model, basket);
     if (flags.length) receipt.append(...flags.map(flag => node('p', flag, 'bad')));
-    else receipt.append(node('p', P(['符合条件，余量 ', 'Fits all limits with surplus ']) + amount(basket.quantity - model.target, model.family)));
+    else receipt.append(node('p', basketFits(model, basket)));
     const list = node('ul');
     list.append(...lines(basket.counts).map(line => node('li', line)));
     if (list.childElementCount) receipt.append(list);
@@ -322,6 +331,7 @@
 
   function renderResults() {
     const model = C.inspect(template(), draft());
+    renderRates(model);
     for (const input of document.querySelectorAll('input[aria-describedby="issues"]')) {
       input.setAttribute('aria-invalid', String(input.id in model.errors));
     }
@@ -355,7 +365,6 @@
       $('issues').append(list);
       $('basket').replaceChildren(node('p', P(['修正标出的输入后可继续计算。', 'Correct the marked inputs to calculate the basket.'])));
       $('plans').replaceChildren();
-      $('rates').replaceChildren();
       return;
     }
 
@@ -369,8 +378,16 @@
       cachedPlan = C.plan(model);
     }
     renderPlans(model, cachedPlan, basket);
+  }
+
+  function renderRates(model) {
     const ordered = model.offers.map((offer, index) => ({offer, index}))
+      .filter(({offer}) => offer.quantity > 0 && offer.price !== null)
       .sort((left, right) => C.compareUnitPrice(left.offer, right.offer) || left.index - right.index);
+    const rateNotice = $('rateNotice');
+    rateNotice.hidden = ordered.length === model.offers.length;
+    rateNotice.textContent = rateNotice.hidden ? ''
+      : P(['仅比较每包数量和价格有效的规格。', 'Only offers with a valid pack quantity and price are compared.']);
     $('rates').replaceChildren(...ordered.map(({offer, index}, rank) => {
       const lead = offerName(draft().offers[index], index) + ' · ';
       const rate = money(C.roundedUnitCents(offer, draft().basis)) + ' ' + priceUnit(draft().basis, model.family);
@@ -429,6 +446,7 @@
     const model = C.inspect(template(), draft());
     if (Object.keys(model.errors).length) return;
     const basket = C.tally(model.offers, model.offers.map(offer => offer.count));
+    const flags = basketWarnings(model, basket);
     const unit = model.family;
     const text = [
       '018 · ' + P(['货架算账', 'Shelf Basket']), P(template().name),
@@ -437,6 +455,7 @@
       P(['预算 ', 'Budget ']) + (model.budget === null ? P(['不限', 'Any cost']) : money(model.budget)),
       ...lines(basket.counts),
       P(['篮中合计 ', 'Basket total ']) + amount(basket.quantity, unit) + ' · ' + money(basket.cost),
+      ...(flags.length ? flags : [basketFits(model, basket)]),
       '', draft().note,
     ].join('\n');
     download('shelf-basket-' + state.selected + '.txt', text, 'text/plain;charset=utf-8');

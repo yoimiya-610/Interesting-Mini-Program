@@ -4,6 +4,11 @@
 
 ## 2026-11-08
 
+### 018 Shelf Basket improvements
+
+- Unit prices remain visible while you edit shopping limits or stock. If an offer has an unfinished quantity or price, the comparison still ranks the other offers and explains which inputs it uses.
+- Downloaded TXT shopping lists now show whether the basket fits its limits, including any stock, quantity, or budget warnings shown on screen.
+
 ### 018 Shelf Basket
 
 - Compare prices in eight original bilingual shopping cases with 32 offers. Work through weight, volume, and count examples with editable offers, inventory, budgets, and quantity limits.

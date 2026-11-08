@@ -63,6 +63,46 @@ test('018 offers intermediate cost and surplus choices for a custom shelf', asyn
   await expect(page.locator('#basket .tally')).toHaveText('¥2.00 · 11 g');
 });
 
+test('018 unit prices stay useful while shopping constraints or an offer are unfinished', async ({page}) => {
+  await page.goto(route);
+  await page.locator('#target').fill('');
+  await page.locator('#stock-2').fill('unfinished');
+  await expect(page.locator('#target')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.locator('#rates li')).toHaveCount(4);
+  await expect(page.locator('#rates li').first()).toContainText('Value bag');
+  await page.locator('#price-2').fill('');
+  await expect(page.locator('#rates li')).toHaveCount(3);
+  await expect(page.locator('#rates li').first()).toContainText('Family bag');
+  await expect(page.locator('#rateNotice')).toContainText('valid pack quantity and price');
+  await page.locator('[data-program-language=zh]').press('Enter');
+  await expect(page.locator('#rateNotice')).toContainText('每包数量和价格有效');
+  await expect(page.locator('#stock-2')).toHaveValue('unfinished');
+  await page.locator('#price-2').fill('7.60');
+  await expect(page.locator('#rates li')).toHaveCount(4);
+  await expect(page.locator('#rateNotice')).toBeEmpty();
+});
+
+test('018 basket receipts preserve warnings and successful fits in both languages', async ({page}) => {
+  await page.goto(route);
+  await plan(page, 'Least surplus').getByRole('button').press('Enter');
+  await page.locator('#stock-1').fill('1');
+  await page.locator('#budget').fill('13.00');
+  await page.locator('#target').fill('1000');
+  const english = await downloadText(page, '#exportText');
+  expect(english).toContain('At least one offer exceeds its stock');
+  expect(english).toContain('Still needed: 100 g');
+  expect(english).toContain('Over budget by ¥0.60');
+  await page.locator('[data-program-language=zh]').press('Enter');
+  const chinese = await downloadText(page, '#exportText');
+  expect(chinese).toContain('有规格超过库存');
+  expect(chinese).toContain('还差 100 g');
+  expect(chinese).toContain('超出预算 ¥0.60');
+  await page.locator('#resetCase').press('Enter');
+  await page.locator('[data-program-language=en]').press('Enter');
+  await plan(page, 'Lowest checkout cost').getByRole('button').press('Enter');
+  expect(await downloadText(page, '#exportText')).toContain('Fits all limits with surplus 100 g');
+});
+
 test('018 all eight cases can be explored and each infeasible shelf suggests a different adjustment', async ({page}) => {
   await page.goto(route);
   const choose = id => page.locator('#case').selectOption(id);
