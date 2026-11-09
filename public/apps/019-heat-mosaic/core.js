@@ -66,6 +66,11 @@
         next[to] += transfer;
       }
       for (const [here, weight] of rim) next[here] += weight * (ambient - temp[here]);
+      // The exact update stays in range. Subnormal transfers can round past zero.
+      for (let i = 0; i < size; i++) {
+        if (next[i] < 0) next[i] = 0;
+        else if (next[i] > 100) next[i] = 100;
+      }
       temp = next;
     }
     return {...board, temp, steps: board.steps + steps};

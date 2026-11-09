@@ -4,6 +4,11 @@
 
 ## 2026-11-09
 
+### 019 Heat Mosaic improvements
+
+- After importing a backup, recover all pre-import experiments, snapshots, and notes before making further edits or reloading.
+- Keep extremely small imported temperatures within the supported range after stepping so exported backups can still be reopened. The guide now links directly to Fourier's original text and explains the per-interface exchange percentage.
+
 ### 019 Heat Mosaic
 
 - Explore eight original bilingual conduction experiments on a 14 × 10 thermal plate. Paint single tiles or rectangles with temperature and material brushes, and compare sealed, fixed-reservoir and wraparound edges.

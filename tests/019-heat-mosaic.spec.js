@@ -181,3 +181,33 @@ test('019 runs offline with blocked storage and still offers downloads and the g
   await page.locator('#programBackground summary').press('Enter');
   await expect(page.locator('#programBackground')).toContainText('1822');
 });
+
+test('019 recovery restores all pre-import experiments and expires on a new edit', async ({page}) => {
+  await page.goto(route);
+  await page.locator('#note').fill('Original hot spot / 初始热斑');
+  await page.locator('#case').selectOption('wrap');
+  await page.locator('#twelve').press('Enter');
+  await page.locator('#capture').press('Enter');
+  await page.locator('#note').fill('Across the edge / 跨边');
+  const before = await save(page);
+  const backup = file(await page.evaluate(() => HeatMosaic.fresh()));
+  await page.locator('#file').setInputFiles(backup);
+  const recover = page.locator('#recoverImport');
+  await expect(recover).toHaveText('Recover work from before import');
+  await expect(recover).toBeVisible();
+  await page.locator('#case').selectOption('bridge');
+  await tile(page, 9, 4).press('Enter');
+  await page.locator('[data-program-language=zh]').press('Enter');
+  await expect(recover).toHaveText('找回导入前的数据');
+  await recover.press('Enter');
+  await expect(page.locator('#import')).toBeFocused();
+  await expect(page.locator('#note')).toHaveValue('Across the edge / 跨边');
+  expect(await save(page)).toEqual(before);
+  await expect(recover).toBeHidden();
+
+  await page.locator('#file').setInputFiles(backup);
+  await expect(recover).toBeVisible();
+  await page.locator('#note').fill('New work after import');
+  await expect(recover).toBeHidden();
+  expect((await save(page)).runs.spark.note).toBe('New work after import');
+});

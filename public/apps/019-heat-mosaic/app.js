@@ -35,10 +35,11 @@
     clear: ['移除快照', 'Remove snapshot'],
     dataTitle: ['记录与导出', 'Notes and exports'],
     note: ['实验笔记（最多 1,000 字符）', 'Experiment notes (up to 1,000 characters)'],
-    dataHint: ['八个实验各自保存在当前浏览器。每案支持 12 次热板或快照操作的撤销，切换实验或刷新会清空撤销历史。CSV 记录当前实验的逐格读数；JSON 备份全部实验、快照和笔记，导入上限 512 KB。', 'The eight experiments save separately in this browser. Undo up to 12 board or snapshot changes until you switch experiments or reload. CSV records cell readings for the current experiment. JSON backs up all experiments, snapshots, and notes, with a 512 KB import limit.'],
+    dataHint: ['八个实验各自保存在当前浏览器。每案支持 12 次热板或快照操作的撤销，切换实验或刷新会清空撤销历史。CSV 记录当前实验的逐格读数；JSON 备份全部实验、快照和笔记，导入上限 512 KB。导入后可找回之前的数据，直到编辑热板、快照或笔记，或刷新页面。', 'The eight experiments save separately in this browser. Undo up to 12 board or snapshot changes until you switch experiments or reload. CSV records cell readings for the current experiment. JSON backs up all experiments, snapshots, and notes, with a 512 KB import limit. You can recover pre-import work until you edit a board, snapshot, or note, or reload.'],
     csv: ['下载逐格 CSV', 'Download cell CSV'],
     backup: ['备份全部 JSON', 'Back up all as JSON'],
     import: ['导入完整备份', 'Import full backup'],
+    recoverImport: ['找回导入前的数据', 'Recover work from before import'],
   };
   const edges = {
     sealed: ['绝热边缘', 'Sealed edge'],
@@ -97,6 +98,7 @@
   let timer = null;
   let revision = 0;
   let importNumber = 0;
+  let preImport = null;
   let composing = false;
   const past = [];
   const future = [];
@@ -124,8 +126,12 @@
       : P(['浏览器存储不可用。请下载 JSON 备份。', 'Browser storage is unavailable. Download a JSON backup.']);
   }
 
-  function edited() {
+  function edited(keepRecovery = false) {
     revision++;
+    if (!keepRecovery) {
+      preImport = null;
+      $('recoverImport').hidden = true;
+    }
     notice = null;
     $('notice').textContent = '';
     writeStorage();
@@ -196,14 +202,14 @@
     cursor = index;
     run().probe = index;
     if (brush === 'probe') {
-      edited();
+      edited(true);
       render();
       return;
     }
     stop();
     if ($('rectangle').checked && anchor === null) {
       anchor = index;
-      edited();
+      edited(true);
       render();
       return;
     }
@@ -344,7 +350,7 @@
   $('case').onchange = () => {
     stop();
     state.selected = $('case').value;
-    edited();
+    edited(true);
     showRun();
   };
   $('edge').onchange = () => change(() => { board().edge = $('edge').value; });
@@ -366,6 +372,7 @@
   function saveNote() {
     const clipped = [...$('note').value].slice(0, 1000).join('');
     if ($('note').value !== clipped) $('note').value = clipped;
+    if (run().note === clipped) return;
     run().note = clipped;
     edited();
   }
@@ -413,12 +420,24 @@
     } else if (composing || start !== revision) {
       notice = ['读取时发生编辑或切换。当前数据已保留。', 'Editing or navigation occurred during the read. Your work was kept.'];
     } else {
+      const previous = state;
       state = restored;
       edited();
+      preImport = previous;
+      $('recoverImport').hidden = false;
       showRun();
       notice = ['已导入全部八个实验。', 'All eight experiments were imported.'];
     }
     render();
+  };
+  $('recoverImport').onclick = () => {
+    if (!preImport || composing) return;
+    state = preImport;
+    edited();
+    showRun();
+    notice = ['已找回导入前的实验、快照和笔记。', 'Pre-import experiments, snapshots, and notes were recovered.'];
+    render();
+    $('import').focus();
   };
   window.addEventListener('pagehide', () => { if (timer !== null) writeStorage(); });
   window.addEventListener('programlanguagechange', () => { localize(); render(); showStorage(); });
