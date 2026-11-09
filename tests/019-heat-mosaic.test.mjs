@@ -134,3 +134,17 @@ test('Complete backup capacity preserves all boards, snapshots and literal notes
     assert.equal(C.restore(raw), null);
   }
 });
+
+test('Stepping a legal near-zero import keeps its backup reopenable', () => {
+  const state = C.fresh();
+  const board = state.runs.spark.board;
+  board.temp.fill(0);
+  board.temp[C.index(6, 4)] = 3 * Number.MIN_VALUE;
+  const imported = C.restore(JSON.parse(JSON.stringify(state)));
+  assert(imported);
+  imported.runs.spark.board = C.advance(imported.runs.spark.board, 1);
+  assert(imported.runs.spark.board.temp.every(value => value >= 0));
+  const restored = C.restore(JSON.parse(JSON.stringify(imported)));
+  assert(restored);
+  assert.equal(restored.runs.spark.board.steps, 1);
+});
