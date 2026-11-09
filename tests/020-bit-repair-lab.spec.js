@@ -1,0 +1,158 @@
+import {test, expect} from '@playwright/test';
+
+const route = '/apps/020-bit-repair-lab/index.html?lang=en';
+const key = 'imp-020-bit-repair-lab-v1';
+const receiver = (page, length) => page.locator('#results [data-length="' + length + '"]');
+const bit = (page, position) => page.locator('#wire [data-position="' + position + '"]');
+const saved = page => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
+const file = data => ({name: 'bit-repair.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data))});
+
+async function downloadText(page, selector) {
+  const pending = page.waitForEvent('download');
+  await page.locator(selector).press('Enter');
+  const stream = await (await pending).createReadStream();
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks).toString();
+}
+
+test('020 experiments distinguish repair, wrong repair, rejection and undetected faults', async ({page}, info) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto(route);
+  await expect(page.locator('#case option')).toHaveCount(8);
+  const choose = id => page.locator('#case').selectOption(id);
+  const short = receiver(page, 7), long = receiver(page, 8);
+  await expect(long).toContainText('Checks pass. Deliver unchanged.');
+  await choose('data');
+  await expect(long).toContainText('Single-error rule flips position 3');
+  await page.locator('#group').selectOption('2');
+  await expect(page.locator('#equation')).toContainText('odd, fails');
+  await expect(page.locator('#syndrome')).toHaveText('Sum of failed groups: 1 + 2 → 3');
+  await expect(page.locator('#wire [data-group=true]')).toHaveCount(4);
+  await bit(page, 2).press('ArrowRight');
+  await expect(bit(page, 3)).toBeFocused();
+  await page.keyboard.press('Space');
+  await expect(long).toContainText('Checks pass. Deliver unchanged.');
+  await page.locator('#reset').press('Enter');
+  await expect(bit(page, 3)).toHaveAttribute('aria-pressed', 'true');
+  await choose('check');
+  await expect(long).toContainText('Single-error rule flips position 4');
+  await choose('overall');
+  await expect(short).toContainText('Checks pass. Deliver unchanged.');
+  await expect(long).toContainText('Single-error rule flips position 8');
+  await choose('double');
+  await expect(short).toContainText('Delivered payload differs');
+  await expect(long).toContainText('Held without delivery');
+  await choose('mixed');
+  await expect(long).toContainText('Held without delivery');
+  await bit(page, 8).click();
+  await expect(long).toContainText('Single-error rule flips position 7');
+  await choose('triple');
+  await expect(long).toContainText('Single-error rule flips position 8');
+  await expect(long).toContainText('Delivered payload differs');
+  await choose('silent');
+  await expect(long).toContainText('Checks pass. Deliver unchanged.');
+  await expect(long).toContainText('Delivered payload differs');
+  await page.locator('#answer summary').press('Enter');
+  await expect(page.locator('#explanation')).toContainText('14 deliver incorrect data');
+  await page.locator('#programBackground summary').press('Enter');
+  await expect(page.locator('#programBackground')).toContainText('SECDED');
+  await page.locator('#wire').scrollIntoViewIfNeeded();
+  await page.screenshot({path: info.outputPath('020-undetected-typography.png'), fullPage: true});
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+});
+
+test('020 exhaustive counts and loaded examples agree with the live receivers', async ({page}) => {
+  await page.goto(route);
+  const row = weight => page.locator('#sweepRows [data-weight="' + weight + '"] td');
+  await expect(row(2)).toHaveText(['28', '0', '28', '0']);
+  await expect(row(4)).toHaveText(['70', '0', '56', '14']);
+  await page.locator('#weight').selectOption('4');
+  await page.locator('#outcome').selectOption('wrong');
+  await expect(page.locator('#sampleStatus')).toHaveText('Patterns in this category: 14');
+  await page.locator('#loadSample').press('Enter');
+  await expect(page.locator('#wire .bit[aria-pressed=true]')).toHaveCount(4);
+  await expect(page.locator('#wire .bit[aria-pressed=true]').first()).toBeFocused();
+  await expect(receiver(page, 8)).toContainText('Checks pass. Deliver unchanged.');
+  await expect(receiver(page, 8)).toContainText('Delivered payload differs');
+  await page.locator('#length').selectOption('7');
+  await expect(row(2)).toHaveText(['21', '0', '0', '21']);
+  await page.locator('#weight').selectOption('2');
+  await page.locator('#outcome').selectOption('held');
+  await expect(page.locator('#loadSample')).toBeDisabled();
+  await page.locator('#outcome').selectOption('wrong');
+  await page.locator('#loadSample').press('Enter');
+  await expect(page.locator('#wire .bit[aria-pressed=true]')).toHaveCount(2);
+  await expect(receiver(page, 7)).toContainText('Delivered payload differs');
+  await expect(receiver(page, 8)).toContainText('Held without delivery');
+  const previous = await page.locator('#payload button').first().textContent();
+  await page.locator('#payload button').first().press('Enter');
+  await expect(page.locator('#payload button').first()).not.toHaveText(previous);
+  await expect(row(2)).toHaveText(['21', '0', '0', '21']);
+});
+
+test('020 literal notes survive language changes, exports, rejected imports and recovery', async ({page}) => {
+  await page.goto(route);
+  await page.locator('#note').fill('Packet note / 原始记录');
+  await page.locator('#case').selectOption('double');
+  await page.locator('#note').fill('Second case / 双错');
+  const prior = await saved(page);
+  const exported = JSON.parse(await downloadText(page, '#backup'));
+  expect(exported).toEqual(prior);
+  await page.locator('#file').setInputFiles(file({version: 1}));
+  await expect(page.locator('#notice')).toContainText('Your work was kept');
+  expect(await saved(page)).toEqual(prior);
+  const txt = await downloadText(page, '#text');
+  expect(txt).toContain('Delivered payload differs');
+  expect(txt).toContain('Held without delivery');
+  expect(txt).toContain('Second case / 双错');
+  const backup = file(await page.evaluate(() => BitRepair.fresh()));
+  const picker = page.waitForEvent('filechooser');
+  await page.locator('#import').press('Enter');
+  await (await picker).setFiles(backup);
+  await expect(page.locator('#notice')).toContainText('All eight experiments were imported');
+  await page.locator('#case').selectOption('mixed');
+  await page.locator('[data-program-language=zh]').press('Enter');
+  await expect(page.locator('#recover')).toHaveText('找回导入前的数据');
+  await page.locator('#recover').press('Enter');
+  await expect(page.locator('#note')).toHaveValue('Second case / 双错');
+  expect(await saved(page)).toEqual(prior);
+  await page.reload();
+  await expect(page.locator('#caseTitle')).toHaveText('双错与误纠正');
+  await page.locator('#case').selectOption('clean');
+  await expect(page.locator('#note')).toHaveValue('Packet note / 原始记录');
+});
+
+test('020 delayed imports keep active composition and offline files still decode', async ({page, context}) => {
+  await page.goto(route);
+  await page.locator('#note').fill('Saved note');
+  const backup = file(await page.evaluate(() => BitRepair.fresh()));
+  await page.evaluate(() => {
+    const read = File.prototype.text;
+    File.prototype.text = function () {
+      return new Promise(resolve => { window.finishRead = async () => resolve(await read.call(this)); });
+    };
+  });
+  await page.locator('#file').setInputFiles(backup);
+  await page.locator('#note').focus();
+  const cdp = await context.newCDPSession(page);
+  const text = '保留输入中的笔记';
+  await cdp.send('Input.imeSetComposition', {text, selectionStart: text.length, selectionEnd: text.length, replacementStart: 0, replacementEnd: 10});
+  await expect(page.locator('#note')).toHaveValue(text);
+  await page.evaluate(() => window.finishRead());
+  await expect(page.locator('#notice')).toContainText('Your work was kept');
+  expect((await saved(page)).runs.clean.note).toBe('Saved note');
+  await cdp.send('Input.insertText', {text});
+  expect((await saved(page)).runs.clean.note).toBe(text);
+  await page.addInitScript(() => { Storage.prototype.setItem = () => { throw Error('blocked'); }; });
+  await context.setOffline(true);
+  await page.goto(new URL('../public/apps/020-bit-repair-lab/index.html?lang=en', import.meta.url).href);
+  await bit(page, 5).press('Enter');
+  await expect(receiver(page, 8)).toContainText('Single-error rule flips position 5');
+  await expect(page.locator('#storage')).toContainText('storage is unavailable');
+  await page.locator('#programBackground summary').press('Enter');
+  await expect(page.locator('#programBackground')).toContainText('1950');
+  expect(await downloadText(page, '#text')).toContain('Delivered payload matches');
+});

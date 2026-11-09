@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="020 比特修复台。翻转报文中的位，观察校验、纠错和漏检。">
+  <title>020 · 比特修复台</title>
+  <link rel="stylesheet" href="../../shared/typography.css">
+  <link rel="stylesheet" href="../../shared/program-language.css">
+  <link rel="stylesheet" href="../../shared/background-guide.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="english.js"></script>
+  <script src="../../shared/program-language.js"></script>
+</head>
+<body data-app="020">
+  <div class="shell">
+    <header>
+      <a class="brand" href="../../index.html">020 · 比特修复台</a>
+      <a href="../../index.html">← 小程序索引</a>
+    </header>
+    <main data-user-content>
+      <section class="hero">
+        <p class="kicker" data-i="eyebrow"></p>
+        <h1 data-i="headline"></h1>
+        <p data-i="intro"></p>
+        <nav class="actions">
+          <a href="#experiment" data-i="start"></a>
+          <a href="#programBackground" data-i="guide"></a>
+        </nav>
+      </section>
+      <section id="experiment" class="panel" aria-labelledby="caseTitle">
+        <div class="split">
+          <div><p class="kicker" data-i="stage"></p><h2 id="caseTitle"></h2></div>
+          <label><span data-i="experiment"></span><select id="case"></select></label>
+        </div>
+        <p id="task" class="task"></p>
+        <details id="answer">
+          <summary data-i="answer"></summary>
+          <p id="explanation"></p>
+        </details>
+      </section>
+      <div class="workspace">
+        <section class="panel" aria-labelledby="packetTitle">
+          <p class="kicker" data-i="sendStep"></p>
+          <h2 id="packetTitle" data-i="packet"></h2>
+          <h3 id="payloadTitle" data-i="payload"></h3>
+          <div id="payload" class="data-tiles" role="group" aria-labelledby="payloadTitle"></div>
+          <h3 id="wordTitle" data-i="wire"></h3>
+          <p class="hint" data-i="wireHint"></p>
+          <div id="wire" class="wire" role="group" aria-labelledby="wordTitle"></div>
+          <p id="faults" class="hint" role="status"></p>
+          <div class="actions">
+            <button id="clean" type="button" data-i="clean"></button>
+            <button id="reset" type="button" data-i="reset"></button>
+          </div>
+          <div class="check">
+            <h3 data-i="inspect"></h3>
+            <label><span data-i="parityGroup"></span><select id="group"></select></label>
+            <p id="equation"></p>
+            <p id="syndrome"></p>
+          </div>
+        </section>
+        <section class="panel" aria-labelledby="decodeTitle">
+          <p class="kicker" data-i="decodeStep"></p>
+          <h2 id="decodeTitle" data-i="decode"></h2>
+          <p class="hint" data-i="truthHint"></p>
+          <div id="results" class="results" aria-live="polite"></div>
+        </section>
+      </div>
+      <section class="panel separated" aria-labelledby="sweepTitle">
+        <div class="split">
+          <div><p class="kicker" data-i="sweepStep"></p><h2 id="sweepTitle" data-i="sweep"></h2></div>
+          <label><span data-i="sweepMode"></span><select id="length"></select></label>
+        </div>
+        <p class="hint" data-i="sweepHint"></p>
+        <div class="table-frame">
+          <table aria-labelledby="sweepTitle">
+            <thead><tr><th scope="col" data-i="weight"></th><th scope="col" data-i="patterns"></th><th scope="col" data-i="right"></th><th scope="col" data-i="held"></th><th scope="col" data-i="wrong"></th></tr></thead>
+            <tbody id="sweepRows"></tbody>
+          </table>
+        </div>
+        <div class="actions samples">
+          <label><span data-i="weight"></span><select id="weight"></select></label>
+          <label><span data-i="sampleOutcome"></span><select id="outcome"></select></label>
+          <button id="loadSample" type="button" data-i="sample"></button>
+        </div>
+        <p id="sampleStatus" class="hint" role="status"></p>
+      </section>
+      <div class="lower">
+        <section class="panel" aria-labelledby="notesTitle">
+          <h2 id="notesTitle" data-i="notes"></h2>
+          <label><span data-i="note"></span><textarea id="note" rows="4" maxlength="2000"></textarea></label>
+          <p class="hint" data-i="storageHint"></p>
+          <div class="actions">
+            <button id="text" type="button" data-i="export"></button>
+            <button id="backup" type="button" data-i="backup"></button>
+            <button id="import" type="button" data-i="import"></button>
+            <button id="recover" type="button" data-i="recover" hidden></button>
+          </div>
+          <input id="file" type="file" accept=".json,application/json" hidden>
+          <p id="storage" class="hint"></p>
+          <p id="notice" role="status"></p>
+        </section>
+        <div class="guide-anchor"></div>
+      </div>
+    </main>
+    <footer>020 / BIT REPAIR LAB</footer>
+  </div>
+  <script src="content.js"></script>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+  <script src="background.js"></script>
+  <script src="../../shared/background-guide.js"></script>
+</body>
+</html>

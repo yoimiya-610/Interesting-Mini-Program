@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-10
+
+### 020 Bit Repair Lab
+
+- Explore eight original bilingual experiments. Edit four payload bits, flip individual received bits, and compare a 7-bit Hamming receiver with an extended 8-bit receiver.
+- Trace the three parity groups and the overall check. Compare each receiver's decision with the original payload to distinguish a successful repair, a held word, a wrong repair, and an undetected fault.
+- Sweep all 128 flip patterns for the 7-bit word or all 256 for the 8-bit word. Load an example from a chosen flip count and outcome. The model counts position combinations in a fixed short word. It focuses on corrupted messages, a different activity from building circuits in Logic Patch.
+- Keep separate experiment notes, export TXT results, or back up all eight experiments as JSON. Imports accept up to 128 KB and offer recovery of pre-import work until an edit or reload.
+- The guide links to Hamming's original paper and explains the guarantees and limits of single-error correction and double-error detection. Verification covers all 6,144 payload and flip combinations against an independent codebook and exercises the interface on desktop and mobile.
+
 ## 2026-11-09
 
 ### 019 Heat Mosaic improvements
