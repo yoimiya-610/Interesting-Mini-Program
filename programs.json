@@ -476,5 +476,23 @@
       "style": "Teal lab plate · Blue-to-gold heat map · Hatched barriers",
       "tags": ["Conduction", "Temperature field", "Boundary conditions"]
     }
+  },
+  {
+    "id": "020",
+    "slug": "bit-repair-lab",
+    "title": "比特修复台",
+    "subtitle": "报文能修好吗？",
+    "description": "八个双语纠错实验。翻转数据位和校验位，并排比较 7 位与 8 位汉明码的修复、拦截和漏检。",
+    "category": "工科",
+    "tags": ["汉明码", "奇偶校验", "错误检测"],
+    "style": "深绿报文台 · 橙色翻转位 · 校验追踪",
+    "interaction": "八个原创双语实验、可改载荷与逐位翻转、并排解码、分组异或追踪、全错误组合穷举与样本加载、TXT 和 JSON 导出",
+    "created": "2026-11-10",
+    "en": {
+      "title": "Bit Repair Lab",
+      "description": "Flip data and check bits in eight experiments. Compare 7-bit and extended 8-bit Hamming receivers, trace the checks, and load examples from an exhaustive fault sweep.",
+      "style": "Deep-green workbench · Amber fault tiles · Parity trace",
+      "tags": ["Hamming code", "Parity", "Error detection"]
+    }
   }
 ]

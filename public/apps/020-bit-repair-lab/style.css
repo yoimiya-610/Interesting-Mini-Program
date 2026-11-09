@@ -1,0 +1,68 @@
+:root {
+  color-scheme: light;
+  --ink: #172e25;
+  --muted: #4a6055;
+  --green: #2a5a49;
+  --line: #c5d3c8;
+  --paper: #f0f4ec;
+  --fault: #8b321c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); }
+.shell { max-width: 1320px; margin: auto; padding: 0 24px; }
+header, .split { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 18px; }
+header { padding: 22px 0 10px; }
+a { color: var(--green); text-underline-offset: .2em; }
+.brand { font-size: 22px; font-weight: 700; }
+.hero { margin: 24px 0; padding: clamp(18px, 4vw, 48px); background: #1d3b30; color: #fcfff7; border-radius: 18px 18px 5px 5px; }
+.hero h1 { font-size: clamp(31px, 5vw, 56px); line-height: 1.16; margin: .12em 0 .2em; }
+.hero p { max-width: 810px; }
+.hero a, .hero .kicker { color: #d1edbe; }
+.kicker { margin: 0; color: var(--green); font-size: 14px; font-weight: bold; letter-spacing: .08em; }
+h2 { margin: .2em 0 .55em; font-size: 27px; line-height: 1.24; }
+h3 { margin: .55em 0 .35em; font-size: 21px; }
+p { margin: .6em 0; line-height: 1.5; }
+.hint { font-size: 16px; color: var(--muted); }
+.panel { min-width: 0; padding: clamp(14px, 2.2vw, 24px); border: 1px solid var(--line); border-radius: 12px; background: #fcfdf8; }
+.task { background: #eaf3e3; border-left: 4px solid var(--green); padding: 10px 14px; }
+.workspace, .lower { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: 18px; margin-top: 18px; }
+.separated { margin-top: 18px; }
+label { min-width: 0; display: grid; gap: 5px; font-size: 16px; font-weight: 700; }
+button, select, textarea { font: inherit; font-size: 16px; color: inherit; }
+select, textarea { width: 100%; min-width: 0; min-height: 44px; padding: 7px 9px; border: 1px solid #90aa97; border-radius: 7px; background: white; }
+textarea { resize: vertical; }
+button { min-height: 44px; padding: 8px 10px; border: 1px solid #90aa97; border-radius: 7px; background: #e9f1e3; cursor: pointer; }
+button:hover:not(:disabled) { background: #d6e6cb; }
+button:disabled { opacity: .55; cursor: default; }
+:focus-visible { outline: 3px solid #b24b24; outline-offset: 3px; }
+summary { cursor: pointer; color: var(--green); font-weight: 700; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 10px 0; }
+.data-tiles { display: flex; gap: 8px; flex-wrap: wrap; }
+.data-tiles button { min-width: 54px; font-size: 20px; font-weight: bold; }
+.wire { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.wire .bit { min-width: 0; min-height: 76px; display: grid; align-content: center; justify-items: center; gap: 3px; padding: 5px 2px; background: #f6f8f1; }
+.bit small { font-size: 14px; }
+.bit strong { font-size: 19px; }
+.wire .bit[aria-pressed=true] { border-color: #a63e20; color: var(--fault); background: #fff0de; }
+.wire .bit[data-group=true] { box-shadow: inset 0 0 0 2px var(--green); }
+.check, .results article { margin-top: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #f4f8ef; }
+.results h3 { margin-top: 0; }
+.results p { margin: .38em 0; }
+.word { font-weight: 700; letter-spacing: .08em; white-space: nowrap; }
+.right { color: #245d3c; font-weight: 700; }
+.held { color: #725019; font-weight: 700; }
+.wrong { color: var(--fault); font-weight: 700; }
+.table-frame { overflow: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; text-align: center; }
+th, td { padding: 7px 5px; border-bottom: 1px solid var(--line); }
+thead th { color: var(--green); background: #eaf2e6; }
+.samples { align-items: end; }
+.guide-anchor .background-guide details[open] .background-content { max-height: none; overflow: visible; }
+footer { padding: 28px 0; color: var(--muted); font-size: 14px; }
+@media (max-width: 920px) { .workspace, .lower { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 540px) {
+  .shell { padding: 0 12px; }
+  .wire { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .split label { width: 100%; }
+  th, td { padding-inline: 3px; }
+}
