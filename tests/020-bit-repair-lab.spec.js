@@ -38,12 +38,16 @@ test('020 experiments distinguish repair, wrong repair, rejection and undetected
   await expect(bit(page, 3)).toHaveAttribute('aria-pressed', 'true');
   await choose('check');
   await expect(long).toContainText('Single-error rule flips position 4');
+  await expect(long).toContainText('Received 00100011');
+  await expect(long).toContainText('Output word 00110011');
+  await expect(long).toContainText('Delivered payload 1001');
   await choose('overall');
   await expect(short).toContainText('Checks pass. Deliver unchanged.');
   await expect(long).toContainText('Single-error rule flips position 8');
   await choose('double');
   await expect(short).toContainText('Delivered payload differs');
   await expect(long).toContainText('Held without delivery');
+  await expect(long).toContainText('Output word none');
   await choose('mixed');
   await expect(long).toContainText('Held without delivery');
   await bit(page, 8).click();
@@ -107,6 +111,7 @@ test('020 literal notes survive language changes, exports, rejected imports and 
   const txt = await downloadText(page, '#text');
   expect(txt).toContain('Delivered payload differs');
   expect(txt).toContain('Held without delivery');
+  expect(txt).toContain('Output word none');
   expect(txt).toContain('Second case / 双错');
   const backup = file(await page.evaluate(() => BitRepair.fresh()));
   const picker = page.waitForEvent('filechooser');
@@ -115,9 +120,11 @@ test('020 literal notes survive language changes, exports, rejected imports and 
   await expect(page.locator('#notice')).toContainText('All eight experiments were imported');
   await page.locator('#case').selectOption('mixed');
   await page.locator('[data-program-language=zh]').press('Enter');
+  await expect(page.locator('[data-i=xorHint]')).toContainText('⊕ 表示异或');
   await expect(page.locator('#recover')).toHaveText('找回导入前的数据');
   await page.locator('#recover').press('Enter');
   await expect(page.locator('#note')).toHaveValue('Second case / 双错');
+  expect(await downloadText(page, '#text')).toContain('输出报文 无');
   expect(await saved(page)).toEqual(prior);
   await page.reload();
   await expect(page.locator('#caseTitle')).toHaveText('双错与误纠正');
@@ -127,6 +134,7 @@ test('020 literal notes survive language changes, exports, rejected imports and 
 
 test('020 delayed imports keep active composition and offline files still decode', async ({page, context}) => {
   await page.goto(route);
+  await expect(page.locator('[data-i=xorHint]')).toContainText('⊕ means XOR');
   await page.locator('#note').fill('Saved note');
   const backup = file(await page.evaluate(() => BitRepair.fresh()));
   await page.evaluate(() => {
