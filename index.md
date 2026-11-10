@@ -24,5 +24,6 @@
 | 018 | 货架算账 | 生活 | 看清单价，算好一篮 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/018-shelf-basket/) | [本地](http://127.0.0.1:4173/apps/018-shelf-basket/) | [HTML](public/apps/018-shelf-basket/index.html) | 2026-11-08 |
 | 019 | 热流拼图 | 理科 | 热从哪儿走？ | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/019-heat-mosaic/) | [本地](http://127.0.0.1:4173/apps/019-heat-mosaic/) | [HTML](public/apps/019-heat-mosaic/index.html) | 2026-11-09 |
 | 020 | 比特修复台 | 工科 | 报文能修好吗？ | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/020-bit-repair-lab/) | [本地](http://127.0.0.1:4173/apps/020-bit-repair-lab/) | [HTML](public/apps/020-bit-repair-lab/index.html) | 2026-11-10 |
+| 021 | 骰轨迷宫 | 游戏 | 先翻一面，再走一步 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/021-die-tracks/) | [本地](http://127.0.0.1:4173/apps/021-die-tracks/) | [HTML](public/apps/021-die-tracks/index.html) | 2026-11-11 |
 
 点击“体验”即可在线打开；下载仓库后，也可以通过“HTML”打开本地文件。使用方法与数据保存说明见[项目介绍](README.md)。感谢你来玩。

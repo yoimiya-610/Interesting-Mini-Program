@@ -30,10 +30,11 @@ Stay for a game, explore an idea, or find a tool that makes your day a little ea
 | 018 | [Shelf Basket](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/018-shelf-basket/index.html?lang=en) | Eight shopping cases with unit prices, whole-pack plans, and checkout cost versus surplus comparisons. |
 | 019 | [Heat Mosaic](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/019-heat-mosaic/index.html?lang=en) | Eight conduction experiments with editable temperatures and materials, three edge conditions, and snapshot comparisons. |
 | 020 | [Bit Repair Lab](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/020-bit-repair-lab/index.html?lang=en) | Eight error-correction experiments with bit flips, parity traces, side-by-side receivers, and exhaustive fault sweeps. |
+| 021 | [Die Tracks](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/021-die-tracks/index.html?lang=en) | Sixteen rolling-die mazes with numbered gates, top-face goals, and verified shortest routes. |
 
 Browse the [numbered index](index.md) for direct links. The online homepage lets you search by number or name and filter by category. You can use the collection on a phone or computer.
 
-The homepage and programs 001–020 support **Chinese / English**. Choose a language near the top of a page, or add `?lang=en` to its address to open it in English. Links between the homepage and programs keep your choice, and your browser remembers it when storage is available. Switching language keeps your current activity in place. Your own stories, titles, and item names stay as you wrote them.
+The homepage and programs 001–021 support **Chinese / English**. Choose a language near the top of a page, or add `?lang=en` to its address to open it in English. Links between the homepage and programs keep your choice, and your browser remembers it when storage is available. Switching language keeps your current activity in place. Your own stories, titles, and item names stay as you wrote them.
 
 ## How to open the collection
 

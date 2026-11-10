@@ -494,5 +494,23 @@
       "style": "Deep-green workbench · Amber fault tiles · Parity trace",
       "tags": ["Hamming code", "Parity", "Error detection"]
     }
+  },
+  {
+    "id": "021",
+    "slug": "die-tracks",
+    "title": "骰轨迷宫",
+    "subtitle": "先翻一面，再走一步",
+    "description": "十六张双语迷宫。滚动骰子匹配地砖要求的底面，再以指定顶面抵达终点。",
+    "category": "游戏",
+    "tags": ["空间旋转", "迷宫", "路线规划"],
+    "style": "深蓝棋盘 · 琥珀骰子 · 砂金闸门",
+    "interaction": "十六张固定迷宫、24 种骰子朝向、底面通行和顶面目标、独立最短路线验证、可选提示与独立纪录、TXT 和 JSON 导出",
+    "created": "2026-11-11",
+    "en": {
+      "title": "Die Tracks",
+      "description": "Roll a die through sixteen bilingual mazes. Match the bottom face to numbered gates and finish with the required top face.",
+      "style": "Deep-blue board · Amber die · Sand-gold gates",
+      "tags": ["Spatial rotation", "Maze", "Route planning"]
+    }
   }
 ]

@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-11
+
+### 021 Die Tracks
+
+- Roll a die through sixteen bilingual mazes. Numbered tiles check the landing bottom face, while later goals require a specific top face. The route depends on the die's own orientation, a different challenge from moving crates or rotating mirrors.
+- Explore with keyboard or touch controls, a six-face readout, a text map, undo and redo. Ask for an optional next-roll hint. Unassisted and hinted records are stored separately.
+- The final eight mazes require 16 to 30 rolls on a shortest route. In each, the bottom-face restrictions and goal orientation make the maze longer than its grid distance. A separate three-dimensional rotation solver verifies all minimum counts.
+- Save routes, records, and notes locally. TXT exports one maze's routes. JSON backs up all sixteen, with a 192 KB import limit and recovery of pre-import work until an edit or reload.
+- The bilingual guide links to research on rolling-cube puzzles, explains quarter turns and loops, and describes the limits of this grid model. Verification covers all 24 cube orientations, route replay, and desktop/mobile play.
+
 ## 2026-11-10
 
 ### 020 Bit Repair Lab improvements
