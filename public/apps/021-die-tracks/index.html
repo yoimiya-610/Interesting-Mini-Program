@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="021 骰轨迷宫。滚动骰子，用正确的底面和顶面走过十六座迷宫。">
+  <title>021 · 骰轨迷宫</title>
+  <link rel="stylesheet" href="../../shared/typography.css">
+  <link rel="stylesheet" href="../../shared/program-language.css">
+  <link rel="stylesheet" href="../../shared/background-guide.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="english.js"></script>
+  <script src="../../shared/program-language.js"></script>
+</head>
+<body data-app="021">
+  <div class="shell">
+    <header>
+      <a class="brand" href="../../index.html">021 · 骰轨迷宫</a>
+      <a href="../../index.html">← 小程序索引</a>
+    </header>
+    <main data-user-content>
+      <section class="hero">
+        <p class="kicker" data-i="eyebrow"></p>
+        <h1 data-i="headline"></h1>
+        <p data-i="intro"></p>
+        <nav class="actions">
+          <a href="#play" data-i="start"></a>
+          <a href="#programBackground" data-i="guide"></a>
+        </nav>
+      </section>
+      <section id="play" class="panel" aria-labelledby="levelTitle">
+        <div class="split">
+          <div><p class="kicker" data-i="route"></p><h2 id="levelTitle"></h2></div>
+          <label><span data-i="level"></span><select id="level"></select></label>
+        </div>
+        <p class="clue" id="clue"></p>
+        <p id="goal" class="goal"></p>
+        <div class="play-grid">
+          <div class="board-area">
+            <p id="boardHint" class="hint" data-i="boardHint"></p>
+            <div id="board" role="img" tabindex="0" aria-describedby="boardHint"></div>
+            <p class="hint" data-i="legend"></p>
+            <p id="status" class="status" role="status"></p>
+            <div id="controls" class="actions"></div>
+            <div class="actions">
+              <button id="undo" type="button" data-i="undo"></button>
+              <button id="redo" type="button" data-i="redo"></button>
+              <button id="reset" type="button" data-i="reset"></button>
+              <button id="hint" type="button" data-i="hint"></button>
+              <button id="next" type="button" data-i="next"></button>
+            </div>
+          </div>
+          <section class="orientation" aria-labelledby="faceTitle">
+            <h3 id="faceTitle" data-i="faces"></h3>
+            <dl id="faces"></dl>
+            <div id="record"></div>
+            <p class="hint" data-i="recordHint"></p>
+            <details>
+              <summary data-i="textMap"></summary>
+              <pre id="textMap"></pre>
+              <p class="hint" data-i="legend"></p>
+            </details>
+          </section>
+        </div>
+      </section>
+      <div class="lower">
+        <section class="panel" aria-labelledby="notesTitle">
+          <h2 id="notesTitle" data-i="notes"></h2>
+          <label><span data-i="note"></span><textarea id="note" rows="4" maxlength="2000"></textarea></label>
+          <p class="hint" data-i="storageHint"></p>
+          <div class="actions">
+            <button id="text" type="button" data-i="export"></button>
+            <button id="backup" type="button" data-i="backup"></button>
+            <button id="import" type="button" data-i="import"></button>
+            <button id="recover" type="button" data-i="recover" hidden></button>
+          </div>
+          <input id="file" type="file" accept=".json,application/json" hidden>
+          <p id="storage" class="hint"></p>
+          <p id="notice" role="status"></p>
+        </section>
+        <div class="guide-anchor"></div>
+      </div>
+    </main>
+    <footer>021 / DIE TRACKS</footer>
+  </div>
+  <script src="content.js"></script>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+  <script src="background.js"></script>
+  <script src="../../shared/background-guide.js"></script>
+</body>
+</html>
