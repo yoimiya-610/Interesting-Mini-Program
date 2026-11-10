@@ -4,6 +4,11 @@
 
 ## 2026-11-10
 
+### 020 Bit Repair Lab improvements
+
+- Read the received word and the receiver's output word together, on screen and in TXT exports. A held packet has no output word.
+- The check trace explains how the XOR symbol relates to odd and even parity.
+
 ### 020 Bit Repair Lab
 
 - Explore eight original bilingual experiments. Edit four payload bits, flip individual received bits, and compare a 7-bit Hamming receiver with an extended 8-bit receiver.

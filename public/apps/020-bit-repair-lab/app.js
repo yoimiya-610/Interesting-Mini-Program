@@ -22,6 +22,7 @@
     reset: ['恢复示例比特', 'Reset example bits'],
     inspect: ['校验追踪', 'Check trace'],
     parityGroup: ['高亮覆盖位置', 'Highlight checked positions'],
+    xorHint: ['⊕ 表示异或。把一组比特连起来做异或，1 的个数为奇数时结果是 1，为偶数时结果是 0。', '⊕ means XOR. Across a group of bits it gives 1 for an odd number of ones and 0 for an even number.'],
     decodeStep: ['03 / 接收端决定', '03 / RECEIVER DECISIONS'],
     decode: ['两种接收端', 'Two receivers'],
     truthHint: ['接收端只看收到的比特。原数据对照是实验额外提供的结果。', 'The receivers use the received bits. The original-payload comparison is supplied by the lab.'],
@@ -158,12 +159,15 @@
   function formatResult(result, length) {
     const overall = result.overall === null ? ''
       : P([' · 总校验：', ' · Overall: ']) + (result.overall ? P(['奇', 'odd']) : P(['偶', 'even']));
-    const payload = result.payload === null ? P(['无', 'none']) : word(C.bits(result.payload));
+    const none = P(['无', 'none']);
+    const output = result.word ? word(result.word) : none;
+    const payload = result.payload === null ? none : word(C.bits(result.payload));
     return [
       P(formats[length]),
       P(['接收 ', 'Received ']) + word(result.received),
       P(['症状值 ', 'Syndrome ']) + result.syndrome + overall,
       decision(result),
+      P(['输出报文 ', 'Output word ']) + output,
       P(['交付数据 ', 'Delivered payload ']) + payload,
       P(outcomes[result.outcome]),
     ];
@@ -237,9 +241,9 @@
     $('results').replaceChildren(...[short, long].map((result, i) => {
       const article = node('article');
       article.dataset.length = i + 7;
-      const [title, received, checks, action, delivered, outcome] = formatResult(result, i + 7);
+      const [title, received, checks, action, output, delivered, outcome] = formatResult(result, i + 7);
       article.append(node('h3', title), node('p', received, 'word'), node('p', checks), node('p', action),
-        node('p', delivered, 'word'), node('p', outcome, result.outcome));
+        node('p', output, 'word'), node('p', delivered, 'word'), node('p', outcome, result.outcome));
       return article;
     }));
     renderSweep(payload);
