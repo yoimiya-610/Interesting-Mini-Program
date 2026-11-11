@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-12
+
+### 022 Story Cut Desk
+
+- Edit telling order across eight original bilingual stories with 64 complete event passages, 24 cue–explanation pairs, and 16 specific writing exercises. Each story includes a suggested cut as well as chronological order.
+- Move passages with position selectors, buttons, or Alt + arrow keys. Rewrite transitions, read a cut one passage at a time, and follow its event-rank chart and marked reveals. Counts describe the supplied markers and do not judge writing quality or interpret custom wording.
+- Keep one full comparison per story and compare both orders, actual wording, and notes. Undo and redo support 30 operations during a story visit. This focuses on narrative time and disclosure, a different activity from random prompts, argument roles, or textual collation.
+- Save all stories in this browser. Export the current cut as TXT or back up all cuts and comparisons as JSON, with a 1.5 MB import limit and recovery of pre-import work until an edit or reload.
+- The bilingual guide introduces story versus discourse, relates Genette’s analysis to reference frames, and explains ordinal time and model limits with an executable example. Validation checks all 40,320 event orders against an independent marker oracle, complete backup capacity, and desktop/mobile editing and preservation.
+
 ## 2026-11-11
 
 ### 021 Die Tracks

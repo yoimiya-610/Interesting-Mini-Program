@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="022 叙时剪辑台。重排八篇故事，比较发生顺序、讲述顺序与线索揭示。">
+  <title>022 · 叙时剪辑台</title>
+  <link rel="stylesheet" href="../../shared/typography.css">
+  <link rel="stylesheet" href="../../shared/program-language.css">
+  <link rel="stylesheet" href="../../shared/background-guide.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="english.js"></script>
+  <script src="../../shared/program-language.js"></script>
+</head>
+<body data-app="022">
+  <div class="shell">
+    <header><a class="brand" href="../../index.html">022 · 叙时剪辑台</a><a href="../../index.html">← 小程序索引</a></header>
+    <main data-user-content>
+      <section class="hero">
+        <p class="eyebrow" data-i="eyebrow"></p><h1 data-i="headline"></h1><p data-i="intro"></p>
+        <div class="actions"><a href="#workbench" data-i="start"></a><a href="#programBackground" data-i="guide"></a></div>
+      </section>
+      <section class="panel" id="workbench">
+        <label><span data-i="case"></span><select id="case"></select></label>
+        <h2 id="caseTitle"></h2><p id="premise"></p>
+        <details><summary data-i="exercise"></summary><ol id="prompts"></ol></details>
+        <div class="actions"><button id="chronology" data-i="chronology"></button><button id="suggested" data-i="suggested"></button><button id="undo" data-i="undo"></button><button id="redo" data-i="redo"></button></div>
+        <p id="status" role="status"></p>
+        <div class="columns">
+          <section aria-labelledby="sequenceTitle">
+            <h3 id="sequenceTitle" data-i="sequence"></h3><p class="hint" data-i="sequenceHint"></p>
+            <ol id="sequence"></ol>
+          </section>
+          <section class="editor" aria-labelledby="editorTitle">
+            <h3 id="editorTitle" data-i="editor"></h3><p id="eventTitle"></p>
+            <div class="actions"><button id="up" data-i="up"></button><button id="down" data-i="down"></button></div>
+            <details><summary data-i="original"></summary><p id="original"></p></details>
+            <label><span data-i="rewrite"></span><textarea id="draft" rows="7" maxlength="2400"></textarea></label>
+            <p class="hint" data-i="rewriteHint"></p><button id="useOriginal" data-i="useOriginal"></button>
+          </section>
+        </div>
+      </section>
+      <div class="columns lower">
+        <section class="panel" aria-labelledby="readerTitle">
+          <h2 id="readerTitle" data-i="reader"></h2><p class="hint" data-i="readerHint"></p>
+          <label><span data-i="cursor"></span><input type="range" id="cursor" min="0" max="8" step="1" value="0"></label>
+          <div class="actions"><button id="previous" data-i="previous"></button><output id="readCount" for="cursor"></output><button id="next" data-i="next"></button></div>
+          <ol id="preview"></ol>
+        </section>
+        <section class="panel" aria-labelledby="analysisTitle">
+          <h2 id="analysisTitle" data-i="analysis"></h2><p class="hint" data-i="analysisHint"></p>
+          <div id="metrics" class="metrics"></div>
+          <svg id="chart" viewBox="0 0 440 250" role="img" aria-labelledby="chartTitle chartDescription"><title id="chartTitle"></title><desc id="chartDescription"></desc><g id="plot"></g></svg>
+          <p class="hint" data-i="chartHint"></p><p id="transitionText"></p>
+          <h3 data-i="threads"></h3><p class="hint" data-i="threadHint"></p><ol id="threads"></ol>
+        </section>
+      </div>
+      <section class="panel lower" aria-labelledby="compareTitle">
+        <h2 id="compareTitle" data-i="compare"></h2><p class="hint" data-i="compareHint"></p>
+        <div class="actions"><button id="checkpoint" data-i="checkpoint"></button><button id="restoreCheckpoint" data-i="restoreCheckpoint"></button></div>
+        <div id="comparison"></div>
+        <label><span data-i="note"></span><textarea id="note" rows="3" maxlength="2000"></textarea></label>
+        <p class="hint" data-i="saveHint"></p><p id="storage" class="hint"></p>
+        <div class="actions"><button id="text" data-i="text"></button><button id="backup" data-i="backup"></button><button id="import" data-i="import"></button><button id="recover" data-i="recover" hidden></button></div>
+        <input id="file" type="file" accept=".json,application/json" hidden><p id="notice" role="status"></p>
+      </section>
+      <div class="guide-anchor lower"></div>
+    </main>
+    <footer>022 / STORY CUT DESK</footer>
+  </div>
+  <script src="content.js"></script><script src="core.js"></script><script src="app.js"></script>
+  <script src="background.js"></script><script src="../../shared/background-guide.js"></script>
+</body>
+</html>

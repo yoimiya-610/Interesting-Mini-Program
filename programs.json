@@ -512,5 +512,31 @@
       "style": "Deep-blue board · Amber die · Sand-gold gates",
       "tags": ["Spatial rotation", "Maze", "Route planning"]
     }
+  },
+  {
+    "id": "022",
+    "slug": "story-cut-desk",
+    "title": "叙时剪辑台",
+    "subtitle": "先讲哪一段，故事就从哪里开始",
+    "description": "八篇原创双语故事，六十四个事件段落。重排讲述顺序、改写衔接，逐段观察线索与解释的相遇。",
+    "category": "文科",
+    "tags": [
+      "叙事时间",
+      "写作",
+      "编排"
+    ],
+    "style": "梅紫剪辑台 · 暖白稿纸 · 铜色阅读标记",
+    "interaction": "八篇六十四段原创双语故事、二十四组线索解释、十六项练习；顺序编辑与时间图、逐段预览、原文改写、八份对照与 TXT/JSON 导出",
+    "created": "2026-11-12",
+    "en": {
+      "title": "Story Cut Desk",
+      "description": "Reorder 64 passages in eight original bilingual stories. Rewrite transitions, read step by step, and compare when cues meet their explanations.",
+      "style": "Plum editing desk · Warm paper · Copper reading markers",
+      "tags": [
+        "Narrative time",
+        "Writing",
+        "Editing"
+      ]
+    }
   }
 ]
