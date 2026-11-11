@@ -24,6 +24,7 @@
     cursor: ['已读段数', 'Passages reached'], previous: ['回看一段', 'One fewer'], next: ['再读一段', 'One more'],
     analysis: ['04 / 时间与线索', '04 / TIME AND CUES'],
     analysisHint: ['图中横向是讲述位置，纵向 T1–T8 是发生先后。向较早事件回移不一定就是严格意义上的倒叙，还要看整篇的叙事基准。', 'The horizontal axis is telling position; T1–T8 on the vertical axis give event chronology. A move to an earlier event alone does not establish a formal flashback; the narrative’s reference frame matters.'],
+    metricHint: ['逆序对是先后次序被颠倒的两个事件，比如先讲 T5 再讲 T2。最多未决标记指读完整篇的过程中，同时出现线索但还没出现解释的最大组数。', 'An inverted pair puts a later event before an earlier one, such as T5 before T2. Peak open pairs is the largest number of cues awaiting explanations at any point while reading the whole cut.'],
     chartHint: ['T 编号是先后名次，不表示时长或等距时间。下方提供相同路线的文字形式。', 'T numbers are ranks, not durations or equal time intervals. The same route appears in text below.'],
     threads: ['三组线索—解释', 'Three cue–explanation pairs'],
     threadHint: ['标记固定连在原事件上；不会自动分析改写。如果改写删去了线索或提前透露答案，请自行调整解读。未决数量和逆序对都不是文学质量评分。', 'Markers stay attached to the original events and do not analyze rewrites. If you remove a cue or disclose an answer early in your wording, adjust your interpretation. Open-pair and inversion counts do not score literary quality.'],

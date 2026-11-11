@@ -32,6 +32,7 @@ test('022 every authored cut is editable and its reader reveals actual passages 
 test('022 positions, keyboard moves and reader markers distinguish cues before and after answers', async ({page}) => {
   await page.goto(route);
   await page.locator('#suggested').press('Enter');
+  await expect(page.locator('#metricHint')).toContainText('such as T5 before T2');
   await expect(page.locator('#transitionText')).toHaveText('T5 → T7 → T2 → T3 → T6 → T4 → T1 → T8');
   await page.locator('#next').press('Enter');
   await expect(page.locator('#threads li').nth(0)).toContainText('Cue reached, explanation still ahead');
