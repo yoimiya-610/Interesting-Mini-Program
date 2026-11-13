@@ -15,7 +15,7 @@ globalThis.ProgramBackground = {
       title: ['02 / 倒叙、预叙与基准', '02 / Flashback, anticipation, and a reference frame'],
       paragraphs: [
         ['热拉尔·热奈特的《叙事话语》系统讨论时序、时长和频率。倒叙（analepsis）回述相对于主要叙事更早的事，预叙（prolepsis）提前讲后来的事。判断时要看叙事的基准，不能只数相邻段落的编号。', 'Gérard Genette’s Narrative Discourse systematically discusses order, duration, and frequency. Analepsis recounts earlier events relative to a main narrative; prolepsis anticipates later ones. Classification depends on a narrative reference frame, beyond the numbers on adjacent passages.'],
-        ['本台把 T1–T8 固定为发生次序。先讲 T5，再讲 T2，只表示编排回到更早的事件；你可以补写“三小时前”等衔接，让读者知道为何回到那里。', 'This desk fixes T1–T8 as event chronology. Moving from T5 to T2 takes the cut to an earlier event. Add a transition such as “three hours earlier” to help readers understand the return.'],
+        ['本台把 T1–T8 固定为发生次序。先讲 T5，再讲 T2，只表示编排回到更早的事件；在站钟故事中，可以补写“当天早晨”，衔接午后的空表盘与八点取下指针的情节。', 'This desk fixes T1–T8 as event chronology. Moving from T5 to T2 takes the cut to an earlier event. In the station story, “earlier that morning” connects the afternoon’s bare dial to the removal of its hands at eight.'],
       ],
       sources: [{label: 'Gérard Genette · Narrative Discourse · Cornell University Press', href: 'https://cornellpress.cornell.edu/book/9780801492594/narrative-discourse/'}],
     },

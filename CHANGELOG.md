@@ -4,6 +4,11 @@
 
 ## 2026-11-13
 
+### 022 Story Cut Desk improvements
+
+- Trying to move the first passage earlier or the last passage later with Alt + arrow keys keeps the editor attached to its displayed passage. Subsequent typing stays in the intended passage. Undoing a valid keyboard move also restores the previous selection.
+- The station-clock guide now uses “earlier that morning” to connect an afternoon scene to the eight-o’clock repair, avoiding an unsupported elapsed-time claim.
+
 ### 022 Story Cut Desk
 
 - Edit telling order across eight original bilingual stories with 64 complete event passages, 24 cue–explanation pairs, and 16 specific writing exercises. Each story includes a suggested cut as well as chronological order.

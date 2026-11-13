@@ -101,8 +101,8 @@
       button.onclick = () => { current.selected = event; editGroup = null; save(true); render(); $('event-' + event).focus(); };
       button.onkeydown = e => {
         if (!e.altKey || !['ArrowUp', 'ArrowDown'].includes(e.key)) return;
-        e.preventDefault(); current.selected = event;
-        shift(e.key === 'ArrowUp' ? -1 : 1, 'event-' + event);
+        e.preventDefault();
+        shift(e.key === 'ArrowUp' ? -1 : 1, 'event-' + event, event);
       };
       const select = node('select'); select.id = 'position-' + event;
       select.setAttribute('aria-label', 'T' + (event + 1) + P([' 的讲述位置', ' telling position']));
@@ -200,10 +200,13 @@
     $('notice').textContent = notice ? P(notice) : '';
     $('status').textContent = feedback ? P(feedback) : '';
   }
-  function shift(delta, focus) {
-    const current = entry(), position = current.cut.order.indexOf(current.selected), destination = position + delta;
+  function shift(delta, focus, selectedEvent = entry().selected) {
+    const current = entry(), position = current.cut.order.indexOf(selectedEvent), destination = position + delta;
     if (destination < 0 || destination > 7) return;
-    change(() => { current.cut.order = C.move(current.cut.order, current.selected, destination); });
+    change(() => {
+      current.cut.order = C.move(current.cut.order, selectedEvent, destination);
+      current.selected = selectedEvent;
+    });
     if (focus) $(focus).focus();
   }
   $('up').onclick = () => shift(-1); $('down').onclick = () => shift(1);

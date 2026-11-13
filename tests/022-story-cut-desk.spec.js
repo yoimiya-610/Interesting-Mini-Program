@@ -51,6 +51,34 @@ test('022 positions, keyboard moves and reader markers distinguish cues before a
   await expect(page.locator('#status')).toHaveText('Cut updated.');
 });
 
+test('022 boundary keyboard moves preserve the displayed passage and its literal edits', async ({page}) => {
+  await page.goto(route);
+  await page.locator('#event-4').press('Enter');
+  await page.locator('#draft').fill('My fifth event / 第五段');
+  await page.locator('#event-0').focus();
+  await page.keyboard.press('Alt+ArrowUp');
+  await expect(page.locator('#event-4')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('#draft').fill('Still the fifth event / 仍是第五段');
+  let entry = (await stored(page)).entries.clock;
+  expect(entry.selected).toBe(4);
+  expect(entry.cut.texts[4]).toBe('Still the fifth event / 仍是第五段');
+  expect(entry.cut.texts[0]).toBeNull();
+  await page.locator('#event-7').focus();
+  await page.keyboard.press('Alt+ArrowDown');
+  await page.locator('#draft').fill('Fifth event after both edges');
+  entry = (await stored(page)).entries.clock;
+  expect(entry.selected).toBe(4);
+  expect(entry.cut.texts[4]).toBe('Fifth event after both edges');
+  expect(entry.cut.texts[7]).toBeNull();
+  await page.locator('#event-1').focus();
+  await page.keyboard.press('Alt+ArrowUp');
+  await expect(page.locator('#event-1')).toHaveAttribute('aria-pressed', 'true');
+  expect((await stored(page)).entries.clock.cut.order).toEqual([1, 0, 2, 3, 4, 5, 6, 7]);
+  await page.locator('#undo').press('Enter');
+  await expect(page.locator('#event-4')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#draft')).toHaveValue('Fifth event after both edges');
+});
+
 test('022 literal writing, focus-grouped undo and full comparisons survive language and reload', async ({page}, info) => {
   const errors = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto(route); await page.locator('#suggested').press('Enter');
