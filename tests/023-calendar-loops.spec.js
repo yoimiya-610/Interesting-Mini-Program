@@ -81,7 +81,9 @@ test('023 comparison contains real dated changes, notes and allowance, and retri
 });
 test('023 keyboard navigation crosses months and refuses range overflow without changing the editor', async ({page}) => {
   await setup(page); await page.locator('[data-date="2028-01-31"]').focus(); await page.keyboard.press('ArrowRight'); await expect(page.locator('#month')).toHaveValue('2028-02');
-  await expect(page.locator('[data-date="2028-02-01"]')).toBeFocused(); await page.keyboard.press('ArrowDown'); await expect(page.locator('#agendaTitle')).toContainText('2028-02-08');
+  await expect(page.locator('[data-date="2028-02-01"]')).toBeFocused(); await page.keyboard.press('Space'); await expect(page.locator('[data-date="2028-02-01"]')).toBeFocused();
+  await page.keyboard.press('Enter'); await expect(page.locator('[data-date="2028-02-01"]')).toBeFocused();
+  await page.keyboard.press('ArrowDown'); await expect(page.locator('#agendaTitle')).toContainText('2028-02-08');
   await day(page, '1900-01-01'); await page.locator('[data-date="1900-01-01"]').press('ArrowLeft'); await expect(page.locator('#agendaTitle')).toContainText('1900-01-01'); await expect(page.locator('#previous')).toBeDisabled();
   await page.locator('#name').fill('Boundary note'); await expect(page.locator('#task')).toHaveValue('0');
   await day(page, '2100-12-31'); await page.locator('[data-date="2100-12-31"]').press('ArrowRight'); await expect(page.locator('#agendaTitle')).toContainText('2100-12-31'); await expect(page.locator('#next')).toBeDisabled();

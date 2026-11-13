@@ -107,7 +107,7 @@
       button.setAttribute('aria-pressed', String(date === e.day)); button.setAttribute('aria-label', date + ' · ' + summaryText(items));
       button.className = (date.slice(0, 7) !== e.month ? 'outside ' : '') + (s.over ? 'over' : s.count ? 'busy' : '');
       button.append(node('span', String(Number(date.slice(8))), 'date-number'), node('span', s.count ? s.total + (s.unknown ? '?' : '') + P([' 分', 'm']) : '—'), node('span', items.length ? P([items.length + ' 次', items.length + '×']) : ''));
-      button.onclick = () => selectDay(date);
+      button.onclick = () => selectDay(date, true);
       button.onkeydown = event => { const n = {ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7, Home: -C.weekday(date), End: 6 - C.weekday(date)}[event.key]; if (n !== undefined) { event.preventDefault(); selectDay(C.addDays(date, n), true); } };
       $('calendar').append(button);
     }
