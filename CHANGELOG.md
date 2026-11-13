@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-14
+
+### 023 Calendar Loops
+
+- Arrange 64 editable tasks in eight bilingual plans, each with two concrete exercises. Repeat by days, Monday-anchored weeks, or months, with an explicit choice to skip missing dates or use month end without drifting.
+- Explore a six-week calendar with keyboard navigation, daily allowances, completed and remaining totals, and unknown-duration labels. Move, complete, or skip one occurrence while keeping other dates on their rule. This works with recurring dates rather than Time Bento's intraday time blocks.
+- Preserve dated marks when a rule is edited, disabled, or unfinished. A record navigator finds moves in other months. Each plan supports 1,024 dated marks, one full comparison, and a 1,000-character note. Compare both versions in the same visible window and undo recent edits during a plan visit.
+- Save all eight plans in this browser. Export the visible window as TXT or CSV, or back up all plans and comparisons as JSON with a 3 MB import limit and pre-import recovery until an edit or reload. Raw unfinished rule inputs and custom names remain unchanged across languages and backups.
+- Read a bilingual guide to recurrence, Gregorian leap years, and individual exceptions, with RFC 5545 and U.S. Naval Observatory references. The date-only model covers 1900–2100 and provides no alarms, cloud sync, or ICS processing. Validation compares recurrence results with independent Gregorian arithmetic and exercises editing, preservation, and exports on desktop and mobile.
+
 ## 2026-11-13
 
 ### 022 Story Cut Desk improvements
