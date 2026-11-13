@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="023 日历回环。编辑八份重复事项计划，为单次事项改期，比较不同的日历安排。">
+  <title>023 · 日历回环</title>
+  <link rel="stylesheet" href="../../shared/typography.css"><link rel="stylesheet" href="../../shared/program-language.css">
+  <link rel="stylesheet" href="../../shared/background-guide.css"><link rel="stylesheet" href="style.css">
+  <script src="english.js"></script><script src="../../shared/program-language.js"></script>
+</head>
+<body data-app="023">
+<div class="shell">
+  <header><a class="brand" href="../../index.html">023 · 日历回环</a><a href="../../index.html">← 小程序索引</a></header>
+  <main data-user-content>
+    <section class="hero"><p class="eyebrow" data-i="eyebrow"></p><h1 data-i="headline"></h1><p data-i="intro"></p>
+      <div class="actions"><a href="#workbench" data-i="begin"></a><a href="#programBackground" data-i="guide"></a></div></section>
+    <section class="panel" id="workbench">
+      <label><span data-i="plan"></span><select id="plan"></select></label><h2 id="planTitle"></h2><p id="lead"></p>
+      <details><summary data-i="exercises"></summary><ol id="prompts"></ol></details>
+      <p class="hint" data-i="samples"></p><div class="actions"><button id="undo" data-i="undo"></button><button id="redo" data-i="redo"></button></div>
+      <p id="status" role="status"></p>
+      <div class="work-columns">
+        <section class="calendar-pane" aria-labelledby="calendarTitle">
+          <h3 id="calendarTitle" data-i="calendar"></h3>
+          <div class="monthbar"><button id="previous" data-i="previous"></button><label><span data-i="month"></span><input id="month" type="month" min="1900-01" max="2100-12"></label><button id="next" data-i="next"></button></div>
+          <p class="hint" data-i="calendarHint"></p><div id="weekLabels" class="week-labels" aria-hidden="true"></div><div id="calendar" class="calendar"></div>
+          <div id="monthSummary" class="summary"></div>
+          <h3 id="agendaTitle"></h3><p id="daySummary"></p><div id="agenda"></div>
+          <label><span data-i="records"></span><select id="records"></select></label><p class="hint" data-i="recordsHint"></p>
+        </section>
+        <section class="editor" aria-labelledby="editorTitle">
+          <h3 id="editorTitle" data-i="rules"></h3><label><span data-i="task"></span><select id="task"></select></label>
+          <p id="purpose"></p><label class="check"><input id="enabled" type="checkbox"><span data-i="enabled"></span></label>
+          <label><span data-i="name"></span><input id="name" maxlength="160"></label><button id="defaultName" data-i="defaultName"></button>
+          <div class="form-grid"><label><span data-i="start"></span><input id="start" maxlength="10" placeholder="YYYY-MM-DD"></label>
+            <label><span data-i="end"></span><input id="end" maxlength="10" placeholder="YYYY-MM-DD"></label></div>
+          <label><span data-i="kind"></span><select id="kind"></select></label>
+          <div class="form-grid"><label><span data-i="every"></span><input id="every" maxlength="3" inputmode="numeric"></label>
+            <label><span data-i="minutes"></span><input id="minutes" maxlength="3" inputmode="numeric"></label></div>
+          <fieldset id="weekField"><legend data-i="weekdays"></legend><div id="weekdays" class="weekdays"></div></fieldset>
+          <div id="monthField"><label><span data-i="date"></span><input id="date" maxlength="2" inputmode="numeric"></label><label><span data-i="missing"></span><select id="policy"></select></label></div>
+          <p class="hint" data-i="ruleHint"></p><p id="ruleStatus" role="status"></p>
+          <label><span data-i="capacity"></span><input id="capacity" maxlength="4" inputmode="numeric"></label><p class="hint" data-i="capacityHint"></p>
+        </section>
+      </div>
+    </section>
+    <section class="panel lower" aria-labelledby="comparisonTitle"><h2 id="comparisonTitle" data-i="comparison"></h2><p class="hint" data-i="compareHint"></p>
+      <div class="actions"><button id="checkpoint" data-i="checkpoint"></button><button id="restoreCheckpoint" data-i="restoreCheckpoint"></button></div><div id="comparison"></div>
+      <label><span data-i="note"></span><textarea id="note" maxlength="2000" rows="3"></textarea></label>
+      <p class="hint" data-i="saveHint"></p><p id="storage" class="hint"></p>
+      <div class="actions"><button id="text" data-i="text"></button><button id="csv" data-i="csv"></button><button id="backup" data-i="backup"></button><button id="import" data-i="import"></button><button id="recover" data-i="recover" hidden></button></div>
+      <input id="file" type="file" accept=".json,application/json" hidden><p class="hint" data-i="exportHint"></p>
+    </section>
+    <div class="guide-anchor"></div>
+  </main><footer data-i="footer" data-user-content></footer>
+</div>
+<script src="content.js"></script><script src="core.js"></script><script src="app.js"></script><script src="background.js"></script><script src="../../shared/background-guide.js"></script>
+</body></html>

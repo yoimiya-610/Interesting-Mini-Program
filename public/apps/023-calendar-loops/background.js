@@ -1,0 +1,23 @@
+'use strict';
+globalThis.ProgramBackground = {
+  target: '.guide-anchor', position: 'append', accent: '#176259',
+  title: ['从一条规则，到一张日历', 'From a rule to a calendar'],
+  lead: ['“每周四整理一次”是一条规则；某个周四的那一次才是日历上的事项。把规则和单次记录分开，就能改期而不改掉所有星期四。', '“Tidy up every Thursday” is a rule. One particular Thursday is an occurrence. Separating the two lets you reschedule one occurrence without changing every Thursday.'],
+  sections: [
+    {title: ['01 / 重复并没有唯一发明者', '01 / Recurrence has no sole inventor'], paragraphs: [
+      ['安排周期事项是广泛的日历实践。一个相关的技术标准是 2009 年的 iCalendar（RFC 5545），由 Bernard Desruisseaux 担任编辑；它定义了重复规则、例外日期和单次事件的表达。本工具借用“规则与例外分开”的思路，并不是完整的 iCalendar 实现，也不读取或输出 ICS 文件。', 'Planning recurring activities is a broad calendar practice. A related technical standard is iCalendar (RFC 5545, 2009), edited by Bernard Desruisseaux. It specifies recurrence rules, exception dates, and individual event instances. This tool uses the idea of separating rules from exceptions. It is not a full iCalendar implementation and does not read or write ICS files.'],
+    ], sources: [{label: 'RFC 5545 · Internet Calendaring and Scheduling Core Object Specification', href: 'https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10'}]},
+    {title: ['02 / 不存在的日期怎么办？', '02 / What about a date that does not exist?'], paragraphs: [
+      ['从 2028-01-31 开始，每月 31 日一次：选择“跳过缺日月份”，下一次是 3 月 31 日；选择“移到该月末日”，2 月是 29 日，3 月仍回到 31 日，不会越走越早。RFC 5545 的重复展开会忽略无效日期；“移到月末”是本工具额外提供的明确策略。', 'Start on 2028-01-31 and repeat on day 31 each month. “Skip months without that date” leads to March 31 next. “Use that month’s last day” includes February 29 and returns to March 31 without drifting earlier. RFC 5545 ignores invalid recurrence dates. Clamping to month end is an additional explicit policy offered by this tool.'],
+      ['这里使用公历：能被 4 整除的年份通常是闰年，但整百年份还须能被 400 整除。因此 2000 年有 2 月 29 日，1900 和 2100 年没有。按周重复以开始日期所在周的周一为起点；开始与结束日期都包含在允许范围内。', 'The Gregorian rule normally adds a leap day in years divisible by four, but century years must also be divisible by 400. Thus 2000 has February 29; 1900 and 2100 do not. Weekly intervals are anchored to the Monday of the starting week. Start and end dates are inclusive.'],
+    ], sources: [{label: 'U.S. Naval Observatory · Leap Years', href: 'https://aa.usno.navy.mil/faq/leap_years'}]},
+    {title: ['03 / 试一次只改一天', '03 / Try changing just one day'], paragraphs: [
+      ['在“相册归档”选择一次补写照片说明，先保存对照，再把这一次改到周末。日历只移动这一次，其他周的规则不变；对照列出当前六周窗口里新增、消失或状态变化的事项。接着修改重复规则，会发现已完成、跳过或改期的日期记录仍保留，并有提示。可用记录导航找回移到其他月份的事项；只有“重置这次记录”才会移除这条例外。', 'In Photo archive, choose one caption-writing occurrence. Keep a comparison, then move that occurrence to the weekend. Other weeks keep their rule. Comparison lists additions, removals, and state changes within the same visible six-week window. If you then edit the rule, dated completion, skip, and rescheduling records remain with a notice. Use the record navigator to find moves in other months. Only “Reset this mark” removes that exception.'],
+      ['适合安排归档、共享物品交接和创作练习。先观察哪些日子过满，再调间隔或改期。每天额度只是一条可编辑参考线：完成的事项仍占当天总量，跳过的不计入，未填好的分钟数单独标为未知。', 'Use this for archiving, shared-space handovers, and creative practice. Look for crowded days, then adjust intervals or move an occurrence. The daily allowance is an editable reference: completed work still counts toward the day’s total, skipped work does not, and unfinished duration inputs are shown as unknown.'],
+    ], sources: []},
+    {title: ['04 / 日期模型与保存边界', '04 / Date model and saving boundaries'], paragraphs: [
+      ['八份示例各有八个事项和两项练习；间隔与耗时是示例，不是专业建议。支持 1900–2100 年的日期，不涉及小时、时区、节假日、通知、云端同步或自动优化。空白、错误或未完成的规则输入会原样保存，但不会展开新事项；它们不会抹去已有日期记录。', 'Each of the eight examples has eight tasks and two exercises. Intervals and durations are illustrative, not expert recommendations. Dates run from 1900 through 2100. There are no hours, time zones, holiday rules, notifications, cloud sync, or automatic optimization. Blank, invalid, and unfinished rule inputs are saved literally but generate no new occurrences. Existing dated records are preserved.'],
+      ['每份计划最多 1024 条日期记录、一份完整对照和 1000 字备注；任务名最多 80 字。撤销保留本次计划访问中的最近 30 次编辑，换计划或刷新即清空。文本和 CSV 导出当前六周窗口；JSON 备份全部八份计划及对照（导入上限 3 MB）。数据只保存在当前浏览器或你下载的文件中，清理浏览器、换地址或设备不会自动迁移。', 'Each plan holds up to 1,024 dated records, one full comparison, and a 1,000-character note; task names allow 80 characters. Undo keeps the latest 30 edits in the current plan visit and clears on plan change or reload. Text and CSV export the visible six-week window. JSON backs up all eight plans and their comparisons (3 MB import limit). Data stays in this browser or your downloaded files. Clearing the browser or changing address or device does not transfer it automatically.'],
+    ], sources: []},
+  ],
+};

@@ -538,5 +538,31 @@
         "Editing"
       ]
     }
+  },
+  {
+    "id": "023",
+    "slug": "calendar-loops",
+    "title": "日历回环",
+    "subtitle": "把重复的事，安排得刚刚好",
+    "description": "八份双语计划，六十四个可编辑事项。展开按天、周、月的重复规则，为单次事项改期，比较六周日历。",
+    "category": "生活",
+    "tags": [
+      "重复计划",
+      "日历",
+      "日期例外"
+    ],
+    "style": "暖白账页 · 青绿日历 · 铜色额度提示",
+    "interaction": "八份六十四项原创双语示例与十六项练习；三类重复规则、月底策略、单次完成与改期、日期记录导航、同窗口对照及 TXT/CSV/JSON 导出",
+    "created": "2026-11-14",
+    "en": {
+      "title": "Calendar Loops",
+      "description": "Edit 64 tasks in eight bilingual plans. Unfold daily, weekly, and monthly rules, move individual occurrences, and compare six-week calendars.",
+      "style": "Warm ledger paper · Teal calendar · Copper allowance markers",
+      "tags": [
+        "Recurring plans",
+        "Calendar",
+        "Date exceptions"
+      ]
+    }
   }
 ]
