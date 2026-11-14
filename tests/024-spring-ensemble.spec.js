@@ -107,3 +107,10 @@ test('024 offline file use and blocked storage keep physics, bilingual guide and
   await page.locator('#note').fill('Offline 记录'); await expect(page.locator('#storage')).toContainText('unavailable'); await page.locator('#programBackground summary').click(); await expect(page.locator('#programBackground')).toContainText('Rayleigh');
   await page.locator('[data-program-language="zh"]').click(); await page.locator('[data-program-language="en"]').click(); expect(await time(page)).toBeCloseTo(0.1); expect(JSON.parse(await download(page, 'backup')).entries.one.note).toBe('Offline 记录'); expect(errors).toEqual([]);
 });
+test('024 320px charts preserve actual 14px labels after resizing a used eight-site experiment', async ({page}) => {
+  await page.goto(route); await page.locator('#case').selectOption('collective'); await page.locator('#ten').click();
+  await page.setViewportSize({width: 320, height: 812});
+  await expect.poll(async () => page.locator('svg text').evaluateAll(nodes => Math.min(...nodes.map(n => parseFloat(getComputedStyle(n).fontSize) * n.getScreenCTM().a)))).toBeGreaterThanOrEqual(14 - 1e-6);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
+  expect(await time(page)).toBe(10); await page.locator('#site0').press('End'); await expect(page.locator('#selected')).toHaveValue('7');
+});

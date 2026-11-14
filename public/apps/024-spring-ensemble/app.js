@@ -111,7 +111,7 @@
     const bad = C.numeric(entry().amplitude, 0, 1) === null; $('amplitude').setAttribute('aria-invalid', String(bad)); if (bad) $('errors').textContent += P([' 激发幅度需为 0–1。', ' Excitation amplitude must be from 0 to 1.']);
     for (const id of ['displace', 'velocity', 'add']) $(id).disabled = bad || !s.systemValid || id === 'add' && s.q.some(q => q === null);
   }
-  function setupSVG(svg, title) { const width = Math.max(280, svg.clientWidth || 600); svg.setAttribute('viewBox', '0 0 ' + width + ' 240'); svg.setAttribute('aria-label', title); svg.replaceChildren(); return width; }
+  function setupSVG(svg, title) { const width = Math.max(200, svg.clientWidth || 600); svg.setAttribute('viewBox', '0 0 ' + width + ' ' + (svg.clientHeight || 240)); svg.setAttribute('aria-label', title); svg.replaceChildren(); return width; }
   function drawChain(r) {
     const svg = $('chain'), w = setupSVG(svg, P(['当前与对照的位移图。数值同时列在下方表格。', 'Current and reference displacement diagram; values also appear in the table below.']));
     if (!r) { svg.append(svgNode('text', {x: 18, y: 120}, P(['补全输入后显示运动。', 'Complete inputs to display motion.']))); return; }
