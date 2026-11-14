@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="024 弹簧合奏。编辑八个耦合振动实验，观察模态、能量与阻尼，并在同一时刻比较两种配置。">
+  <title>024 · 弹簧合奏</title>
+  <link rel="stylesheet" href="../../shared/typography.css"><link rel="stylesheet" href="../../shared/program-language.css"><link rel="stylesheet" href="../../shared/background-guide.css"><link rel="stylesheet" href="style.css">
+  <script src="english.js"></script><script src="../../shared/program-language.js"></script>
+</head><body data-app="024"><div class="shell">
+  <header><a class="brand" href="../../index.html">024 · 弹簧合奏</a><a href="../../index.html">← 小程序索引</a></header>
+  <main data-user-content>
+    <section class="hero"><p class="eyebrow" data-i="eyebrow"></p><h1 data-i="headline"></h1><p data-i="intro"></p><div class="actions"><a href="#workbench" data-i="begin"></a><a href="#programBackground" data-i="guide"></a></div></section>
+    <section class="panel" id="workbench">
+      <label><span data-i="case"></span><select id="case"></select></label><h2 id="caseTitle"></h2><p id="lead"></p><details><summary data-i="exercises"></summary><ol id="prompts"></ol></details>
+      <div class="actions"><button id="play"></button><button id="step" data-i="step"></button><button id="ten" data-i="ten"></button><button id="restart" data-i="restart"></button><button id="undo" data-i="undo"></button><button id="redo" data-i="redo"></button></div>
+      <p id="status" role="status"></p><p id="clock"></p><p id="errors" role="status"></p>
+      <div class="columns"><section aria-labelledby="motionTitle"><h3 id="motionTitle" data-i="motion"></h3>
+        <p class="hint" data-i="diagramHint"></p><svg id="chain" role="img"></svg><div id="sites" class="sites"></div><p class="hint" data-i="keys"></p>
+        <div id="ledger" class="ledger"></div><p class="hint" data-i="ledgerHint"></p>
+      </section><section class="editor" aria-labelledby="editorTitle"><h3 id="editorTitle" data-i="editor"></h3>
+        <label><span data-i="selected"></span><select id="selected"></select></label>
+        <div class="form-grid"><label><span data-i="mass"></span><input id="mass" maxlength="12" inputmode="decimal"></label><label><span data-i="damping"></span><input id="damping" maxlength="12" inputmode="decimal"></label>
+          <label><span data-i="q"></span><input id="q" maxlength="12" inputmode="decimal"></label><label><span data-i="v"></span><input id="v" maxlength="12" inputmode="decimal"></label>
+          <label><span id="springLeftLabel"></span><input id="springLeft" maxlength="12" inputmode="decimal"></label><label><span id="springRightLabel"></span><input id="springRight" maxlength="12" inputmode="decimal"></label>
+          <label><span data-i="left"></span><select id="left"></select></label><label><span data-i="right"></span><select id="right"></select></label></div>
+        <p class="hint" data-i="springHint"></p><p class="hint" data-i="draftHint"></p>
+      </section></div>
+    </section>
+    <div class="columns lower">
+      <section class="panel" aria-labelledby="modesTitle"><h2 id="modesTitle" data-i="modes"></h2><p class="hint" data-i="modeHint"></p>
+        <label><span data-i="mode"></span><select id="mode"></select></label><label><span data-i="amplitude"></span><input id="amplitude" maxlength="12" inputmode="decimal"></label>
+        <div class="actions"><button id="displace" data-i="displace"></button><button id="velocity" data-i="velocity"></button><button id="add" data-i="add"></button></div>
+        <p id="modeShape"></p><div class="table-wrap"><table><thead id="modeHead"></thead><tbody id="modeBody"></tbody></table></div>
+      </section>
+      <section class="panel" aria-labelledby="traceTitle"><h2 id="traceTitle" data-i="trace"></h2><p class="hint" data-i="traceHint"></p><p class="legend" data-i="legend"></p>
+        <svg id="trace" role="img"></svg><p class="hint" data-i="energyTrace"></p><svg id="energyTrace" role="img"></svg>
+      </section>
+    </div>
+    <section class="panel lower" aria-labelledby="compareTitle"><h2 id="compareTitle" data-i="compare"></h2><p class="hint" data-i="compareHint"></p>
+      <div class="actions"><button id="checkpoint" data-i="checkpoint"></button><button id="restoreCheckpoint" data-i="restoreCheckpoint"></button></div><p id="comparison"></p>
+      <div class="table-wrap"><table><thead id="stateHead"></thead><tbody id="stateBody"></tbody></table></div>
+      <label><span data-i="note"></span><textarea id="note" maxlength="2000" rows="3"></textarea></label><p class="hint" data-i="saveHint"></p><p id="storage" class="hint"></p>
+      <div class="actions"><button id="text" data-i="text"></button><button id="csv" data-i="csv"></button><button id="backup" data-i="backup"></button><button id="import" data-i="import"></button><button id="recover" data-i="recover" hidden></button></div><input id="file" type="file" accept=".json,application/json" hidden>
+    </section><div class="guide-anchor"></div>
+  </main><footer data-user-content data-i="footer"></footer>
+</div><script src="content.js"></script><script src="core.js"></script><script src="app.js"></script><script src="background.js"></script><script src="../../shared/background-guide.js"></script></body></html>

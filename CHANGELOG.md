@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-15
+
+### 024 Spring Ensemble
+
+- Explore eight original bilingual experiments with 46 mass sites, 54 spring inputs, and 16 specific investigations: one mass, paired exchange, a collective pattern, free ends, a heavy center, a weak bridge, alternating masses, and damping.
+- Edit masses, stiffness, initial displacement and velocity, end constraints, and damping. Solve whole-system undamped modes, excite displacement or velocity, and add mode shapes. This follows interacting mechanical degrees of freedom, a different activity from Wave Workshop's prescribed harmonics or Heat Mosaic's diffusion.
+- Advance with fixed 1/240-second steps, pause, or run up to 60 seconds. Inspect kinetic and potential energy, dissipation, numerical balance error, half-chain energy, momentum, and mode-energy projections. Compare a saved configuration at the same elapsed time, with current/reference traces and per-site differences.
+- Keep all eight configurations, one comparison per case, literal unfinished inputs, and notes in this browser. Undo supports 30 edits during a case visit. Visit traces remain available across case changes and clear on reload or physical edits. Export the current state as TXT, the trace as CSV, or configurations as JSON with a 256 kB import limit and pre-import recovery.
+- Read a bilingual guide to coupling, normal modes, restoring forces, boundaries, damping and model limits, with Rayleigh, MIT, and Howard Georgi references. The ideal finite linear chain omits collisions, forcing and sound output; the diagram plots index against displacement. Validation uses analytic fixed/free-chain modes, independent force checks, energy bounds and desktop/mobile workflows.
+
 ## 2026-11-14
 
 ### 023 Calendar Loops improvements
