@@ -75,7 +75,8 @@
     const task = model().tasks[entry().task];
     $('task').replaceChildren(); model().tasks.forEach((t, i) => option($('task'), i, (i + 1) + ' · ' + name(i))); $('task').value = entry().task;
     $('purpose').textContent = P(source().tasks[entry().task].why);
-    if (!composing) { $('name').value = name(entry().task); $('note').value = model().note; }
+    if (!composing) { $('name').value = C.taskName(source(), model(), entry().task, ProgramLanguage.language); $('note').value = model().note; }
+    $('name').placeholder = P(['未命名事项', 'Unnamed task']);
     $('enabled').checked = task.enabled;
     for (const id of ['start', 'end', 'every', 'minutes']) $(id).value = task[id];
     $('date').value = task.day; $('capacity').value = model().capacity;

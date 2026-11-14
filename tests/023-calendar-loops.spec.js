@@ -79,6 +79,30 @@ test('023 comparison contains real dated changes, notes and allowance, and retri
   await expect(row(page, '0@2028-01-31').locator('[data-action=done]')).toHaveAttribute('aria-pressed', 'false');
   await page.locator('#undo').click(); await expect(page.locator('#note')).toHaveValue('Changed note'); await expect(row(page, '0@2028-01-31').locator('[data-action=done]')).toHaveAttribute('aria-pressed', 'true');
 });
+test('023 empty task names remain empty through rerenders, navigation, backups and comparison retrieval', async ({page}) => {
+  await setup(page); await page.locator('#name').fill(''); await page.locator('#checkpoint').click();
+  await expect(page.locator('#name')).toHaveValue(''); await expect(page.locator('#name')).toHaveAttribute('placeholder', 'Unnamed task');
+  await page.locator('[data-program-language="zh"]').click(); await expect(page.locator('#name')).toHaveValue('');
+  await expect(page.locator('#task option').first()).toContainText('未命名事项');
+  await page.locator('[data-program-language="en"]').click(); await page.locator('#enabled').uncheck(); await expect(page.locator('#name')).toHaveValue('');
+  await page.locator('#task').selectOption('1'); await page.locator('#task').selectOption('0'); await expect(page.locator('#name')).toHaveValue('');
+  await page.locator('#plan').selectOption('photos'); await page.locator('#plan').selectOption('desk'); await expect(page.locator('#name')).toHaveValue('');
+  await page.reload(); await expect(page.locator('#name')).toHaveValue('');
+  const backup = JSON.parse(await downloaded(page, 'backup')); expect(backup.entries.desk.model.tasks[0].name).toBe(''); expect(backup.entries.desk.checkpoint.tasks[0].name).toBe('');
+  await page.locator('#name').fill('Later wording'); await page.locator('#restoreCheckpoint').click(); await expect(page.locator('#name')).toHaveValue('');
+  await page.locator('#undo').click(); await expect(page.locator('#name')).toHaveValue('Later wording');
+  await page.locator('#file').setInputFiles(payload(backup)); await expect(page.locator('#name')).toHaveValue('');
+  await page.locator('#defaultName').click(); await expect(page.locator('#name')).toHaveValue('Review the inbox');
+  await page.locator('#undo').click(); await expect(page.locator('#name')).toHaveValue('');
+});
+test('023 names that match unnamed labels and whitespace stay literal across both languages', async ({page}) => {
+  await setup(page);
+  for (const literal of ['  ', 'Unnamed task', '未命名事项']) {
+    await page.locator('#name').fill(literal); await page.locator('[data-program-language="zh"]').click(); await expect(page.locator('#name')).toHaveValue(literal);
+    await page.locator('[data-program-language="en"]').click(); await expect(page.locator('#name')).toHaveValue(literal); await page.reload(); await expect(page.locator('#name')).toHaveValue(literal);
+    expect(JSON.parse(await downloaded(page, 'backup')).entries.desk.model.tasks[0].name).toBe(literal);
+  }
+});
 test('023 keyboard navigation crosses months and refuses range overflow without changing the editor', async ({page}) => {
   await setup(page); await page.locator('[data-date="2028-01-31"]').focus(); await page.keyboard.press('ArrowRight'); await expect(page.locator('#month')).toHaveValue('2028-02');
   await expect(page.locator('[data-date="2028-02-01"]')).toBeFocused(); await page.keyboard.press('Space'); await expect(page.locator('[data-date="2028-02-01"]')).toBeFocused();

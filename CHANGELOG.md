@@ -4,6 +4,10 @@
 
 ## 2026-11-14
 
+### 023 Calendar Loops improvements
+
+- Clearing a task name now leaves the editor genuinely empty after language changes, rule edits, navigation, comparison retrieval, imports, and reloads. An unnamed hint appears as a placeholder and in lists without replacing the saved text. Literal names that match the hint remain unchanged. Existing plans and backups keep their original data format.
+
 ### 023 Calendar Loops
 
 - Arrange 64 editable tasks in eight bilingual plans, each with two concrete exercises. Repeat by days, Monday-anchored weeks, or months, with an explicit choice to skip missing dates or use month end without drifting.
