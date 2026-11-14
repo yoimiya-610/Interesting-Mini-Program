@@ -564,5 +564,31 @@
         "Date exceptions"
       ]
     }
+  },
+  {
+    "id": "024",
+    "slug": "spring-ensemble",
+    "title": "弹簧合奏",
+    "subtitle": "推一颗，听懂整队的节奏",
+    "description": "八个双语耦合振动实验。改质量、刚度与初始条件，观察集体模态、能量交换和阻尼，并在同一时刻比较两种配置。",
+    "category": "理科",
+    "tags": [
+      "耦合振动",
+      "固有模态",
+      "能量"
+    ],
+    "style": "蓝灰实验谱 · 铜色对照线 · 暖白能量账本",
+    "interaction": "八个原创实验与十六项探索；46 个质量块和54个弹簧输入、边界与阻尼编辑、模态激发叠加、固定步长运行、能量投影与同时间对照、TXT/CSV/JSON导出",
+    "created": "2026-11-15",
+    "en": {
+      "title": "Spring Ensemble",
+      "description": "Edit mass, stiffness, and initial conditions in eight coupled-oscillator experiments. Explore modes, energy exchange, damping, and references aligned to the same elapsed time.",
+      "style": "Blue-gray score · Copper reference traces · Warm energy ledger",
+      "tags": [
+        "Coupled oscillation",
+        "Normal modes",
+        "Energy"
+      ]
+    }
   }
 ]

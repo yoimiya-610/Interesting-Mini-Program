@@ -27,5 +27,6 @@
 | 021 | 骰轨迷宫 | 游戏 | 先翻一面，再走一步 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/021-die-tracks/) | [本地](http://127.0.0.1:4173/apps/021-die-tracks/) | [HTML](public/apps/021-die-tracks/index.html) | 2026-11-11 |
 | 022 | 叙时剪辑台 | 文科 | 先讲哪一段，故事就从哪里开始 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/022-story-cut-desk/) | [本地](http://127.0.0.1:4173/apps/022-story-cut-desk/) | [HTML](public/apps/022-story-cut-desk/index.html) | 2026-11-13 |
 | 023 | 日历回环 | 生活 | 把重复的事，安排得刚刚好 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/023-calendar-loops/) | [本地](http://127.0.0.1:4173/apps/023-calendar-loops/) | [HTML](public/apps/023-calendar-loops/index.html) | 2026-11-14 |
+| 024 | 弹簧合奏 | 理科 | 推一颗，听懂整队的节奏 | [体验](https://yoimiya-610.github.io/Interesting-Mini-Program/apps/024-spring-ensemble/) | [本地](http://127.0.0.1:4173/apps/024-spring-ensemble/) | [HTML](public/apps/024-spring-ensemble/index.html) | 2026-11-15 |
 
 点击“体验”即可在线打开；下载仓库后，也可以通过“HTML”打开本地文件。使用方法与数据保存说明见[项目介绍](README.md)。感谢你来玩。
