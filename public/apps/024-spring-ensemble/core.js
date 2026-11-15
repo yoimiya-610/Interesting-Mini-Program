@@ -2,7 +2,12 @@
 (() => {
   const cases = globalThis.SpringCases, copy = x => JSON.parse(JSON.stringify(x)), h = 1 / 240, maxTicks = 14400;
   const caseFor = id => cases.find(c => c.id === id);
-  const numeric = (s, lo, hi) => typeof s === 'string' && /^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s) && Number(s) >= lo && Number(s) <= hi ? Number(s) : null;
+  function numeric(s, lo, hi) {
+    if (typeof s !== 'string' || !/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$/.test(s)) return null;
+    const value = Number(s);
+    if (!Number.isFinite(value) || value < lo || value > hi || value === 0 && /[1-9]/.test(s.split(/[eE]/)[0])) return null;
+    return value;
+  }
   const blank = s => ({m: s.m.map(String), k: s.k.map(String), q: s.q.map(String), v: s.v.map(String), left: s.left, right: s.right, damping: String(s.damping)});
   function compile(model) {
     const n = model.m.length, errors = [];
@@ -72,9 +77,18 @@
     if (!mode || amplitude === null) return null;
     const result = copy(model), q = model.q.map(s => numeric(s, -1, 1));
     if (kind === 'add' && q.some(x => x === null)) return null;
-    const values = mode.shape.map((x, i) => amplitude * x + (kind === 'add' ? q[i] : 0));
+    const terms = mode.shape.map(x => amplitude * x);
+    if (terms.some((x, i) => x === 0 && amplitude !== 0 && mode.shape[i] !== 0)) return null;
+    const values = terms.map((x, i) => x + (kind === 'add' ? q[i] : 0));
     if (values.some(x => Math.abs(x) > (kind === 'velocity' ? 2 : 1) + 1e-10)) return null;
-    const printed = values.map(x => Math.abs(x) < 0.000005 ? '0' : x.toFixed(5));
+    const printed = values.map(x => {
+      for (let precision = 10; precision >= 1; precision--) {
+        const text = Number(x.toPrecision(precision)).toString();
+        if (text.length <= 12 && numeric(text, -2, 2) !== null && (x === 0 || Number(text) !== 0)) return text;
+      }
+      return null;
+    });
+    if (printed.some(x => x === null) || kind === 'add' && amplitude !== 0 && printed.every((x, i) => Number(x) === q[i])) return null;
     if (kind === 'velocity') { result.q = values.map(() => '0'); result.v = printed; }
     else { result.q = printed; if (kind !== 'add') result.v = values.map(() => '0'); }
     return result;

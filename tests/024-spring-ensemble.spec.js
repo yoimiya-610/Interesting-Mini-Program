@@ -114,3 +114,19 @@ test('024 320px charts preserve actual 14px labels after resizing a used eight-s
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
   expect(await time(page)).toBe(10); await page.locator('#site0').press('End'); await expect(page.locator('#selected')).toHaveValue('7');
 });
+test('024 small mode excitations remain nonzero through display, CSV, backup, language and reload', async ({page}) => {
+  await page.goto(route); await page.locator('#amplitude').fill('0.000001'); await page.locator('#displace').click();
+  expect(Number(await page.locator('#q').inputValue())).toBe(1e-6); expect(Number(await column(page, 1))).toBe(1e-6);
+  await page.locator('#amplitude').fill('1e-12'); await page.locator('#displace').click(); expect(Number(await column(page, 1))).toBe(1e-12);
+  await page.locator('#checkpoint').click(); await page.locator('#step').click();
+  const csv = await download(page, 'csv'); expect(Number(csv.split('\r\n')[1].split(',')[1].replaceAll('"', ''))).toBe(1e-12);
+  const backup = JSON.parse(await download(page, 'backup')); expect(Number(backup.entries.one.model.q[0])).toBe(1e-12); expect(Number(backup.entries.one.checkpoint.model.q[0])).toBe(1e-12);
+  await page.locator('[data-program-language="zh"]').click(); await page.reload(); expect(Number(await page.locator('#q').inputValue())).toBe(1e-12);
+  await page.locator('#file').setInputFiles(payload(backup)); expect(Number(await page.locator('#q').inputValue())).toBe(1e-12);
+});
+test('024 scientific drafts and unrepresentable additions preserve the original configuration', async ({page}) => {
+  await page.goto(route); await page.locator('#amplitude').fill('1e-20'); const before = JSON.parse(await download(page, 'backup')).entries.one.model;
+  await page.locator('#add').click(); await expect(page.locator('#status')).toContainText('precision'); expect(JSON.parse(await download(page, 'backup')).entries.one.model).toEqual(before);
+  await page.locator('#amplitude').fill('1e-'); await expect(page.locator('#displace')).toBeDisabled(); await page.locator('[data-program-language="zh"]').click(); await page.reload(); await expect(page.locator('#amplitude')).toHaveValue('1e-');
+  await page.locator('#amplitude').fill('1e-999'); await expect(page.locator('#displace')).toBeDisabled();
+});

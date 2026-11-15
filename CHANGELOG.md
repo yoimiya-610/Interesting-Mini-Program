@@ -4,6 +4,11 @@
 
 ## 2026-11-15
 
+### 024 Spring Ensemble improvements
+
+- Small nonzero mode excitations now remain nonzero in initial conditions, readouts, trajectories, and backups. Generated values use compact significant-digit formatting within the existing field limits, replacing fixed decimal rounding. Complete scientific notation is accepted; unfinished notation remains a literal draft, and numeric underflow is rejected.
+- Additions too small to change the represented initial state are refused with an explanation. Existing configurations, notes, and backup schemas remain compatible.
+
 ### 024 Spring Ensemble
 
 - Explore eight original bilingual experiments with 46 mass sites, 54 spring inputs, and 16 specific investigations: one mass, paired exchange, a collective pattern, free ends, a heavy center, a weak bridge, alternating masses, and damping.
