@@ -45,7 +45,7 @@
   const rating=C.numeric(e.model.edges[e.selected].rating,.001,100),max=Math.max(...samples.map(s=>s.power),rating||0,1e-12),x=i=>46+(w-66)*i/20,y=p=>h-46-(h-78)*p/max;
   el.append(svg('line',{x1:46,y1:32,x2:46,y2:h-46,stroke:'#839a96'}),svg('line',{x1:46,y1:h-46,x2:w-20,y2:h-46,stroke:'#839a96'}),svg('polyline',{points:samples.map((p,i)=>x(i)+','+y(p.power)).join(' '),fill:'none',stroke:'#a64b22','stroke-width':3}));
   if(rating!==null)el.append(svg('line',{x1:46,y1:y(rating),x2:w-20,y2:y(rating),stroke:'#425d64','stroke-dasharray':'6 5'}));
-  for(const [xx,yy,anchor,text]of [[8,20,'start',f(max)+' W'],[46,h-18,'start',e.lo+' Ω'],[w-20,h-18,'end',e.hi+' Ω']])el.append(svg('text',{x:xx,y:yy,'text-anchor':anchor,'font-size':14,fill:'#233c48'},text));
+  for(const [xx,yy,anchor,text]of [[8,20,'start',f(max)+' W'],[46,h-18,'start',f(C.numeric(e.lo,10,10000))+' Ω'],[w-20,h-18,'end',f(C.numeric(e.hi,10,10000))+' Ω']])el.append(svg('text',{x:xx,y:yy,'text-anchor':anchor,'font-size':14,fill:'#233c48'},text));
   const peak=samples.reduce((a,b)=>b.power>a.power?b:a);$('sweepSummary').textContent='R'+(e.selected+1)+' · '+t(['样本中最大功率','Largest sampled power'])+' '+f(peak.power)+' W @ '+f(peak.r)+' Ω · '+t(['仅比较采样点，不是精确最优值。','Sampled values only, not an exact optimum.']);
   for(const p of samples)row($('sweepBody'),[f(p.r),f(p.voltage),f(p.current*1000),f(p.branchCurrent*1000),f(p.power),p.overloaded]);
  }
