@@ -17,7 +17,7 @@
     q: ['初始位移（−1 至 1 m）', 'Initial displacement (−1 to 1 m)'], v: ['初始速度（−2 至 2 m/s）', 'Initial velocity (−2 to 2 m/s)'],
     left: ['左端边界', 'Left boundary'], right: ['右端边界', 'Right boundary'],
     springHint: ['S0 与 SN 连接端点和墙；内部 S1…S(N−1) 连接相邻点。自由端的端部刚度不参与计算，但保留你的原始输入。', 'S0 and SN connect the ends to walls; internal S1…S(N−1) connect neighbors. A free end ignores its end stiffness while retaining your raw input.'],
-    draftHint: ['物理参数编辑会暂停并重开当前轨迹。未完成的数值输入原样保存，补全后才运行；笔记和语言切换不重开轨迹。', 'Physical edits pause and restart this trace. Unfinished numeric inputs save literally and must be completed before running. Notes and language changes keep the trace.'],
+    draftHint: ['物理参数编辑会暂停并重开当前轨迹。支持完整科学计数法；未完成输入原样保存，补全后才运行。读数约五位有效数字；笔记和语言切换不重开轨迹。', 'Physical edits pause and restart this trace. Complete scientific notation is supported; unfinished inputs save literally and must be completed before running. Readouts use about five significant digits. Notes and language changes keep the trace.'],
     modes: ['03 / 选一种集体节奏', '03 / CHOOSE A COLLECTIVE MODE'],
     modeHint: ['频率是无阻尼固有频率。形状把最大绝对幅度定为 1，供激发时缩放；表内能量按质量归一的模态投影计算。零频率表示自由平移。', 'Frequencies are undamped natural frequencies. Shapes have a largest absolute amplitude of 1 for excitation. Mode energies use mass-normalized projections. Zero frequency represents free translation.'],
     mode: ['选择模态', 'Select a mode'], amplitude: ['激发幅度（0–1；位移 m / 速度 m/s）', 'Excitation amplitude (0–1; m or m/s)'],
@@ -35,7 +35,7 @@
   };
   const node = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
   const svgNode = (tag, attributes, text) => { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const [k, v] of Object.entries(attributes)) e.setAttribute(k, v); if (text !== undefined) e.textContent = text; return e; };
-  const f = value => Math.abs(value) < 1e-10 ? '0' : Number(value.toPrecision(5)).toString();
+  const f = value => value === 0 ? '0' : Number(value.toPrecision(5)).toString();
   const key = 'imp-024-spring-ensemble-v1';
   let data = C.fresh(), storedOK = true, invalidStored = false, feedback = null;
   try { const text = localStorage.getItem(key); if (text) { const restored = C.restore(JSON.parse(text)); if (restored) data = restored; else invalidStored = true; } } catch { storedOK = false; }
@@ -192,7 +192,7 @@
   $('case').onchange = () => { playing = false; data.active = $('case').value; undo = []; redo = []; group = null; feedback = null; save(true); render(); };
   for (const [id, kind] of [['displace', 'displace'], ['velocity', 'velocity'], ['add', 'add']]) $(id).onclick = () => {
     const model = C.excite(entry().model, modesFor(entry().model)[entry().mode], C.numeric(entry().amplitude, 0, 1), kind);
-    if (!model) { feedback = ['叠加后的位移超出范围，或输入未完成；原稿未改动。', 'The addition exceeds the displacement range, or inputs are incomplete; your draft is unchanged.']; renderFeedback(); return; }
+    if (!model) { feedback = ['位移超出范围、输入未完成，或变化超出可表示精度；原稿未改动。', 'The addition exceeds the displacement range, inputs are incomplete, or the change is below representable precision; your draft is unchanged.']; renderFeedback(); return; }
     change(() => { entry().model = model; });
   };
   $('play').onclick = () => { if (!run()) return; playing = !playing; revision++; recovery = null; feedback = playing ? ['正在运行；可暂停后查看精确数值。', 'Running. Pause to inspect exact values.'] : ['已暂停。', 'Paused.']; lastFrame = null; renderDynamics(); };

@@ -97,8 +97,24 @@ test('Excitation isolates a mode, preserves drafts on failed additions, and can 
 });
 test('Raw numeric drafts stay literal; free-end unused inputs do not block a valid run', () => {
   const m = C.blank(C.caseFor('free')); m.k[0] = ''; assert(C.compile(m).valid); m.left = 'fixed'; assert(!C.compile(m).valid);
-  for (const value of ['', '1e0', '0x1', ' 1 ', '1.2.3', 'NaN']) assert.equal(C.numeric(value, 0, 4), null);
-  for (const value of ['.5', '-0.25', '1.']) assert.notEqual(C.numeric(value, -1, 4), null);
+  for (const value of ['', '1e-', '1e999', '1e-999', '0x1', ' 1 ', '1.2.3', 'NaN']) assert.equal(C.numeric(value, 0, 4), null);
+  for (const value of ['.5', '-0.25', '1.', '1e0', '1e-12', '+.5', '-0e-999']) assert.notEqual(C.numeric(value, -1, 4), null);
+});
+test('Small excitations preserve nonzero terms, mode proportions and complete backup compatibility', () => {
+  for (const source of C.cases) {
+    const original = C.blank(source), modes = C.modes(C.compile(original));
+    for (const amplitude of [1e-6, 1e-10, 1e-30]) for (const mode of modes) for (const kind of ['displace', 'velocity']) {
+      const generated = C.excite(original, mode, amplitude, kind); assert(generated); assert(C.compile(generated).valid);
+      const values = generated[kind === 'velocity' ? 'v' : 'q']; assert(values.every(v => v.length <= 12));
+      values.forEach((text, i) => { const expected = mode.shape[i] * amplitude; if (expected) assert(Math.abs(Number(text) / expected - 1) < 1e-5); else near(Number(text), 0); });
+      const data = C.fresh(); data.entries[source.id].model = generated; const restored = C.restore(JSON.parse(JSON.stringify(data))); assert(restored); assert.deepEqual(plain(restored.entries[source.id].model), plain(generated));
+    }
+  }
+});
+test('An unrepresentable addition or underflowing excitation leaves the initial draft unchanged', () => {
+  const model = C.blank(C.cases[0]), before = JSON.stringify(model), mode = C.modes(C.compile(model))[0];
+  assert.equal(C.excite(model, mode, 1e-20, 'add'), null); assert.equal(JSON.stringify(model), before);
+  assert.equal(C.numeric('1e-999', 0, 1), null); assert.equal(C.numeric('1e-320', 0, 1), 1e-320);
 });
 test('Full worst-case configuration backups fit 256 kB and malformed imports reject atomically', () => {
   const data = C.fresh();
