@@ -590,5 +590,23 @@
         "Energy"
       ]
     }
+  },
+  {
+    "id": "025",
+    "slug": "circuit-atlas",
+    "title": "电路测绘台",
+    "subtitle": "电流会从哪里走？",
+    "description": "八个双语直流电阻实验。改端点与阻值，测分压、分流、功率和悬浮结点，再扫描一个电阻比较网络变化。",
+    "category": "工科",
+    "tags": ["电阻网络", "结点分析", "功率"],
+    "style": "灰绿电路册 · 焦橙电阻 · 暖白测量清单",
+    "interaction": "八案38条电阻支路与16项探索；可编辑端点、通断、阻值、额定值和电源，结点方程、21点对数扫描、八份对照与TXT/CSV/JSON导出",
+    "created": "2026-11-16",
+    "en": {
+      "title": "Circuit Atlas",
+      "description": "Edit eight DC resistor networks. Rewire branches, inspect dividers, currents, power and floating nodes, then sweep one resistance and compare the whole network.",
+      "style": "Gray-green circuit notebook · Burnt-orange resistors · Warm measurement sheets",
+      "tags": ["Resistor networks", "Nodal analysis", "Power"]
+    }
   }
 ]
