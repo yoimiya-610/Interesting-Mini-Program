@@ -2,6 +2,16 @@
 
 这里记录新加入的小程序、体验改进，以及使用时需要知道的说明。
 
+## 2026-11-16
+
+### 025 Circuit Atlas
+
+- Explore eight original bilingual DC resistor cases, 38 branches and 16 investigations: series and parallel paths, a loaded divider, a balanced bridge, a ladder, a shared bottleneck, a floating island and converging routes.
+- Rewire branch endpoints, open or close connections, edit resistance, power rating and source voltage, then inspect node potentials, signed currents, dissipation, equivalent resistance and node-current equations. Unlike Logic Patch's Boolean gates or Bit Repair Lab's coding experiments, this activity solves an analog resistive network.
+- Sweep one resistor over 21 logarithmic samples while following its power, probe voltage, total current and over-rating counts. Sampled maxima are not exact optima. Keep one full configuration and note per case for branch-current comparison; each version retains its own source voltage.
+- Preserve all eight cases, literal unfinished inputs, sweep bounds, notes and comparisons locally. Undo keeps 30 edits during a case visit. TXT includes branch readings, node potentials and network totals; sweep CSV identifies the case, branch, probe and source voltage. Complete JSON backups have a 256 kB import limit, with pre-import recovery and protection against stale reads or active text composition.
+- Read a bilingual background guide with Ohm, Kirchhoff, NIST, MIT and OpenStax references, an independently checkable series example, floating-node interpretation, and explicit ideal DC/model and saving limits. Validation covers analytic circuits, an independent exact-rational nodal oracle, conservation, disconnected networks, browser workflows and local/offline use.
+
 ## 2026-11-15
 
 ### 024 Spring Ensemble improvements
